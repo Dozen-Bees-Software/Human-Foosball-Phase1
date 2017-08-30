@@ -1,6 +1,6 @@
 {
-  "name": "meanjs",
-  "description": "Fullstack JavaScript with MongoDB, Express, AngularJS, and Node.js.",
+  "name": "scrummean",
+  "description": "Full-Stack ",
   "homepage": "http://meanjs.org/",
   "license": "MIT",
   "dependencies": {
