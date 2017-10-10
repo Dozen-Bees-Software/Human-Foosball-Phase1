@@ -31,6 +31,11 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         ignoreState: true
       }
     })
+    .state('TournamentStyle1', {
+      url: '/tournamentstyle1',
+      templateUrl: 'modules/core/client/views/home.client.view.html'
+    })
+
     .state('forbidden', {
       url: '/forbidden',
       templateUrl: 'modules/core/client/views/403.client.view.html',
