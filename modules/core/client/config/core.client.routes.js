@@ -33,15 +33,15 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     })
     .state('TournamentStyle1', {
       url: '/tournamentstyle1',
-      templateUrl: 'modules/core/client/views/home.client.view.html'
+      templateUrl: 'modules/core/client/views/tourneyStyle1.client.view.html'
     })
     .state('TournamentStyle2', {
       url: '/tournamentstyle2',
-      templateUrl: 'modules/core/client/views/home.client.view.html'
+      templateUrl: 'modules/core/client/views/tourneyStyle2.client.view.html'
     })
     .state('TournamentStyle3', {
       url: '/tournamentstyle3',
-      templateUrl: 'modules/core/client/views/home.client.view.html'
+      templateUrl: 'modules/core/client/views/tourneyStyle3.client.view.html'
     })
 
     .state('forbidden', {
