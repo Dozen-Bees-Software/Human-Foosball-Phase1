@@ -6,4 +6,28 @@
       </div>
     </div>
   </div>
+  <div>
+  <h1 align="center">New Tournament</h1>
+
+  <form name= "tournamentCreationForm" ui-sref='home.TournamentStyle1' class="TourneyCreationform-horizontal">
+    <fieldset>
+      <div class="TCreationForm-group" show-errors align="center">
+        <input name="name"  type="text" ng-model="tournamentName" id="tournamentNameInput" class="TCreation-control" placeholder="Enter New Tournament Name..." required>
+        <br><br>
+        <a ui-sref='TournamentStyle1'>
+        <input type="submit" value="Tournament Style 1">
+      </a>
+
+        <a ui-sref='TournamentStyle2'>
+        <input type="submit" value="Tournament Style 2">
+      </a>
+
+
+        <a ui-sref='TournamentStyle3'>
+        <input type="submit" value="Tournament Style 3">
+      </a>
+      </div>
+    </fieldset>
+  </form>
+
 </section>

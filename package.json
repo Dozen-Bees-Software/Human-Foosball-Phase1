@@ -1,5 +1,5 @@
 {
-  "name": "scrummean",
+  "name": "ree",
   "description": "Full-Stack ",
   "version": "0.4.2",
   "meanjs-version": "0.4.2",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/meanjs/mean.git"
+    "url": "git+https://github.com/meanjs/mean.git"
   },
   "engines": {
     "node": ">=0.10.28",
@@ -42,7 +42,7 @@
     "grunt-cli": "~0.1.13",
     "helmet": "~0.9.1",
     "jasmine-core": "^2.3.4",
-    "lodash": "^3.10.0",
+    "lodash": "^3.10.1",
     "method-override": "^2.3.3",
     "mocha": "~1.20.0",
     "mongoose": "~4.2.3",
@@ -117,5 +117,10 @@
     "run-sequence": "^1.1.1",
     "should": "^7.0.1",
     "supertest": "^1.0.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/meanjs/mean/issues"
+  },
+  "homepage": "https://github.com/meanjs/mean#readme",
+  "main": "gruntfile.js"
 }
