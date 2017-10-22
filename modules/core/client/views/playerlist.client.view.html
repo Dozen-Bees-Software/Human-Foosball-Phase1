@@ -18,15 +18,21 @@
               </tr>
               <tr ng-repeat="player in players">
                 <td>{{player.name}}</td>
+                <td>{{player.elo}}</td>
+                <td>{{player.wins}}</td>
+                <td>{{player.losses}}</td>
+                <td>{{player.differential}}</td>
+                <td>{{player.gamesPlayed}}</td>
                 <td><span style="color: red;" class="glyphicon glyphicon-remove"></span></td>
               </tr>
               <tr>
-                <td><input type="text" class="form-control" placeholder="Add Player..." ng-model="playerEntry"></td>
-                <td ng-clicked="addPlayer()"><span style="color:green;" class="glyphicon glyphicon-ok"></span></td>
+                <td><input type="text" class="form-control" placeholder="Add Player..." ng-model="newPlayer.name"></td>
+                <td ng-click="addPlayer()" style=" cursor:pointer;"><span style="color:green;" class="glyphicon glyphicon-ok"></span></td>
               </tr>
             </table>
     </div>
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-    
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
 </section>
