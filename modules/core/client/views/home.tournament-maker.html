@@ -12,20 +12,15 @@
   <form name= "tournamentCreationForm" ui-sref='home.TournamentStyle1' class="TourneyCreationform-horizontal">
     <fieldset>
       <div class="TCreationForm-group" show-errors align="center">
-        <input name="name"  type="text" ng-model="tournamentName" id="tournamentNameInput" class="TCreation-control" placeholder="Enter New Tournament Name..." required>
-        <br><br>
         <a ui-sref='TournamentStyle1'>
         <input type="submit" value="Tournament Style 1">
       </a>
 
-        <a ui-sref='TournamentStyle2'>
-        <input type="submit" value="Tournament Style 2">
-      </a>
-
-
-        <a ui-sref='TournamentStyle3'>
-        <input type="submit" value="Tournament Style 3">
-      </a>
+      <br></br>
+      <div ng-app="myApp" ng-controller="MyCtrl">
+      <input name="name"  type="text"  id="tournamentNameInput" class="TCreation-control" placeholder="Enter New Tournament Name..." required>
+          <button name=generateTourney ng-model="clicked">Go!<br>
+        </div>
       </div>
     </fieldset>
   </form>
