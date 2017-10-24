@@ -23,7 +23,7 @@
                 <td>{{player.losses}}</td>
                 <td>{{player.differential}}</td>
                 <td>{{player.gamesPlayed}}</td>
-                <td><span style="color: red;" class="glyphicon glyphicon-remove"></span></td>
+                <td><span style="color: red;" class="glyphicon glyphicon-remove" ng-click="deletePlayer($index)"></span></td>
               </tr>
               <tr>
                 <td><input type="text" class="form-control" placeholder="Add Player..." ng-model="newPlayer.name"></td>
@@ -31,7 +31,7 @@
               </tr>
             </table>
     </div>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
