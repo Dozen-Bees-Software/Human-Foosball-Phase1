@@ -28,9 +28,9 @@ angular.module('core').service('Players', [
     };
 
     this.deletePlayers = function(index){
-        console.log(this.getPlayer(index));
-        playerList.splice(index, 1);
-        console.log(playerList.length);
+      console.log(this.getPlayer(index));
+      playerList.splice(index, 1);
+      console.log(playerList.length);
 
     };
 
@@ -40,7 +40,7 @@ angular.module('core').service('Players', [
 
     this.getPlayerList = function(){
       return playerList;
-    }
+    };
 
   }
 ]);
