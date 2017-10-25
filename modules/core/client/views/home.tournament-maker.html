@@ -1,26 +1,54 @@
-<section ng-controller="HomeController">
-  <div class="jumbotron text-center">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
-        <img alt="MEAN.JS" class="img-responsive text-center" src="modules/core/client/img/brand/tempfoozLogo.png" />
-      </div>
-    </div>
-  </div>
+<section class="fooz-body" ng-controller="HomeController">
+  <!--<div class="jumbotron text-center">
+  </div>-->
   <div>
+    <script src="C:\Users\Maneesh Kodumuru\Documents\Maneesh\CEN3031\Human-Foosball-Phase1\modules\core\client\controllers\home.client.controller.js"></script>
   <h1 align="center">New Tournament</h1>
 
-  <form name= "tournamentCreationForm" ui-sref='home.TournamentStyle1' class="TourneyCreationform-horizontal">
+  <form name= "tournamentCreationForm" ui-sref='home.TournamentStyle1' class="tourney_form">
     <fieldset>
-      <div class="TCreationForm-group" show-errors align="center">
-        <a ui-sref='TournamentStyle1'>
-        <input type="submit" value="Tournament Style 1">
-      </a>
+      <div class="form-group" show-errors align="center" ng-app "core" ng-controller="HomeController">
 
-      <br></br>
-      <div ng-app="myApp" ng-controller="MyCtrl">
-      <input name="name"  type="text"  id="tournamentNameInput" class="TCreation-control" placeholder="Enter New Tournament Name..." required>
-          <button name=generateTourney ng-model="clicked">Go!<br>
-        </div>
+        <div id="style_buttons">
+        <label ng-click="revealInfo()">
+          <input name="style" type="radio" id="style1" class="style_button" value="Tournament Style 1">
+          <img class="button_image" src="modules/core/client/img/styles/placeholder1.jpg">
+          <br><p>I in Team</p>
+        </label>
+
+        <label ng-click="revealInfo()">
+          <input name="style" type="radio" id="style2" class="style_button" value="Tournament Style 2">
+          <img class="button_image" src="modules/core/client/img/styles/placeholder2.jpg">
+        </label>
+
+        <label ng-click="revealInfo()">
+          <input name="style" type="radio" id="style3" class="style_button" value="Tournament Style 3">
+          <img class="button_image" src="modules/core/client/img/styles/placeholder3.jpg">
+        </label>
+      </div>
+      <!-- Tournament type description -->
+      <div>
+        <p ng-show='tourneySummary'>
+          <div ng-init="showInfo()">
+            <h3>{{info}}</h3>
+          </div>
+        </p>
+      </div>
+      <input name="name"  type="text" id="tournamentNameInput" class="TCreation-control" placeholder="Enter New Tournament Name..." required>
+      <div ng-app="core" ng-controller="HomeController">
+        <button ng-click="ShowHide()"/>Go!</button>
+        <br>
+        <br>
+        <p  ng-show='IsVisible'>
+          <input type=number ng-value=0 ng-model="playersPerTeam">Players per Team<br>
+          <input type=number ng-value=0 ng-model="numPoints">Points for Winning<br>
+          <input type=number ng-value=0 ng-model="tie">Points for a Tie<br>
+
+          <button ui-sref="PlayerList"  name="AddPlayers">Add Players!<br>
+
+        </p>
+      </div>
+
       </div>
     </fieldset>
   </form>
