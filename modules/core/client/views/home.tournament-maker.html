@@ -7,19 +7,40 @@
     </div>
   </div>
   <div>
+    <script src="C:\Users\Maneesh Kodumuru\Documents\Maneesh\CEN3031\Human-Foosball-Phase1\modules\core\client\controllers\home.client.controller.js"></script>
   <h1 align="center">New Tournament</h1>
 
   <form name= "tournamentCreationForm" ui-sref='home.TournamentStyle1' class="TourneyCreationform-horizontal">
     <fieldset>
-      <div class="TCreationForm-group" show-errors align="center">
-        <a ui-sref='TournamentStyle1'>
-        <input type="submit" value="Tournament Style 1">
-      </a>
+      <div class="form-group" show-errors align="center">
+        <div ng-app "core" ng-controller="HomeController">
+        <button ng-click="revealInfo()"/>I in Team</button>
+        <br />
+        <br />
+        <p ng-show='tourneySummary'>
+          <div ng-init="showInfo()">
+            <h3>{{info}}<h3>
+          </div>
+        </p>
+
+      </div>
 
       <br></br>
-      <div ng-app="myApp" ng-controller="MyCtrl">
+
       <input name="name"  type="text"  id="tournamentNameInput" class="TCreation-control" placeholder="Enter New Tournament Name..." required>
-          <button name=generateTourney ng-model="clicked">Go!<br>
+      <div ng-app="core" ng-controller="HomeController">
+            <button  ng-click="ShowHide()"/>Go!</button>
+            <br />
+            <br />
+            <p  ng-show='IsVisible'>
+              <input type=number ng-value=0 ng-model="playersPerTeam">Players per Team<br>
+              <input type=number ng-value=0 ng-model="numPoints">Points for Winning<br>
+              <input type=number ng-value=0 ng-model="tie">Points for a Tie<br>
+
+              <button  name="AddPlayers">Add Players!<br>
+
+            </p>
+
         </div>
       </div>
     </fieldset>
