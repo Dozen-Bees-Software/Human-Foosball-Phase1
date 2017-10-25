@@ -139,7 +139,7 @@ a:hover .header-profile-image {
   display: inline;
 }
 
-#tournamentNameInput {
+.tournamentNameInput {
 
   width: 400px;
   font-size: 14pt;

@@ -2,32 +2,53 @@
   <!--<div class="jumbotron text-center">
   </div>-->
   <div>
+    <script src="C:\Users\Maneesh Kodumuru\Documents\Maneesh\CEN3031\Human-Foosball-Phase1\modules\core\client\controllers\home.client.controller.js"></script>
   <h1 align="center">New Tournament</h1>
 
   <form name= "tournamentCreationForm" ui-sref='home.TournamentStyle1' class="tourney_form">
     <fieldset>
-      <div class="TCreationForm-group" show-errors align="center">
+      <div class="form-group" show-errors align="center" ng-app "core" ng-controller="HomeController">
 
         <div id="style_buttons">
-        <label>
+        <label ng-click="revealInfo()">
           <input name="style" type="radio" id="style1" class="style_button" value="Tournament Style 1">
           <img class="button_image" src="modules/core/client/img/styles/placeholder1.jpg">
+          <br><p>I in Team</p>
         </label>
 
-        <label>
+        <label ng-click="revealInfo()">
           <input name="style" type="radio" id="style2" class="style_button" value="Tournament Style 2">
           <img class="button_image" src="modules/core/client/img/styles/placeholder2.jpg">
         </label>
 
-        <label>
+        <label ng-click="revealInfo()">
           <input name="style" type="radio" id="style3" class="style_button" value="Tournament Style 3">
           <img class="button_image" src="modules/core/client/img/styles/placeholder3.jpg">
         </label>
       </div>
       <!-- Tournament type description -->
-      <input name="name"  type="text" ng-model="tournamentName" id="tournamentNameInput" class="TCreation-control" placeholder="Enter New Tournament Name..." required>
-      <br>
-      <input name="submit" type="submit" value="Choose Settings">
+      <div>
+        <p ng-show='tourneySummary'>
+          <div ng-init="showInfo()">
+            <h3>{{info}}</h3>
+          </div>
+        </p>
+      </div>
+      <input name="name"  type="text" id="tournamentNameInput" class="TCreation-control" placeholder="Enter New Tournament Name..." required>
+      <div ng-app="core" ng-controller="HomeController">
+        <button ng-click="ShowHide()"/>Go!</button>
+        <br>
+        <br>
+        <p  ng-show='IsVisible'>
+          <input type=number ng-value=0 ng-model="playersPerTeam">Players per Team<br>
+          <input type=number ng-value=0 ng-model="numPoints">Points for Winning<br>
+          <input type=number ng-value=0 ng-model="tie">Points for a Tie<br>
+
+          <button  name="AddPlayers">Add Players!<br>
+
+        </p>
+      </div>
+
       </div>
     </fieldset>
   </form>
