@@ -1,16 +1,119 @@
+/*Colors
+
+  blue-gray:    #095587
+  dark-blue:    #222A33
+  dark-gray:    #3A3B3D
+  light-gray:   #869BAD
+  orange:       #EB4C2B
+  dark-orange:  #972D21
+
+*/
+
+body{
+  background-color: #095587;
+}
+
+.wrapper{
+  background-color: #095587;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar{
+  margin: 0px;
+}
+
+.banner{
+  background-color: #222A33;
+  height: 12em;
+  position: fixed;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+
+}
+
+.banner-img{
+  display: block;
+  margin: auto;
+  height: 12em;
+}
+
+.navbar-container{
+  position: fixed;
+  float: left;
+  width: 7em;
+  height: 100%;
+  background-color: #EB4C2B;
+  border-style: none;
+  border-radius: 0px;
+  margin-top: 12em;
+}
+
+
+.navbar-header{
+  width: 100%;
+  /*margin-top: 14em;*/
+}
+
+.navbar-item{
+  /*margin: 0px;*/
+}
+
+/*.navbar-brand{
+  marin: 0em;
+}*/
+
+/*.navbar navbar-fixed-top navbar-inverse{
+  background-color: #0000FF;
+  border-style: none;
+}
+
+.navbar ng-scope{
+  border-style: none;
+}*/
+
+.fooz-body{
+  padding: none;
+    background-color: #095587;
+}
+
 .content {
-  margin-top: 50px;
+  padding: 0px;
+  background-color: #095587;
+}
+
+.container{
+  background-color: #095587;
+  margin-top: 14em;
+  margin-left: 7em;
+  padding: 0px;
+  margin-bottom: 0px;
+}
+
+.tourney_form{
+  width: 500px;
+  margin: auto;
+}
+
+.ng-scope{
+  /*padding: 0px;*/
+  /*border: 0px;*/
+  /*margin: 0px;*/
 }
 .undecorated-link:hover {
   text-decoration: none;
 }
-[ng\:cloak],
+
+/*[ng\:cloak],
 [ng-cloak],
 [x-ng-cloak],
 .ng-cloak,
 .x-ng-cloak {
   display: none !important;
-}
+}*/
+
 .header-profile-image {
   opacity: 0.8;
   height: 28px;
@@ -41,4 +144,43 @@ a:hover .header-profile-image {
   width: 400px;
   font-size: 14pt;
   height: 50px;
+}
+
+.new-tournament-name {
+
+}
+
+.TCreationForm-group{
+  padding: auto;
+  margin: auto;
+}
+
+label > input{
+  visibility: hidden;
+  position: absolute;
+}
+
+label > input + img{
+  cursor: pointer;
+  border: 2px solid transparent;
+  width: 8em;
+  height: 8em;
+  margin: 5px 15px;
+  padding: 2px;
+}
+
+label > input:checked + img{
+  border: 2px solid #000000;
+}
+
+@font-face {
+  font-family: 'SportsFont';
+  src: url('public/lib/bootstrap/dist/fonts/Sports World-Regular.ttf');
+}
+
+h1{
+  font-family: 'SportsFont', 'futura', monospace;
+  font: 'SportsFont';
+  font-size: 5em;
+  margin-top: 0px;
 }
