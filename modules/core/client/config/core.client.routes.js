@@ -43,6 +43,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       url: '/tournamentstyle3',
       templateUrl: 'modules/core/client/views/tourneyStyle3.client.view.html'
     })
+    .state('PlayerList', {
+      url:'/playerList',
+      templateUrl:'modules/core/client/views/playerlist.client.view.html'
+    })
 
     .state('forbidden', {
       url: '/forbidden',
