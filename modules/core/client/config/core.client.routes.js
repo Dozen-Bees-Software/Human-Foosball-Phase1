@@ -48,6 +48,11 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       templateUrl:'modules/core/client/views/playerlist.client.view.html'
     })
 
+    .state('Brackets', {
+      url:'/brackets',
+      templateUrl:'modules/core/client/views/brackets.client.html'
+    })
+
     .state('forbidden', {
       url: '/forbidden',
       templateUrl: 'modules/core/client/views/403.client.view.html',
