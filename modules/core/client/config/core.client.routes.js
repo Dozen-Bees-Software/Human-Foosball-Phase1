@@ -49,7 +49,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     })
     .state('IinTeamView', {
       url:'/IinTeam',
-      templateUrl:'modules/core/client/views/IinTeam.client.view.html'
+      templateUrl:'modules/core/client/views/IinTeam.clilent.view.html'
     })
 
     .state('Brackets', {
