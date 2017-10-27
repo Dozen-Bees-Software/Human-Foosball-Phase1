@@ -10,13 +10,16 @@
       <div class="form-group" show-errors align="center" ng-app "core" ng-controller="HomeController">
 
         <div id="style_buttons">
-        <label ng-click="revealInfo()">
+        <label ng-click="showInfo()">
           <input name="style" type="radio" id="style1" class="style_button" value="Tournament Style 1">
           <img class="button_image" src="modules/core/client/img/styles/placeholder1.jpg">
           <br><p>I in Team</p>
+          <p>
+            {{info}}
+          </p>
         </label>
 
-        <label ng-click="revealInfo()">
+        <!-- <label ng-click="revealInfo()">
           <input name="style" type="radio" id="style2" class="style_button" value="Tournament Style 2">
           <img class="button_image" src="modules/core/client/img/styles/placeholder2.jpg">
         </label>
@@ -24,15 +27,11 @@
         <label ng-click="revealInfo()">
           <input name="style" type="radio" id="style3" class="style_button" value="Tournament Style 3">
           <img class="button_image" src="modules/core/client/img/styles/placeholder3.jpg">
-        </label>
+        </label> -->
       </div>
       <!-- Tournament type description -->
       <div>
-        <p ng-show='tourneySummary'>
-          <div ng-init="showInfo()">
-            <h3>{{info}}</h3>
-          </div>
-        </p>
+
       </div>
       <input name="name"  type="text" id="tournamentNameInput" class="TCreation-control" placeholder="Enter New Tournament Name..." required>
       <div ng-app="core" ng-controller="HomeController">
