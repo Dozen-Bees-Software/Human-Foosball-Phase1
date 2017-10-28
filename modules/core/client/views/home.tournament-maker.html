@@ -2,8 +2,8 @@
   <!--<div class="jumbotron text-center">
   </div>-->
   <div>
-    <script src="C:\Users\Maneesh Kodumuru\Documents\Maneesh\CEN3031\Human-Foosball-Phase1\modules\core\client\controllers\home.client.controller.js"></script>
-  <h1 align="center">New Tournament</h1>
+    <script src="..\modules\core\client\controllers\home.client.controller.js"></script>
+  <h1 align="center">NEW TOURNAMENT</h1>
 
   <form name= "tournamentCreationForm" ui-sref='home.TournamentStyle1' class="tourney_form">
     <fieldset>
@@ -12,9 +12,9 @@
         <div id="style_buttons">
         <label ng-click="showInfo()">
           <input name="style" type="radio" id="style1" class="style_button" value="Tournament Style 1">
-          <img class="button_image" src="modules/core/client/img/styles/placeholder1.jpg">
-          <br><p>I in Team</p>
-          <p>
+          <img class="button_image" src="modules/core/client/img/styles/IinTeam.svg">
+          <br>
+          <p class="style_info">
             {{info}}
           </p>
         </label>
@@ -36,16 +36,23 @@
       <input name="name"  type="text" ng-model="tournamentName" id="tournamentNameInput" class="TCreation-control" placeholder="Enter New Tournament Name..." required>
       <div ng-app="core" ng-controller="HomeController">
         <button ng-click="ShowHide()"/>Go!</button>
-        <br>
-        <br>
-        <p  ng-show='IsVisible'>
-          <input type=number ng-value=0 ng-model="playersPerTeam">Players per Team<br>
-          <input type=number ng-value=0 ng-model="numPoints">Points for Winning<br>
-          <input type=number ng-value=0 ng-model="tie">Points for a Tie<br>
+        <div  ng-show='IsVisible'>
+          <div class="setting">
+            <p>Players per Team</p>
+            <input type=number ng-value=0 ng-model="playersPerTeam">
+          </div>
+          <div class="setting">
+            <p>Points for Winning</p>
+            <input type=number ng-value=0 ng-model="numPoints">
+          </div>
+          <div class="setting">
+            <p>Points for a Tie</p>
+            <input type=number ng-value=0 ng-model="tie">
+          </div>
 
           <button ui-sref="PlayerList" ng-click="saveTourneyInfo()" name="AddPlayers">Add Players!<br>
 
-        </p>
+        </div>
       </div>
 
       </div>

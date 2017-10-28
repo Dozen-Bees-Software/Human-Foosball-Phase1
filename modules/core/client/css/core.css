@@ -11,6 +11,7 @@
 
 body{
   background-color: #095587;
+  font-family: 'futura', monospace;
 }
 
 .wrapper{
@@ -43,7 +44,7 @@ body{
 .navbar-container{
   position: fixed;
   float: left;
-  width: 7em;
+  width: 6em;
   height: 100%;
   background-color: #EB4C2B;
   border-style: none;
@@ -57,9 +58,20 @@ body{
   /*margin-top: 14em;*/
 }
 
-.navbar-item{
-  /*margin: 0px;*/
+.navbar-item-wrapper{
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  background-color: #EB4C2B;
 }
+
+.navbar-item{
+  width: 100%;
+  margin: 0px;
+  background-color: #EB4C2B;
+  cursor: pointer;
+}
+
 
 /*.navbar-brand{
   marin: 0em;
@@ -87,7 +99,7 @@ body{
 .container{
   background-color: #095587;
   margin-top: 14em;
-  margin-left: 7em;
+  margin-left: 6em;
   padding: 0px;
   margin-bottom: 0px;
 }
@@ -95,6 +107,10 @@ body{
 .tourney_form{
   width: 500px;
   margin: auto;
+}
+
+.style_info{
+  color: #FFFFFF;
 }
 
 .ng-scope{
@@ -153,6 +169,7 @@ a:hover .header-profile-image {
 .TCreationForm-group{
   padding: auto;
   margin: auto;
+  height: 5em;
 }
 
 label > input{
@@ -163,19 +180,19 @@ label > input{
 label > input + img{
   cursor: pointer;
   border: 2px solid transparent;
-  width: 8em;
-  height: 8em;
+  width: 9em;
+  height: 9em;
   margin: 5px 15px;
   padding: 2px;
 }
 
 label > input:checked + img{
-  border: 2px solid #000000;
+  border: 4px solid #FFFFFF;
 }
 
 @font-face {
   font-family: 'SportsFont';
-  src: url('public/lib/bootstrap/dist/fonts/Sports World-Regular.ttf');
+  src: url('Sports World-Regular.ttf');
 }
 
 h1{
@@ -183,4 +200,5 @@ h1{
   font: 'SportsFont';
   font-size: 5em;
   margin-top: 0px;
+  color: #FFFFFF;
 }
