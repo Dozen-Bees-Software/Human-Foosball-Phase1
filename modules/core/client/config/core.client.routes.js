@@ -50,12 +50,12 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 
     .state('IinTeamView', {
       url:'/IinTeam',
-      templateUrl:'modules/core/client/views/IinTeam.client.view.html'
+      templateUrl:'modules/core/client/views/IinTeam.clilent.view.html'
     })
 
     .state('Brackets', {
       url:'/brackets',
-      templateUrl:'modules/core/client/views/brackets.client.html'
+      templateUrl:'modules/core/client/views/brackets.clilent.html'
     })
 
     .state('forbidden', {
