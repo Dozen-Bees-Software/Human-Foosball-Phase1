@@ -41,9 +41,11 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
       $scope.IsVisible = true;
 
     };
+    
+    $scope.IsVisible2 = false;
+        $scope.ShowHide2 = function () {
+          $scope.IsVisible2 = true;
 
-    $scope.IncrementPlayers = function(){
-      $scope.playersPerTeam = $scope.PlayersPerTeam + 1;
-    };
+       };
   }
 ]);

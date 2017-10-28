@@ -1,8 +1,6 @@
 <section class="fooz-body" ng-controller="HomeController">
-  <!--<div class="jumbotron text-center">
-  </div>-->
-  <div>
-    <script src="..\modules\core\client\controllers\home.client.controller.js"></script>
+
+<script src="..\modules\core\client\controllers\home.client.controller.js"></script>
   <h1 align="center">NEW TOURNAMENT</h1>
 
   <form name= "tournamentCreationForm" ui-sref='home.TournamentStyle1' class="tourney_form">
@@ -30,9 +28,11 @@
         </label> -->
       </div>
       <!-- Tournament type description -->
-      <input name="name"  type="text" ng-model="tournamentName" class="TCreation-control" placeholder="Enter New Tournament Name..." required>
-      <div ng-app="core" ng-controller="HomeController" class="">
-        <button ng-click="ShowHide()"/>Go!</button>
+      <input name="name"  type="text" ng-model="tournamentName" class="TCreation-control" placeholder="enter new tournament name..." required>
+      <div ng-app="core" ng-controller="HomeController">
+        <button ng-click="ShowHide()" class="chooseSettings"/>CHOOSE SETTINGS</button>
+        <br>
+        <br>
         <div  ng-show='IsVisible'>
           <div class="setting">
             <div class="setting_text">Players per Team</div>
@@ -59,9 +59,46 @@
             </div>
           </div>
 
-          <button ui-sref="PlayerList" ng-click="saveTourneyInfo()" name = "AddPlayers" class = "AddPlayers">ADD PLAYERS</button> <br>
-
+          <button ng-click="ShowHide2()" ng-click="saveTourneyInfo()" name = "AddPlayers" class = "AddPlayers">ADD PLAYERS</button>
+          <br>
+          <br>
         </div>
+
+        <section ng-controller=“PlayerListController”>
+                              <div ng-show = ‘IsVisible2’>
+                                    <h1 align = “center”> PLAYERS </h1>
+                                    <div class=“tableWrapper”>
+                                          <table class=“table table-striped table-hover”>
+
+                                                <tr>
+                                                    <input name=“name”  type=“text” ng-model=“newPlayer.name” class=“player-control” placeholder=“enter player name...” required accesskey=“enter”>
+
+
+                                                   <!-- <td><input type=“text” class=“form-control” placeholder=“enter player name...” ng-model=“newPlayer.name”></td> -->
+                                                    <td ng-click=“addPlayer()” style=” cursor:pointer;“><span style=“color:green;” class=“glyphicon glyphicon-ok”></span></td>
+                                                </tr>
+                                                <tr ng-repeat=“player in players”>
+                                                    <td>{{player.name}}</td>
+                                                    <!-- <td>{{player.elo}}</td>
+                                                    <td>{{player.wins}}</td>
+                                                    <td>{{player.losses}}</td>
+                                                    <td>{{player.differential}}</td>
+                                                    <td>{{player.gamesPlayed}}</td> -->
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>
+                                                        <button align = “right” ng-click = “deletePlayer($index)” ng-click=“saveTourneyInfo()” name = “removePlayers” class = “removePlayers”>remove</button>
+                                                    </td>
+                                                    <!-- <td><span style=“color: red;” class=“glyphicon glyphicon-remove” ng-click=“deletePlayer($index)“></span></td> -->
+                                                </tr>
+
+                                         </table>
+                                    </div>
+                                    <button align = “center” ui-sref=“IinTeamView” name=“goToTourney” class = “startTourney”>START TOURNAMENT</button>
+                              </div>
+                          </section>
+
       </div>
 
       </div>
