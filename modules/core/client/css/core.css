@@ -162,14 +162,9 @@ a:hover .header-profile-image {
   height: 50px;
 }
 
-.new-tournament-name {
-
-}
-
 .TCreationForm-group{
   padding: auto;
   margin: auto;
-  height: 5em;
 }
 
 label > input{
