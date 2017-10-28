@@ -155,6 +155,16 @@ a:hover .header-profile-image {
   margin: auto;
 }
 
+.TCreation-control{
+	background-color: #FFFFFF;
+	width: 12em;
+}
+
+
+#tournamentNameInput{
+	width: 12em;
+}
+
 label > input{
   visibility: hidden;
   position: absolute;
@@ -175,12 +185,49 @@ label > input:checked + img{
 
 @font-face {
   font-family: 'SportsFont';
-  src: url('public/lib/bootstrap/dist/fonts/Sports World-Regular.ttf');
+  src: url('Sports World-Regular.ttf');
 }
 
 h1{
   font-family: 'SportsFont', 'futura', monospace;
   font: 'SportsFont';
+  color: #FFFFFF;
   font-size: 5em;
   margin-top: 0px;
+}
+
+.chooseSettings{
+	font-family: 'SportsFont', 'futura', monospace;
+	font: 'SportsFont';
+	color: #FFFFFF;
+	font-size: 2em;
+	margin-top: 20px;
+	background-color: #EB4C2B;
+	border: none;
+	width: 13em;
+	padding-top: 7px;
+}
+
+.AddPlayers{
+	font-family: 'SportsFont', 'futura', monospace;
+	font: 'SportsFont';
+	color: #FFFFFF;
+	font-size: 2em;
+	margin-top: 20px;
+	background-color: #EB4C2B;
+	border: none;
+	width: 13em;
+	padding-top: 7px;
+}
+
+.startTourney{
+	font-family: 'SportsFont', 'futura', monospace;
+	font: 'SportsFont';
+	color: #FFFFFF;
+	font-size: 2em;
+	margin-top: 20px;
+	background-color: #EB4C2B;
+	border: none;
+	width: 13em;
+	padding-top: 7px;
 }
