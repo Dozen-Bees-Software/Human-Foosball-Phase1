@@ -21,7 +21,7 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
   //console.log($scope.teamTwo);
 
     $scope.splitTeams = function (){
-      if($scope.teamOne.length == 0 && $scope.teamTwo.length == 0){
+      if($scope.teamOne.length === 0 && $scope.teamTwo.length === 0){
 
         /*for(var i = 0; i < $scope.teamSize; i++){
           $scope.teamOne.push($scope.playerList[i]);
