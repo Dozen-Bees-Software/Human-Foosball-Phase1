@@ -47,9 +47,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       url:'/playerList',
       templateUrl:'modules/core/client/views/playerlist.client.view.html'
     })
+
     .state('IinTeamView', {
       url:'/IinTeam',
-      templateUrl:'modules/core/client/views/IinTeam.clilent.view.html'
+      templateUrl:'modules/core/client/views/IinTeam.client.view.html'
     })
 
     .state('Brackets', {
