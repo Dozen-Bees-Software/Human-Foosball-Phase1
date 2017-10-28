@@ -35,7 +35,7 @@
       </div>
       <input name="name"  type="text" ng-model="tournamentName" id="tournamentNameInput" class="TCreation-control" placeholder="Enter New Tournament Name..." required>
       <div ng-app="core" ng-controller="HomeController">
-        <button ng-click="ShowHide()"/>Go!</button>
+        <button ng-click="ShowHide()" class = "chooseSettings"/>CHOOSE SETTINGS</button>
         <br>
         <br>
         <p  ng-show='IsVisible'>
@@ -43,7 +43,7 @@
           <input type=number ng-value=0 ng-model="numPoints">Points for Winning<br>
           <input type=number ng-value=0 ng-model="tie">Points for a Tie<br>
 
-          <button ui-sref="PlayerList" ng-click="saveTourneyInfo()" name="AddPlayers">Add Players!<br>
+          <button ui-sref="PlayerList" ng-click="saveTourneyInfo()" name = "AddPlayers" class = "AddPlayers">ADD PLAYERS</button> <br>
 
         </p>
       </div>
