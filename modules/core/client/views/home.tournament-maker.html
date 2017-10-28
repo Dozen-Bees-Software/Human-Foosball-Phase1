@@ -30,24 +30,33 @@
         </label> -->
       </div>
       <!-- Tournament type description -->
-      <div>
-
-      </div>
-      <input name="name"  type="text" ng-model="tournamentName" id="tournamentNameInput" class="TCreation-control" placeholder="Enter New Tournament Name..." required>
-      <div ng-app="core" ng-controller="HomeController">
+      <input name="name"  type="text" ng-model="tournamentName" class="TCreation-control" placeholder="Enter New Tournament Name..." required>
+      <div ng-app="core" ng-controller="HomeController" class="">
         <button ng-click="ShowHide()"/>Go!</button>
         <div  ng-show='IsVisible'>
           <div class="setting">
-            <p>Players per Team</p>
-            <input type=number ng-value=0 ng-model="playersPerTeam">
+            <div class="setting_text">Players per Team</div>
+            <div class="setting_buttons">
+              <button class="minus" ng-click="IncrementPlayers()"/>-</button>
+              <input type=number ng-value=0 ng-model="playersPerTeam" class="setting_value">
+              <button class="plus" ng-click="IncrementPlayers()"/>+</button>
+            </div>
           </div>
           <div class="setting">
-            <p>Points for Winning</p>
-            <input type=number ng-value=0 ng-model="numPoints">
+            <div class="setting_text">Points for Winning</div>
+            <div class="setting_buttons">
+              <button class="minus" ng-click="IncrementWinningPoints(-1)"/>-</button>
+              <input type=number ng-value=0 ng-model="numPoints" class="setting_value">
+              <button class="plus" ng-click="IncrementWinningPoints(+1)"/>+</button>
+            </div>
           </div>
           <div class="setting">
-            <p>Points for a Tie</p>
-            <input type=number ng-value=0 ng-model="tie">
+            <div class="setting_text">Points for a Tie</div>
+            <div class="setting_buttons">
+              <button class="minus" ng-click="IncrementTiePoints(-1)"/>-</button>
+              <input type=number ng-value=0 ng-model="tie" class="setting_value">
+              <button class="plus" ng-click="IncrementTiePoints(+1)"/>+</button>
+            </div>
           </div>
 
           <button ui-sref="PlayerList" ng-click="saveTourneyInfo()" name = "AddPlayers" class = "AddPlayers">ADD PLAYERS</button> <br>

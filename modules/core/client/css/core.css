@@ -12,6 +12,7 @@
 body{
   background-color: #095587;
   font-family: 'futura', monospace;
+  font: 'futura';
 }
 
 .wrapper{
@@ -105,7 +106,7 @@ body{
 }
 
 .tourney_form{
-  width: 500px;
+  /*width: 700px;*/
   margin: auto;
 }
 
@@ -154,12 +155,82 @@ a:hover .header-profile-image {
 .has-error .help-inline.error-text {
   display: inline;
 }
+.setting{
+  font-family: 'futura', monospace;
+  font: 'futura';
+  font-size: 1.5em;
+  height: 3em;
+  margin: 15px;
+  padding: 5px;
+  color: #FFFFFF;
+}
+
+.setting_text{
+  display: inline-block;
+  background-color: #222A33;
+  width: 15em;
+  padding: 12px;
+  margin: 0px;
+  height: 100%;
+}
+
+.setting_buttons{
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
+.setting_value{
+  font-family: 'SportsFont';
+  color: #222A33;
+  height: 100%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: -11px;
+  margin-right: -11px;
+  padding: 0px;
+  width: 2em;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+.minus{
+  background-color: #222A33;
+  margin: 0px;
+  height: 100%;
+  border: none;
+  outline: none;
+}
+
+.plus{
+  background-color: #222A33;
+  margin: 0px;
+  height: 100%;
+  border: none;
+  outline: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
 
 .tournamentNameInput {
 
   width: 400px;
   font-size: 14pt;
   height: 50px;
+}
+
+.TCreation-control{
+  height: 3em;
+  width: 30em;
+  margin: auto;
+  padding: auto;
 }
 
 .TCreationForm-group{

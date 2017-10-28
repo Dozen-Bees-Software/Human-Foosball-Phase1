@@ -41,5 +41,9 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
       $scope.IsVisible = true;
 
     };
+
+    $scope.IncrementPlayers = function(){
+      $scope.playersPerTeam = $scope.PlayersPerTeam + 1;
+    };
   }
 ]);
