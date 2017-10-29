@@ -43,6 +43,7 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
 
     };
 
+
     $scope.results = function(){
 
     };
