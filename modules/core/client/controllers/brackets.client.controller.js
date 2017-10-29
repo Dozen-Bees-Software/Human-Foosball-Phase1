@@ -34,6 +34,11 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
         }*/
       }
 
+      $scope.showModal = false;
+      $scope.open = function(){
+        $scope.showModal = !$scope.showModal;
+      };
+
 
       //$scope.playerList = Players.getPlayerList();
       //$scope.teamTwo = $scope.playerList.splice($scope.teamSize,(2*$scope.teamSize));
