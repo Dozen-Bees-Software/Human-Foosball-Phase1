@@ -14,40 +14,38 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
     $scope.teamSize = $scope.tournamentInfo[1];
     console.log($scope.tournamentInfo[1]);
 
+    var rounds = 0;
+
     $scope.teamOne = [];
     $scope.teamTwo = [];
 
   //$scope.teamTwo = $scope.playerList.splice($scope.teamSize, (2*$scope.teamSize));
   //console.log($scope.teamTwo);
-
+    console.log(rounds);
     $scope.splitTeams = function (){
-      if($scope.teamOne.length === 0 && $scope.teamTwo.length === 0){
 
-        /*for(var i = 0; i < $scope.teamSize; i++){
-          $scope.teamOne.push($scope.playerList[i]);
-        }*/
-        $scope.teamOne = $scope.playerList.slice(0, $scope.teamSize);
-        $scope.teamTwo = $scope.playerList.slice($scope.teamSize, 2*$scope.teamSize);
+      if(rounds === 0){
 
-        /*for(var j = $scope.teamSize; j < 2*$scope.teamSize; j++){
-          $scope.teamTwo.push($scope.playerList[j]);
-        }*/
+        if($scope.teamOne.length === 0 && $scope.teamTwo.length === 0){
+
+          $scope.teamOne = $scope.playerList.slice(0, $scope.teamSize);
+          $scope.teamTwo = $scope.playerList.slice($scope.teamSize, 2*$scope.teamSize);
+
+          rounds += 1;
+          console.log(rounds);
+
+        }
+
+      }
+      else {
+
       }
 
-      $scope.showModal = false;
-      $scope.open = function(){
-        $scope.showModal = !$scope.showModal;
-      };
+    };
 
 
-      //$scope.playerList = Players.getPlayerList();
-      //$scope.teamTwo = $scope.playerList.splice($scope.teamSize,(2*$scope.teamSize));
+    $scope.results = function(){
 
-      console.log("hello");
-      console.log($scope.teamSize);
-      console.log($scope.teamTwo);
-      //console.log(team1[0]);
-      //console.log(team2[0]);
     };
 
   }

@@ -10,7 +10,7 @@
 
         <h1>Placeholder Page: This page will be made along with the bracket generator.</h1>
 
-        <button ng-click="splitTeams()">Generate Match</button>
+        <button>Generate Match</button>
 
         <h2>Team A</h2>
         <div class="tableWrapper">
@@ -19,7 +19,7 @@
                     <th>Player Name</th>
                     <th></th>
                   </tr>
-                  <tr ng-repeat="player in teamOne">
+                  <tr ng-repeat="player in players">
                     <td>{{player.name}}</td>
                     <td>{{player.elo}}</td>
                     <td>{{player.wins}}</td>
@@ -36,18 +36,16 @@
                 <th>Player Name</th>
                 <th></th>
               </tr>
-              <tr ng-repeat="players in teamTwo">
-                <td>{{players.name}}</td>
-                <td>{{players.elo}}</td>
-                <td>{{players.wins}}</td>
-                <td>{{players.losses}}</td>
-                <td>{{players.differential}}</td>
-                <td>{{players.gamesPlayed}}</td>
+              <tr ng-repeat="player in players">
+                <td>{{player.name}}</td>
+                <td>{{player.elo}}</td>
+                <td>{{player.wins}}</td>
+                <td>{{player.losses}}</td>
+                <td>{{player.differential}}</td>
+                <td>{{player.gamesPlayed}}</td>
               </tr>
             </table>
     </div>
-
-      <button ng-click=results()>Finish match</button>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
