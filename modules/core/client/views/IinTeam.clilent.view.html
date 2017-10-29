@@ -47,7 +47,16 @@
             </table>
     </div>
 
-      <button ng-click=results()>Finish match</button>
+        <div ng-app='core' ng-controller='BracketsController'>
+          <button ng-click='openResults()'>Finish Match</button>
+          <br>
+          <br>
+          <p  ng-show='show'>
+            <input type=number ng-value=0 ng-model="teamAScore">Score of Team A<br>
+            <input type=number ng-value=0 ng-model="teamBScore">Score of Team B<br>
+          </p>
+        </div>
+
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>

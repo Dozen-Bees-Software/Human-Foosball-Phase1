@@ -43,9 +43,12 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
 
     };
 
+    $scope.teamAScore = 0;
+    $scope.teamBScore = 0;
 
-    $scope.results = function(){
-
+    $scope.show = false;
+    $scope.openResults = function(){
+      $scope.show = true;
     };
 
   }
