@@ -4,6 +4,8 @@ angular.module('core').service('Players', [
   function() {
 
     var playerList = [];
+    var teamA = [];
+    var teamB = [];
 
     this.helloWorld = function (playername){
       return (console.log(playername));
@@ -40,6 +42,19 @@ angular.module('core').service('Players', [
 
     this.getPlayerList = function(){
       return playerList;
+    };
+
+    this.setTeams = function(team1, team2){
+      teamA = team1;
+      teamB = team2;
+    };
+
+    this.getTeamOne = function(){
+      return teamA;
+    };
+
+    this.getTeamTwo = function(){
+      return teamB;
     };
 
   }
