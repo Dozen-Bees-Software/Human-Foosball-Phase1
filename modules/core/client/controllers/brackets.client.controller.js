@@ -65,6 +65,7 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
       console.log($scope.teamTwo);
 
       console.log($scope.teamAScore);
+      console.log($scope.teamBScore);
       if($scope.teamAScore > $scope.teamBScore){
         console.log('team A won');
         for(var i = 0; i < Players.getTeamOne().length; i++){
@@ -72,13 +73,25 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
           $scope.teamOne[i].elo = $scope.tournamentInfo[2];
           $scope.teamOne[i].wins += 1;
           $scope.teamTwo[i].losses += 1;
-          
+
 
 
 
           console.log($scope.teamOne);
           //$scope.teamOne.elo[i] += $scope.tournamentInfo[2];
 
+        }
+      }
+      else if($scope.teamBScore < $scope.teamAScore){
+        console.log("team B won");
+        for(var i = 0; i< Players.getTeamTwo().length; i++ ){
+          console.log("In the for loop");
+          $scope.teamTwo[i].elo = $scope.tournamentInfo[2];
+          $scope.teamTwo[i].wins += 1;
+          $scope.teamOne[i].losses += 1;
+
+
+          console.log($scope.teamTwo);
         }
       }
     };
