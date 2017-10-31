@@ -76,24 +76,24 @@
                 <h1 align = "center"> PLAYERS </h1>
 
                   <input name="name"  type="text" ng-model="newPlayer.name" class="player-control" placeholder="enter new player name..." required align = "top">
-                         
+
                   <button ng-click="addPlayer()" class = "AddPlayerButton" align = "top"> ADD </button>
 
                 <div class="tableWrapper">
 
                   <table align = "center" class="table players">
-                                   
+
                     <tr ng-repeat="player in players">
                         <td class="PlayerName">{{player.name}}</td>
                         <td>
-                          <button ng-click = "deletePlayer($index)" ng-click="saveTourneyInfo()" name = "removePlayers" class = "removePlayers">REMOVE</button>
+                          <button ng-click = "deletePlayer($index)"  name = "removePlayers" class = "removePlayers">REMOVE</button>
                         </td>
                       </tr>
 
                     </table>
 					<br class = "clear">
                   </div>
-                  <button align = "center" ui-sref="IinTeamView" name="goToTourney" class = "startTourney">START TOURNAMENT</button>
+                  <button align = "center" ui-sref="IinTeamView" name="goToTourney" class = "startTourney" ng-click="saveTourneyInfo()">START TOURNAMENT</button>
                 </div>
               </section>
           </div>
