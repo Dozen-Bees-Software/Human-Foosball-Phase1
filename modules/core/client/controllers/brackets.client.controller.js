@@ -73,26 +73,42 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
           $scope.teamOne[i].elo = $scope.tournamentInfo[2];
           $scope.teamOne[i].wins += 1;
           $scope.teamTwo[i].losses += 1;
-
-
-
+          $scope.teamOne[i].differential += ($scope.teamAScore - $scope.teamBScore);
+          $scope.teamTwo[i].differential += ($scope.teamBScore - $scope.teamAScore);
+          $scope.teamOne[i].gamesPlayed += 1;
+          $scope.teamTwo[i].gamesPlayed += 1;
 
           console.log($scope.teamOne);
           //$scope.teamOne.elo[i] += $scope.tournamentInfo[2];
 
         }
       }
-      else if($scope.teamBScore < $scope.teamAScore){
-        console.log("team B won");
-        for(var i = 0; i< Players.getTeamTwo().length; i++ ){
-          console.log("In the for loop");
-          $scope.teamTwo[i].elo = $scope.tournamentInfo[2];
-          $scope.teamTwo[i].wins += 1;
-          $scope.teamOne[i].losses += 1;
+      else if($scope.teamBScore > $scope.teamAScore){
+        console.log('team B won');
+        for(var j = 0; j< Players.getTeamTwo().length; j++){
+          console.log('In the for loop');
+          $scope.teamTwo[j].elo = $scope.tournamentInfo[2];
+          $scope.teamTwo[j].wins += 1;
+          $scope.teamOne[j].losses += 1;
+          $scope.teamOne[j].differential += ($scope.teamAScore - $scope.teamBScore);
+          $scope.teamTwo[j].differential += ($scope.teamBScore - $scope.teamAScore);
+          $scope.teamOne[j].gamesPlayed += 1;
+          $scope.teamTwo[j].gamesPlayed += 1;
 
 
           console.log($scope.teamTwo);
         }
+      }
+      console.log($scope.teamTwo);
+
+      Players.updatePlayerStats($scope.teamOne, $scope.teamTwo);
+      console.log(Players.getPlayerList());
+    };
+
+    $scope.calcElo = function(){
+      var tempList = Players.getPlayerList();
+      for(var i = 0; i < tempList.length; i++){
+        var n = Math.floor(Math.log10());
       }
     };
 

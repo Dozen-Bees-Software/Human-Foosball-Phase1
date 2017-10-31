@@ -57,5 +57,25 @@ angular.module('core').service('Players', [
       return teamB;
     };
 
+    this.updatePlayerStats = function(team1, team2){
+      for(var i = 0; i < team1.length; i++){
+        for(var j = 0; j < playerList.length; j++){
+          if(team1[i].name === playerList[j].name){
+
+            playerList[j] = team1[i];
+
+          }
+          else if(team2[i].name === playerList[j].name){
+
+            playerList[j] = team2[i];
+          }
+        }
+
+
+
+
+      }
+    };
+
   }
 ]);
