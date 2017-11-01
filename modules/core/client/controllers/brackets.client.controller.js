@@ -11,6 +11,8 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
     $scope.playerList = Players.getPlayerList();
     //console.log($scope.playerList[0]);
     $scope.tournamentInfo = tournConfig.getTournamentInfo();
+    console.log("THis is tournament info");
+    console.log($scope.tournamentInfo);
     $scope.tournamentInfo[4] = 0;
     $scope.teamSize = $scope.tournamentInfo[1];
     console.log('THis is rounds on brackets page %i', $scope.tournamentInfo[4]);
@@ -88,7 +90,8 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
         console.log('team A won');
         for(var i = 0; i < Players.getTeamOne().length; i++){
           console.log('In the for loop');
-          $scope.teamOne[i].elo = $scope.tournamentInfo[2];
+          $scope.teamOne[i].elo += $scope.tournamentInfo[3];
+          console.log($scope.tournamentInfo);
           $scope.teamOne[i].wins += 1;
           $scope.teamTwo[i].losses += 1;
           $scope.teamOne[i].differential += ($scope.teamAScore - $scope.teamBScore);
@@ -105,7 +108,7 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
         console.log('team B won');
         for(var j = 0; j< Players.getTeamTwo().length; j++){
           console.log('In the for loop');
-          $scope.teamTwo[j].elo = $scope.tournamentInfo[2];
+          $scope.teamTwo[j].elo += $scope.tournamentInfo[3];
           $scope.teamTwo[j].wins += 1;
           $scope.teamOne[j].losses += 1;
           $scope.teamOne[j].differential += ($scope.teamAScore - $scope.teamBScore);
