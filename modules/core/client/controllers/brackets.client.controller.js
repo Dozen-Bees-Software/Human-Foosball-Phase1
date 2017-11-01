@@ -9,10 +9,11 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
 
     //initialize playerlist, tournamentInfo, and team arrays
     $scope.playerList = Players.getPlayerList();
-    console.log($scope.playerList[0]);
+    //console.log($scope.playerList[0]);
     $scope.tournamentInfo = tournConfig.getTournamentInfo();
+    $scope.tournamentInfo[4] = 0;
     $scope.teamSize = $scope.tournamentInfo[1];
-    console.log($scope.tournamentInfo[4]);
+    console.log('THis is rounds on brackets page %i', $scope.tournamentInfo[4]);
 
     //var round = $scope.tournamentInfo[4];
 
@@ -23,7 +24,8 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
   //console.log($scope.teamTwo);
     //console.log(round);
     $scope.splitTeams = function (){
-
+      console.log("Made it to split teams");
+      //console.log()
       if($scope.tournamentInfo[4] === 0){
 
         if($scope.teamOne.length === 0 && $scope.teamTwo.length === 0){
@@ -31,8 +33,6 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
           $scope.teamOne = $scope.playerList.slice(0, $scope.teamSize);
           $scope.teamTwo = $scope.playerList.slice($scope.teamSize, 2*$scope.teamSize);
           Players.setTeams($scope.teamOne, $scope.teamTwo);
-
-
 
           tournConfig.updateRounds();
           console.log($scope.tournamentInfo[4]);
