@@ -32,7 +32,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
       $scope.tourneyInfos.push($scope.numPoints);
       $scope.tourneyInfos.push($scope.tie);
 
-      console.log('tourney info was saved')
+      console.log('tourney info was saved');
       tournConfig.addTournamentInfo($scope.tourneyInfos);
 
     };
