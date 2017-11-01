@@ -70,7 +70,7 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
         console.log('team A won');
         for(var i = 0; i < Players.getTeamOne().length; i++){
           console.log('In the for loop');
-          $scope.teamOne[i].elo = $scope.tournamentInfo[2];
+          //$scope.teamOne[i].points += $scope.tournamentInfo[2];
           $scope.teamOne[i].wins += 1;
           $scope.teamTwo[i].losses += 1;
           $scope.teamOne[i].differential += ($scope.teamAScore - $scope.teamBScore);
@@ -87,7 +87,7 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
         console.log('team B won');
         for(var j = 0; j< Players.getTeamTwo().length; j++){
           console.log('In the for loop');
-          $scope.teamTwo[j].elo = $scope.tournamentInfo[2];
+          //$scope.teamTwo[j].points += $scope.tournamentInfo[2];
           $scope.teamTwo[j].wins += 1;
           $scope.teamOne[j].losses += 1;
           $scope.teamOne[j].differential += ($scope.teamAScore - $scope.teamBScore);
@@ -102,13 +102,19 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
       console.log($scope.teamTwo);
 
       Players.updatePlayerStats($scope.teamOne, $scope.teamTwo);
+      $scope.calcElo();
       console.log(Players.getPlayerList());
     };
 
     $scope.calcElo = function(){
       var tempList = Players.getPlayerList();
       for(var i = 0; i < tempList.length; i++){
-        var n = Math.floor(Math.log10());
+        var points = tempList[i].wins * $scope.tournamentInfo[2] + tempList[i].ties * $scope.tournamentInfo[3];
+        var n = (tempList[i].differential/Math.abs(tempList[i].differential))*(Math.floor(Math.log10(Math.abs(tempList[i].differential)) + 1));
+        var elo = points + ((5*Math.pow(10,n) + tempList[i].differential)/(10*Math.pow(10,n)));
+        tempList[i].elo = elo;
+        tempList[i].points = points;
+        console.log(elo);
       }
     };
 
