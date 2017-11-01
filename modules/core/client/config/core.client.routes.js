@@ -47,6 +47,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       url:'/playerList',
       templateUrl:'modules/core/client/views/playerlist.client.view.html'
     })
+
     .state('IinTeamView', {
       url:'/IinTeam',
       templateUrl:'modules/core/client/views/IinTeam.clilent.view.html'
@@ -54,7 +55,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 
     .state('Brackets', {
       url:'/brackets',
-      templateUrl:'modules/core/client/views/brackets.client.html'
+      templateUrl:'modules/core/client/views/brackets.clilent.html'
     })
 
     .state('forbidden', {

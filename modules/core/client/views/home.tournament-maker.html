@@ -1,55 +1,104 @@
 <section class="fooz-body" ng-controller="HomeController">
-  <!--<div class="jumbotron text-center">
-  </div>-->
-  <div>
-    <script src="C:\Users\Maneesh Kodumuru\Documents\Maneesh\CEN3031\Human-Foosball-Phase1\modules\core\client\controllers\home.client.controller.js"></script>
-  <h1 align="center">New Tournament</h1>
+
+  <h1 align="center">NEW TOURNAMENT</h1>
 
   <form name= "tournamentCreationForm" ui-sref='home.TournamentStyle1' class="tourney_form">
     <fieldset>
       <div class="form-group" show-errors align="center" ng-app "core" ng-controller="HomeController">
 
         <div id="style_buttons">
-        <label ng-click="showInfo()">
-          <input name="style" type="radio" id="style1" class="style_button" value="Tournament Style 1">
-          <img class="button_image" src="modules/core/client/img/styles/placeholder1.jpg">
-          <br><p>I in Team</p>
-          <p>
-            {{info}}
-          </p>
-        </label>
 
-        <!-- <label ng-click="revealInfo()">
-          <input name="style" type="radio" id="style2" class="style_button" value="Tournament Style 2">
-          <img class="button_image" src="modules/core/client/img/styles/placeholder2.jpg">
-        </label>
+          <label ng-click="showInfo()">
+            <input name="style" type="radio" id="style1" class="style_button" value="Tournament Style 1">
+            <img class="button_image" src="modules/core/client/img/buttons/IinTeam.svg">
+            <p class="style_info"> {{info}} </p>
+          </label>
 
-        <label ng-click="revealInfo()">
-          <input name="style" type="radio" id="style3" class="style_button" value="Tournament Style 3">
-          <img class="button_image" src="modules/core/client/img/styles/placeholder3.jpg">
-        </label> -->
-      </div>
-      <!-- Tournament type description -->
-      <div>
+          <!-- <label ng-click="revealInfo()">
+            <input name="style" type="radio" id="style2" class="style_button" value="Tournament Style 2">
+            <img class="button_image" src="modules/core/client/img/styles/placeholder2.jpg">
+          </label>
 
-      </div>
-      <input name="name"  type="text" ng-model="tournamentName" id="tournamentNameInput" class="TCreation-control" placeholder="Enter New Tournament Name..." required>
-      <div ng-app="core" ng-controller="HomeController">
-        <button ng-click="ShowHide()"/>Go!</button>
-        <br>
-        <br>
-        <p  ng-show='IsVisible'>
-          <input type=number ng-value=0 ng-model="playersPerTeam">Players per Team<br>
-          <input type=number ng-value=0 ng-model="numPoints">Points for Winning<br>
-          <input type=number ng-value=0 ng-model="tie">Points for a Tie<br>
+          <label ng-click="revealInfo()">
+            <input name="style" type="radio" id="style3" class="style_button" value="Tournament Style 3">
+            <img class="button_image" src="modules/core/client/img/styles/placeholder3.jpg">
+          </label> -->
+        </div>
+        <!-- Tournament type description -->
+        <input name="name"  type="text" ng-model="tournamentName" class="TCreation-control" placeholder="enter new tournament name..." required>
 
-          <button ui-sref="PlayerList" ng-click="saveTourneyInfo()" name="AddPlayers">Add Players!<br>
+          <div ng-app="core" ng-controller="HomeController">
 
-        </p>
-      </div>
+            <button ng-click="ShowHide()" class = "chooseSettings"/>CHOOSE SETTINGS</button>
+            <br>
+            <br>
 
-      </div>
-    </fieldset>
+            <div  ng-show='IsVisible'>
+              <h1> TOURNAMENT SETTINGS </h1>
+
+              <div class="setting">
+                <div class="setting_text">players per team
+                </div>
+                <div class="setting_buttons">
+                  <!--<button class="minus" ng-click="IncrementPlayers()"/>-</button>-->
+                  <input type=number ng-value=0 ng-model="playersPerTeam" class="setting_value">
+                  <!--<button class="plus" ng-click="IncrementPlayers()"/>+</button>-->
+                </div>
+              </div>
+
+              <div class="setting">
+                <div class="setting_text">points for winning
+                </div>
+                <div class="setting_buttons">
+                  <!--<button class="minus" ng-click="IncrementWinningPoints(-1)"/>-</button>-->
+                  <input type=number ng-value=0 ng-model="numPoints" class="setting_value">
+                  <!--<button class="plus" ng-click="IncrementWinningPoints(+1)"/>+</button>-->
+                </div>
+              </div>
+
+              <div class="setting">
+                <div class="setting_text">points for draw</div>
+                <div class="setting_buttons">
+                  <!--<button class="minus" ng-click="IncrementTiePoints(-1)"/>-</button>-->
+                  <input type=number ng-value=0 ng-model="tie" class="setting_value">
+                  <!--<button class="plus" ng-click="IncrementTiePoints(+1)"/>+</button>-->
+                </div>
+              </div>
+
+              <button ng-click = "ShowHide2()" ng-click="saveTourneyInfo()" name = "AddPlayers" class = "AddPlayers">ADD PLAYERS</button>
+              <br>
+              <br>
+
+            </div>
+
+            <section ng-controller="PlayerListController">
+              <div ng-show = 'IsVisible2'>
+                <h1 align = "center"> PLAYERS </h1>
+
+                  <input name="name"  type="text" ng-model="newPlayer.name" class="player-control" placeholder="enter new player name..." required align = "top">
+
+                  <button ng-click="addPlayer()" class = "AddPlayerButton" align = "top"> ADD </button>
+
+                <div class="tableWrapper">
+
+                  <table align = "center" class="table players">
+
+                    <tr ng-repeat="player in players">
+                        <td class="PlayerName">{{player.name}}</td>
+                        <td>
+                          <button ng-click = "deletePlayer($index)"  name = "removePlayers" class = "removePlayers">REMOVE</button>
+                        </td>
+                      </tr>
+
+                    </table>
+					<br class = "clear">
+                  </div>
+                  <button align = "center" ui-sref="IinTeamView" name="goToTourney" class = "startTourney" ng-click="saveTourneyInfo()">START TOURNAMENT</button>
+                </div>
+              </section>
+          </div>
+        </div>
+      </fieldset>
   </form>
 
 </section>

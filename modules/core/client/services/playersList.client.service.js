@@ -4,6 +4,8 @@ angular.module('core').service('Players', [
   function() {
 
     var playerList = [];
+    var teamA = [];
+    var teamB = [];
 
     this.helloWorld = function (playername){
       return (console.log(playername));
@@ -40,6 +42,39 @@ angular.module('core').service('Players', [
 
     this.getPlayerList = function(){
       return playerList;
+    };
+
+    this.setTeams = function(team1, team2){
+      teamA = team1;
+      teamB = team2;
+    };
+
+    this.getTeamOne = function(){
+      return teamA;
+    };
+
+    this.getTeamTwo = function(){
+      return teamB;
+    };
+
+    this.updatePlayerStats = function(team1, team2){
+      for(var i = 0; i < team1.length; i++){
+        for(var j = 0; j < playerList.length; j++){
+          if(team1[i].name === playerList[j].name){
+
+            playerList[j] = team1[i];
+
+          }
+          else if(team2[i].name === playerList[j].name){
+
+            playerList[j] = team2[i];
+          }
+        }
+
+
+
+
+      }
     };
 
   }
