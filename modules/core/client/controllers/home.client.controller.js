@@ -10,7 +10,9 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
 
     $scope.showInfo=function(){
+
       $scope.info = 'tourney info here';
+
     };
 
     $scope.tourneySummary = false;

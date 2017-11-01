@@ -17,25 +17,41 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
 
     //var round = $scope.tournamentInfo[4];
 
+    $scope.teamSize = $scope.tournamentInfo[1];
+    console.log($scope.tournamentInfo[1]);
+
+    var rounds = 0;
+
     $scope.teamOne = [];
     $scope.teamTwo = [];
 
   //$scope.teamTwo = $scope.playerList.splice($scope.teamSize, (2*$scope.teamSize));
   //console.log($scope.teamTwo);
+
     //console.log(round);
     $scope.splitTeams = function (){
       console.log("Made it to split teams");
       //console.log()
       if($scope.tournamentInfo[4] === 0){
 
+    console.log(rounds);
+    $scope.splitTeams = function (){
+
+      if(rounds === 0){
+
         if($scope.teamOne.length === 0 && $scope.teamTwo.length === 0){
 
           $scope.teamOne = $scope.playerList.slice(0, $scope.teamSize);
           $scope.teamTwo = $scope.playerList.slice($scope.teamSize, 2*$scope.teamSize);
+
           Players.setTeams($scope.teamOne, $scope.teamTwo);
 
           tournConfig.updateRounds();
           console.log($scope.tournamentInfo[4]);
+
+          rounds += 1;
+          console.log(rounds);
+
 
         }
 
@@ -45,8 +61,6 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
       }
 
     };
-
-
 
     $scope.teamAScore = 0;
     $scope.teamBScore = 0;
