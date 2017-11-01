@@ -30,31 +30,35 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
 
     //console.log(round);
     $scope.splitTeams = function (){
-      console.log("Made it to split teams");
+      console.log('Made it to split teams');
       //console.log()
       if($scope.tournamentInfo[4] === 0){
 
-    console.log(rounds);
-    $scope.splitTeams = function (){
 
-      if(rounds === 0){
+        console.log(rounds);
 
-        if($scope.teamOne.length === 0 && $scope.teamTwo.length === 0){
 
-          $scope.teamOne = $scope.playerList.slice(0, $scope.teamSize);
-          $scope.teamTwo = $scope.playerList.slice($scope.teamSize, 2*$scope.teamSize);
 
-          Players.setTeams($scope.teamOne, $scope.teamTwo);
+        if(rounds === 0){
 
-          tournConfig.updateRounds();
-          console.log($scope.tournamentInfo[4]);
+          if($scope.teamOne.length === 0 && $scope.teamTwo.length === 0){
 
-          rounds += 1;
-          console.log(rounds);
+            $scope.teamOne = $scope.playerList.slice(0, $scope.teamSize);
+            $scope.teamTwo = $scope.playerList.slice($scope.teamSize, 2*$scope.teamSize);
+
+            Players.setTeams($scope.teamOne, $scope.teamTwo);
+
+            tournConfig.updateRounds();
+            console.log($scope.tournamentInfo[4]);
+
+            rounds += 1;
+            console.log(rounds);
+
+
+          }
 
 
         }
-
       }
       else {
 
