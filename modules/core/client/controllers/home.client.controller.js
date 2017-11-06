@@ -24,6 +24,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
     $scope.playersPerTeam= 0;
     $scope.numPoints= 0;
     $scope.tie= 0;
+    var rounds = 0;
 
 
     $scope.saveTourneyInfo = function(){
@@ -33,6 +34,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
       console.log('This is the rounds being pushed %i', rounds);
       $scope.tourneyInfos.push($scope.numPoints);
       $scope.tourneyInfos.push($scope.tie);
+      $scope.tourneyInfos.push(rounds);
 
       console.log('tourney info was saved');
       tournConfig.addTournamentInfo($scope.tourneyInfos);
