@@ -9,8 +9,14 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
 
     //initialize playerlist, tournamentInfo, and team arrays
     $scope.playerList = Players.getPlayerList();
-    console.log($scope.playerList[0]);
+    //console.log($scope.playerList[0]);
     $scope.tournamentInfo = tournConfig.getTournamentInfo();
+    $scope.tournamentInfo[4] = 0;
+    $scope.teamSize = $scope.tournamentInfo[1];
+    console.log('THis is rounds on brackets page %i', $scope.tournamentInfo[4]);
+
+    //var round = $scope.tournamentInfo[4];
+
     $scope.teamSize = $scope.tournamentInfo[1];
     console.log($scope.tournamentInfo[4]);
 
@@ -21,12 +27,18 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
 
   //$scope.teamTwo = $scope.playerList.splice($scope.teamSize, (2*$scope.teamSize));
   //console.log($scope.teamTwo);
+
     //console.log(round);
     $scope.splitTeams = function (){
+      console.log('Made it to split teams');
+      //console.log()
+      if($scope.tournamentInfo[4] === 0){
 
       if($scope.tournamentInfo[4] === 0){
 
-        if($scope.teamOne.length === 0 && $scope.teamTwo.length === 0){
+
+        console.log(rounds);
+
 
           $scope.teamOne = $scope.playerList.slice(0, $scope.teamSize);
           $scope.teamTwo = $scope.playerList.slice($scope.teamSize, 2*$scope.teamSize);
@@ -37,8 +49,27 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
           tournConfig.updateRounds();
           console.log($scope.tournamentInfo[4]);
 
-        }
 
+        if(rounds === 0){
+
+          if($scope.teamOne.length === 0 && $scope.teamTwo.length === 0){
+
+            $scope.teamOne = $scope.playerList.slice(0, $scope.teamSize);
+            $scope.teamTwo = $scope.playerList.slice($scope.teamSize, 2*$scope.teamSize);
+
+            Players.setTeams($scope.teamOne, $scope.teamTwo);
+
+            tournConfig.updateRounds();
+            console.log($scope.tournamentInfo[4]);
+
+            rounds += 1;
+            console.log(rounds);
+
+
+          }
+
+
+        }
       }
       else {
 
@@ -70,7 +101,9 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
         console.log('team A won');
         for(var i = 0; i < Players.getTeamOne().length; i++){
           console.log('In the for loop');
+
           //$scope.teamOne[i].points += $scope.tournamentInfo[2];
+
           $scope.teamOne[i].wins += 1;
           $scope.teamTwo[i].losses += 1;
           $scope.teamOne[i].differential += ($scope.teamAScore - $scope.teamBScore);
@@ -87,7 +120,9 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
         console.log('team B won');
         for(var j = 0; j< Players.getTeamTwo().length; j++){
           console.log('In the for loop');
-          //$scope.teamTwo[j].points += $scope.tournamentInfo[2];
+
+          $scope.teamTwo[j].elo = $scope.tournamentInfo[2];
+
           $scope.teamTwo[j].wins += 1;
           $scope.teamOne[j].losses += 1;
           $scope.teamOne[j].differential += ($scope.teamAScore - $scope.teamBScore);
@@ -102,19 +137,26 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
       console.log($scope.teamTwo);
 
       Players.updatePlayerStats($scope.teamOne, $scope.teamTwo);
+
       $scope.calcElo();
+
+
       console.log(Players.getPlayerList());
     };
 
     $scope.calcElo = function(){
       var tempList = Players.getPlayerList();
       for(var i = 0; i < tempList.length; i++){
+
         var points = tempList[i].wins * $scope.tournamentInfo[2] + tempList[i].ties * $scope.tournamentInfo[3];
         var n = (tempList[i].differential/Math.abs(tempList[i].differential))*(Math.floor(Math.log10(Math.abs(tempList[i].differential)) + 1));
         var elo = points + ((5*Math.pow(10,n) + tempList[i].differential)/(10*Math.pow(10,n)));
         tempList[i].elo = elo;
         tempList[i].points = points;
         console.log(elo);
+
+        var n = Math.floor(Math.log10());
+
       }
     };
 

@@ -1,14 +1,6 @@
 <section ng-controller="BracketsController">
 
-        <div class="jumbotron text-center" style="background-color:black">
-            <div class="row">
-              <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
-                <img alt="MEAN.JS" class="img-responsive text-center" src="modules/core/client/img/brand/tempfoozLogo.png" />
-              </div>
-            </div>
-        </div>
-
-        <h1>Placeholder Page: This page will be made along with the bracket generator.</h1>
+        <h1 align="center">{{tournamentInfo[0]}}</h1>
 
         <button ng-click="splitTeams()">Generate Match</button>
 
@@ -63,6 +55,7 @@
           <p  ng-show='show'>
             <input type=number ng-value=0 ng-model="teamAScore">Score of Team A<br>
             <input type=number ng-value=0 ng-model="teamBScore">Score of Team B<br><br>
+
 
             <button ng-click='results()'> Submit Scores </button>
 

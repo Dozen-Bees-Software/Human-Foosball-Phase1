@@ -2,17 +2,21 @@
   <img alt="WeFooz Logo" align="center" class="banner-img" src="modules/core/client/img/brand/tempfoozLogo.png" />
 </div>
 <div class="navbar-container" ng-controller="HeaderController">
-  <div class="navbar-header">
-    <!--<button class="navbar-toggle" type="button" ng-click="toggleCollapsibleMenu()">
+  <!--<div class="navbar-header">
+    <button class="navbar-toggle" type="button" ng-click="toggleCollapsibleMenu()">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
-    </button>-->
-    <a ui-sref="home" class="navbar-brand">weFooz</a>
+    </button>
+  </div>-->
+  <div class="navbar-item-wrapper">
+    <a href="http://humanfoosball.com/">
+      <img  class="navbar-item" src="modules/core/client/img/buttons/HomeButton.svg" alt="Home" >
+    </a>
   </div>
-  <div>
-    <a ui-sref="home" class="navbar-item">Home</a>
+  <div class="navbar-item-wrapper">
+    <img  class="navbar-item" src="modules/core/client/img/buttons/ReStart.svg" alt="Restart" ui-sref="home">
   </div>
   <!--<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
     <ul class="nav navbar-nav" ng-if="menu.shouldRender(authentication.user);">

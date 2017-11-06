@@ -11,6 +11,8 @@
 
 body{
   background-color: #095587;
+  font-family: 'futura', 'Futura', sans-serif;
+  font: 'futura';
 }
 
 .wrapper{
@@ -43,7 +45,7 @@ body{
 .navbar-container{
   position: fixed;
   float: left;
-  width: 7em;
+  width: 6em;
   height: 100%;
   background-color: #EB4C2B;
   border-style: none;
@@ -57,8 +59,18 @@ body{
   /*margin-top: 14em;*/
 }
 
+.navbar-item-wrapper{
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  background-color: #EB4C2B;
+}
+
 .navbar-item{
-  /*margin: 0px;*/
+  width: 100%;
+  margin: 0px;
+  background-color: #EB4C2B;
+  cursor: pointer;
 }
 
 /*.navbar-brand{
@@ -87,14 +99,17 @@ body{
 .container{
   background-color: #095587;
   margin-top: 14em;
-  margin-left: 7em;
+  margin-left: 6em;
   padding: 0px;
   margin-bottom: 0px;
 }
 
 .tourney_form{
-  width: 500px;
   margin: auto;
+}
+
+.style_info{
+	color: #FFFFFF;
 }
 
 .ng-scope{
@@ -102,6 +117,7 @@ body{
   /*border: 0px;*/
   /*margin: 0px;*/
 }
+
 .undecorated-link:hover {
   text-decoration: none;
 }
@@ -139,6 +155,70 @@ a:hover .header-profile-image {
   display: inline;
 }
 
+.setting{
+  font-family: 'futura', sans-serif;
+  font: 'futura';
+  font-size: 1.5em;
+  height: 3em;
+  margin: 15px;
+  padding: 5px;
+  color: #FFFFFF;
+}
+
+.setting_text{
+  display: inline-block;
+  background-color: #222A33;
+  width: 15em;
+  padding: 12px;
+  margin: 0px;
+  height: 100%;
+}
+
+.setting_buttons{
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
+.setting_value{
+  font-family: 'SportsFont';
+  color: #222A33;
+  height: 100%;
+  margin: 0px;
+  margin-left: 12px;
+  padding: 0px;
+  padding-left: 12px;
+  width: 3em;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+.minus{
+  background-color: #222A33;
+  margin: 0px;
+  height: 100%;
+  border: none;
+  outline: none;
+}
+
+.plus{
+  background-color: #222A33;
+  margin: 0px;
+  height: 100%;
+  border: none;
+  outline: none;
+}
+
+/*
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}*/
+
 .tournamentNameInput {
 
   width: 400px;
@@ -153,6 +233,17 @@ a:hover .header-profile-image {
 .TCreationForm-group{
   padding: auto;
   margin: auto;
+
+}
+
+.TCreation-control{
+	background-color: #FFFFFF;
+	width: 26em;
+    height: 2.15em;
+	font-family: 'futura', 'Futura', sans-serif;
+	font: 'futura';
+	outline: none;
+	margin-right: 4px;
 }
 
 label > input{
@@ -170,17 +261,202 @@ label > input + img{
 }
 
 label > input:checked + img{
-  border: 2px solid #000000;
+  border: 2px solid #FFFFFF;
 }
 
 @font-face {
   font-family: 'SportsFont';
-  src: url('public/lib/bootstrap/dist/fonts/Sports World-Regular.ttf');
+  src: url('Sports World-Regular.ttf');
 }
 
 h1{
-  font-family: 'SportsFont', 'futura', monospace;
+  font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
   font: 'SportsFont';
+  color: #FFFFFF;
   font-size: 5em;
   margin-top: 0px;
+}
+
+h2{
+  font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+  font: 'SportsFont';
+  color: #FFFFFF;
+  font-size: 2em;
+  margin-top: 0px;
+  text-align: center;
+}
+
+h3{
+  font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+  font: 'SportsFont';
+  color: #FFFFFF;
+  font-size: 1.5em;
+  margin-top: 0px;
+  text-align: center;
+}
+
+
+.chooseSettings{
+	font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+	font: 'SportsFont';
+	color: #FFFFFF;
+	font-size: 2em;
+	margin-top: 20px;
+	background-color: #EB4C2B;
+	border: none;
+	width: 13em;
+	padding-top: 7px;
+}
+
+.AddPlayers{
+	font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+	font: 'SportsFont';
+	color: #FFFFFF;
+	font-size: 2em;
+	margin-top: 20px;
+	background-color: #EB4C2B;
+	border: none;
+	width: 13em;
+	padding-top: 7px;
+}
+
+.startTourney{
+	font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+	font: 'SportsFont';
+	color: #FFFFFF;
+	font-size: 2em;
+	margin-top: 20px;
+	background-color: #EB4C2B;
+	border: none;
+	width: 13em;
+	padding-top: 7px;
+}
+.player-control{
+	background-color: #FFFFFF;
+	width: 26em;
+	height: 2.15em;
+	font-family: 'futura', 'Futura', sans-serif;
+	font: 'futura';
+	outline: none;
+    vertical-align: center;
+	padding-top: 3px;
+}
+
+.removePlayers{
+	font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+	font: 'SportsFont';
+	color: #FFFFFF;
+	font-size: .5em;
+	background-color: #EB4C2B;
+	border: none;
+	width: 6em;
+	margin-top: 5px;
+	padding-top: 7px;
+	float: right;
+}
+
+.newRound{
+	font-family: 'SportsFont', 'futura', monospace;
+	font: 'SportsFont';
+	color: #FFFFFF;
+	font-size: 2em;
+	margin-top: 20px;
+	background-color: #EB4C2B;
+	border: none;
+	width: 7em;
+	padding-top: 7px;
+}
+
+.finishRound{
+	
+	font-family: 'SportsFont', 'futura', monospace;
+	font: 'SportsFont';
+	color: #FFFFFF;
+	font-size: 2em;
+	margin-top: 20px;
+	background-color: #EB4C2B;
+	border: none;
+	width: 7em;
+	padding-top: 7px;
+}
+
+.players tr{
+	
+	font-family: 'SportsFont', 'futura', monospace;
+	font: 'SportsFont';
+	color: #3A3B3D;
+	font-size: 2em;
+}
+
+.tableWrapper{
+
+	width: 50%;
+	overflow: auto;
+}
+
+.AddPlayerButton{
+	
+	font-family: 'SportsFont','futura', 'monospace';
+	font: 'SportsFont';
+	color: #FFFFFF;
+	font-size: 1em;
+	margin-top: 20px;
+	background-color: #EB4C2B;
+	border: none;
+	width: 6em;
+	padding-top: 7px;
+	margin-bottom: 20px;
+}
+
+.clear{
+	clear: both;
+}
+
+.PlayerName{
+
+	margin-top: 10px;
+	text-transform: uppercase;
+}
+
+td{
+
+	background: #FFFFFF;
+	border-top: none;
+}
+
+.tournamentWrapper{
+  background-color: #222A33;
+  margin-right: 40%;
+  margin-left: 20px;
+  height: 350px;
+  overflow: auto;
+}
+
+.round_number{
+  background-color: #222A33;
+  color: #FFFFFF;
+  float: left;
+  padding: 20px 5px;
+  margin: 2px 0px;
+}
+
+.three_column{
+  background-color: #869BAD;
+  width: 100%;
+  height: 100%;
+}
+
+.team_a{
+  float: left;
+  width: 30%;
+}
+
+.team_b{
+  float: right;
+  width: 30%;
+}
+
+.leaderboardWrapper{
+  float: right;
+  width: 30%;
 }
