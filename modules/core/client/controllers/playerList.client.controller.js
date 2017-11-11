@@ -12,7 +12,7 @@ angular.module('core').controller('PlayerListController', ['$scope', 'Authentica
 
     $scope.addPlayer = function() {
       //Players.helloWorld($scope.newPlayer);
-
+      $scope.newPlayer.points = 0;
       $scope.newPlayer.elo = 0;
       $scope.newPlayer.wins = 0;
       $scope.newPlayer.losses= 0;

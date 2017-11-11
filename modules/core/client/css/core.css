@@ -9,9 +9,19 @@
 
 */
 
+@font-face {
+  font-family: 'SportsFont';
+  src: url('Sports World-Regular.ttf');
+}
+
+@font-facee{
+  font-family: 'Florens';
+  src: url('Florsn01.tff');
+}
+
 body{
   background-color: #095587;
-  font-family: 'futura', 'Futura', sans-serif;
+  font-family: 'futura', 'Florens', sans-serif;
   font: 'futura';
 }
 
@@ -156,7 +166,7 @@ a:hover .header-profile-image {
 }
 
 .setting{
-  font-family: 'futura', sans-serif;
+  font-family: 'futura', 'Florens', sans-serif;
   font: 'futura';
   font-size: 1.5em;
   height: 3em;
@@ -240,7 +250,7 @@ input[type=number]::-webkit-outer-spin-button {
 	background-color: #FFFFFF;
 	width: 26em;
     height: 2.15em;
-	font-family: 'futura', 'Futura', sans-serif;
+	font-family: 'futura', 'Florens', sans-serif;
 	font: 'futura';
 	outline: none;
 	margin-right: 4px;
@@ -264,13 +274,9 @@ label > input:checked + img{
   border: 2px solid #FFFFFF;
 }
 
-@font-face {
-  font-family: 'SportsFont';
-  src: url('Sports World-Regular.ttf');
-}
 
 h1{
-  font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+  font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
   font: 'SportsFont';
   color: #FFFFFF;
   font-size: 5em;
@@ -278,16 +284,17 @@ h1{
 }
 
 h2{
-  font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+  font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
   font: 'SportsFont';
   color: #FFFFFF;
   font-size: 2em;
   margin-top: 0px;
   text-align: center;
+	text-transform: uppercase;
 }
 
 h3{
-  font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+  font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
   font: 'SportsFont';
   color: #FFFFFF;
   font-size: 1.5em;
@@ -297,7 +304,7 @@ h3{
 
 
 .chooseSettings{
-	font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+	font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
 	font: 'SportsFont';
 	color: #FFFFFF;
 	font-size: 2em;
@@ -309,7 +316,7 @@ h3{
 }
 
 .AddPlayers{
-	font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+	font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
 	font: 'SportsFont';
 	color: #FFFFFF;
 	font-size: 2em;
@@ -321,7 +328,7 @@ h3{
 }
 
 .startTourney{
-	font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+	font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
 	font: 'SportsFont';
 	color: #FFFFFF;
 	font-size: 2em;
@@ -335,7 +342,7 @@ h3{
 	background-color: #FFFFFF;
 	width: 26em;
 	height: 2.15em;
-	font-family: 'futura', 'Futura', sans-serif;
+	font-family: 'futura', 'Florens', sans-serif;
 	font: 'futura';
 	outline: none;
     vertical-align: center;
@@ -343,7 +350,7 @@ h3{
 }
 
 .removePlayers{
-	font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+	font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
 	font: 'SportsFont';
 	color: #FFFFFF;
 	font-size: .5em;
@@ -356,7 +363,7 @@ h3{
 }
 
 .newRound{
-	font-family: 'SportsFont', 'futura', monospace;
+	font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
 	font: 'SportsFont';
 	color: #FFFFFF;
 	font-size: 2em;
@@ -368,8 +375,8 @@ h3{
 }
 
 .finishRound{
-	
-	font-family: 'SportsFont', 'futura', monospace;
+
+	font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
 	font: 'SportsFont';
 	color: #FFFFFF;
 	font-size: 2em;
@@ -381,22 +388,21 @@ h3{
 }
 
 .players tr{
-	
-	font-family: 'SportsFont', 'futura', monospace;
+
+	font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
 	font: 'SportsFont';
 	color: #3A3B3D;
 	font-size: 2em;
 }
 
 .tableWrapper{
-
-	width: 50%;
+	width: 100%;
 	overflow: auto;
 }
 
 .AddPlayerButton{
-	
-	font-family: 'SportsFont','futura', 'monospace';
+
+	font-family: 'SportsFont','futura', 'Florens', sans-serif;
 	font: 'SportsFont';
 	color: #FFFFFF;
 	font-size: 1em;
@@ -418,45 +424,166 @@ h3{
 	text-transform: uppercase;
 }
 
-td{
+.players td{
 
 	background: #FFFFFF;
 	border-top: none;
 }
 
+
 .tournamentWrapper{
   background-color: #222A33;
-  margin-right: 40%;
+  margin-right: 45%;
   margin-left: 20px;
+  padding-right: 0px;
   height: 350px;
   overflow: auto;
 }
 
+.leaderboardWrapper{
+  background-color: #222A33;
+  float: right;
+  width: 40%;
+  height: 350px;
+  overflow: auto;
+}
+
+.tableLabel{
+    font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
+    font: 'SportsFont';
+    color: #FFFFFF;
+    font-size: 2em;
+    margin: 5px;
+    text-align: center;
+}
+
+.roundsTable{
+  margin-right: 0px;
+  padding-right: 0px;
+  width: 100%;
+  min-width: 400px;
+  background-color: #FFFFFF;
+  border: none;
+}
+
+.round{
+  padding: 0.5em;
+}
+
+.alt_color{
+  table-layout: fixed;
+  text-align: center;
+  vertical-align: center;
+  width: 100%;
+  /*margin-bottom: 1em;*/
+}
+
+.roundsTable tr:nth-child(even){
+  background-color: #869BAD;
+  border-color: #869BAD;
+}
+
+.roundsTable tr:nth-child(even) .round_number{
+  border-color: #869BAD;
+}
+
+.leaderboardTable{
+  table-layout: fixed;
+  width: 100%;
+  min-width: 200px;
+}
+
+.leaderboardTable th{
+  text-align: center;
+}
+
+.leaderboardTable th:nth-of-type(n+2){
+  border-style: none none none solid;
+  border-width: 1px;
+  border-color: #222A33;
+}
+
+.leaderboardTable td{
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.leaderboardTable td:nth-of-type(n+2){
+  border-style: none none none solid;
+  border-width: 1px;
+  border-color: #222A33;
+}
+
+.leaderboardTable tr:nth-of-type(2n){
+  background-color: #869BAD;
+}
+
 .round_number{
+  font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
+  font: 'SportsFont';
+  font-size: 1.2em;
   background-color: #222A33;
   color: #FFFFFF;
-  float: left;
-  padding: 20px 5px;
-  margin: 2px 0px;
+  width: 20px;
+  min-height: 100%;
+  border-style: solid none none none;
+  border-width: 1px;
+  border-color: #FFFFFF;
+  text-align: center;
 }
 
-.three_column{
+.table_striped tr{
+  background-color: #FFFFFF;
+}
+
+.alt_color tr input{
+  font-size: 2em;
+  width: 1.6em;
+  height: 1.6em;
+}
+
+.roundsTable tr:nth-of-type(odd) td table tr td input{
   background-color: #869BAD;
+}
+
+.tiny_table{
+  table-layout: fixed;
   width: 100%;
-  height: 100%;
+  font-size: 1em;
+  border-style: solid;
+  border-width: 4px;
+  border-color: #222A33;
 }
 
-.team_a{
-  float: left;
-  width: 30%;
+.score_input{
+      font-family:'futura', 'Florens', sans-serif;
+      font: 'futura';
+      font-weight: bold;
 }
 
-.team_b{
-  float: right;
-  width: 30%;
+.score_input p{
+  margin: 0px;
+  padding: 2px;
 }
 
-.leaderboardWrapper{
-  float: right;
-  width: 30%;
+.score_input input{
+  text-align: center;
+}
+
+.score_input input[type=number]::-webkit-inner-spin-button,
+.score_input input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+    text-align: center;
+}
+
+.colon{
+  font-size: 1.8em;
+}
+
+input{
+  border: none;
+  outline: none;
 }
