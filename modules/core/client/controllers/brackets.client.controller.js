@@ -32,6 +32,8 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
     $scope.splitTeams = function (){
       console.log('Made it to split teams');
       //console.log()
+      $scope.disabled = true;
+      console.log('generate button should disappear');
 
       if($scope.tournamentInfo[4] === 0){
 
@@ -86,6 +88,11 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
       $scope.show = true;
     };
 
+    $scope.hide = false;
+    $scope.hideGenCreator = function(){
+      $scope.hide = true;
+    };
+
     $scope.results = function(){
       //console.log(Players.getTeamOne());
       //console.log(Players.getTeamTwo());
@@ -133,6 +140,13 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
           console.log($scope.teamTwo);
         }
       }
+      else {
+        console.log('there was a tie');
+        for(var k = 0; k< Players.getTeamTwo().length; k++){
+          $scope.teamOne[k].gamesPlayed += 1;
+          $scope.teamTwo[k].gamesPlayed += 1;
+        }
+      }
       console.log($scope.teamTwo);
 
       Players.updatePlayerStats($scope.teamOne, $scope.teamTwo);
@@ -147,7 +161,7 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
       var tempList = Players.getPlayerList();
       for(var i = 0; i < tempList.length; i++){
 
-        var points = tempList[i].wins * $scope.tournamentInfo[2] + tempList[i].ties * $scope.tournamentInfo[3];
+        var points = tempList[i].wins * $scope.tournamentInfo[3] + tempList[i].ties * $scope.tournamentInfo[4];
         var n = (tempList[i].differential/Math.abs(tempList[i].differential))*(Math.floor(Math.log10(Math.abs(tempList[i].differential)) + 1));
         var elo = points + ((5*Math.pow(10,n) + tempList[i].differential)/(10*Math.pow(10,n)));
         tempList[i].elo = elo;
@@ -155,8 +169,16 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
         console.log(elo);
 
 
-
       }
+    };
+
+    $scope.newTeam = function(){
+      var listOfPlayers = Players.getPlayerList();
+      
+    }
+
+    $scope.newRound = function(){
+
     };
 
   }
