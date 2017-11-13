@@ -24,7 +24,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
     $scope.playersPerTeam= 0;
     $scope.numPoints= 0;
     $scope.tie= 0;
-    var rounds = 0;
+
 
 
     $scope.saveTourneyInfo = function(){

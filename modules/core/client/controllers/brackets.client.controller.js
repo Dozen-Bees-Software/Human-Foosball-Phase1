@@ -32,25 +32,24 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
     $scope.splitTeams = function (){
       console.log('Made it to split teams');
       //console.log()
-      if($scope.tournamentInfo[4] === 0){
 
       if($scope.tournamentInfo[4] === 0){
 
-
-        console.log(rounds);
-
-
-          $scope.teamOne = $scope.playerList.slice(0, $scope.teamSize);
-          $scope.teamTwo = $scope.playerList.slice($scope.teamSize, 2*$scope.teamSize);
-          Players.setTeams($scope.teamOne, $scope.teamTwo);
+        $scope.teamOne = $scope.playerList.slice(0, $scope.teamSize);
+        $scope.teamTwo = $scope.playerList.slice($scope.teamSize, 2*$scope.teamSize);
+        Players.setTeams($scope.teamOne, $scope.teamTwo);
 
 
 
-          tournConfig.updateRounds();
-          console.log($scope.tournamentInfo[4]);
+        tournConfig.updateRounds();
+        console.log($scope.tournamentInfo[4]);
 
 
-        if(rounds === 0){
+
+
+
+
+        if($scope.tournamentInfo === 0){
 
           if($scope.teamOne.length === 0 && $scope.teamTwo.length === 0){
 
@@ -62,8 +61,8 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
             tournConfig.updateRounds();
             console.log($scope.tournamentInfo[4]);
 
-            rounds += 1;
-            console.log(rounds);
+            //rounds += 1;
+            //console.log(rounds);
 
 
           }
@@ -102,7 +101,7 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
         for(var i = 0; i < Players.getTeamOne().length; i++){
           console.log('In the for loop');
 
-          //$scope.teamOne[i].points += $scope.tournamentInfo[2];
+          $scope.teamOne[i].points += $scope.tournamentInfo[2];
 
           $scope.teamOne[i].wins += 1;
           $scope.teamTwo[i].losses += 1;
@@ -121,7 +120,7 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
         for(var j = 0; j< Players.getTeamTwo().length; j++){
           console.log('In the for loop');
 
-          $scope.teamTwo[j].elo = $scope.tournamentInfo[2];
+          //$scope.teamTwo[j].elo = $scope.tournamentInfo[2];
 
           $scope.teamTwo[j].wins += 1;
           $scope.teamOne[j].losses += 1;
@@ -155,7 +154,7 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
         tempList[i].points = points;
         console.log(elo);
 
-        var n = Math.floor(Math.log10());
+
 
       }
     };
