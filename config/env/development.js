@@ -4,7 +4,7 @@ var defaultEnvConfig = require('./default');
 
 module.exports = {
   db: {
-    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://student:classcen3031@ds045465.mlab.com:45465/class',
+    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://bgeorgee:database1@ds121674.mlab.com:21674/assignment3',
     //+ (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean-dev',
     options: {
       user: '',
