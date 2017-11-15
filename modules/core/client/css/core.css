@@ -20,16 +20,20 @@
 }
 
 body{
-  background-color: #095587;
+  background-color: #3A3B3D;
   font-family: 'futura', 'Florens', sans-serif;
   font: 'futura';
+  height: 100vh;
 }
 
 .wrapper{
-  background-color: #095587;
-  width: 80%;
+  width: 90vw;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.header-wrapper{
 }
 
 .navbar{
@@ -39,11 +43,10 @@ body{
 .banner{
   background-color: #222A33;
   height: 12em;
+  width: 90vw;
   position: fixed;
-  width: 100%;
   margin: 0px;
   padding: 0px;
-
 }
 
 .banner-img{
@@ -97,21 +100,26 @@ body{
 }*/
 
 .fooz-body{
+  margin-top: 14em;
+  margin-left: 6em;
   padding: none;
-    background-color: #095587;
+  background-color: #095587;
+  height: 100%;
 }
 
 .content {
-  padding: 0px;
   background-color: #095587;
+  margin: 0px;
+  padding: 0px;
+  height: inherit;
 }
 
 .container{
   background-color: #095587;
-  margin-top: 14em;
-  margin-left: 6em;
+  margin: 0px;
   padding: 0px;
-  margin-bottom: 0px;
+  width: inherit;
+  height: inherit;
 }
 
 .tourney_form{
@@ -122,23 +130,17 @@ body{
 	color: #FFFFFF;
 }
 
-.ng-scope{
-  /*padding: 0px;*/
-  /*border: 0px;*/
-  /*margin: 0px;*/
-}
-
 .undecorated-link:hover {
   text-decoration: none;
 }
 
-/*[ng\:cloak],
+[ng\:cloak],
 [ng-cloak],
 [x-ng-cloak],
 .ng-cloak,
 .x-ng-cloak {
   display: none !important;
-}*/
+}
 
 .header-profile-image {
   opacity: 0.8;
@@ -243,7 +245,6 @@ input[type=number]::-webkit-outer-spin-button {
 .TCreationForm-group{
   padding: auto;
   margin: auto;
-
 }
 
 .TCreation-control{
@@ -414,6 +415,10 @@ h3{
 	margin-bottom: 20px;
 }
 
+.show-hide-leaderboard{
+  display: none;
+}
+
 .clear{
 	clear: both;
 }
@@ -428,6 +433,8 @@ h3{
 
 	background: #FFFFFF;
 	border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
 
@@ -441,6 +448,7 @@ h3{
 }
 
 .leaderboardWrapper{
+  display: block;
   background-color: #222A33;
   float: right;
   width: 40%;
@@ -491,6 +499,7 @@ h3{
   table-layout: fixed;
   width: 100%;
   min-width: 200px;
+  background-color: #869BAD;
 }
 
 .leaderboardTable th{
@@ -514,7 +523,7 @@ h3{
   border-color: #222A33;
 }
 
-.leaderboardTable tr:nth-of-type(2n){
+.leaderboardTable tr:nth-of-type(2n-1){
   background-color: #869BAD;
 }
 
@@ -551,7 +560,7 @@ h3{
   width: 100%;
   font-size: 1em;
   border-style: solid;
-  border-width: 4px;
+  border-width: 2px;
   border-color: #222A33;
 }
 
@@ -586,4 +595,126 @@ h3{
 input{
   border: none;
   outline: none;
+}
+
+@media (min-width:1366px){
+
+  .wrapper{
+    width: 80vw;
+  }
+
+  .banner{
+    width:80vw;
+  }
+}
+
+@media (min-width: 1440px){
+
+  .wrapper{
+    width: 1152px;
+  }
+
+  .banner{
+    width: 1152px;
+  }
+}
+
+@media (max-width:1024px){
+
+  .wrapper{
+    width: 100vw;
+  }
+
+  .banner{
+    width:100vw;
+  }
+}
+
+@media (max-width: 850px){
+  h1{
+    font-size:3em;
+  }
+
+  h2{
+    font-size: 1.5em;
+  }
+}
+
+/*MOBILE*/
+@media (max-width: 550px){
+
+  /* Navbar */
+  .banner{
+    display: none;
+  }
+
+  .navbar-container{
+    margin-top: 0px;
+    width: 100vw;
+    height: 6em;
+  }
+
+  .navbar-item-wrapper{
+    display: inline;
+  }
+
+  .navbar-item{
+    width: 6em;
+  }
+
+  .show-hide-leaderboard{
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0px;
+    outline: none;
+    border: none;
+  }
+
+  /*Tournament Maker*/
+  .fooz-body{
+    margin-top: 6em;
+    margin-left: 0px;
+  }
+
+  .setting_text{
+    width: 10em;
+  }
+
+  .setting_value{
+    padding: 0px;
+  }
+
+  .player-control{
+    width: 20em;
+    height: 2.2em;
+  }
+
+  .AddPlayerButton{
+    height: 2.2em;
+  }
+
+  .PlayerName{
+    font-size: 0.8em;
+  }
+
+  /*I in Team*/
+  .leaderboardWrapper{
+    display: none;
+  }
+
+  .leaderboardWrapper .responsive{
+    display: block;
+    width: 100%;
+
+  }
+
+  .tournamentWrapper{
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-right: 0px;
+    height: 350px;
+    overflow: auto;
+  }
 }

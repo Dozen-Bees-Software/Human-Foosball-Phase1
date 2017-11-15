@@ -160,6 +160,14 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
       }
     };
 
+    $scope.toggleBoard = "leaderboardWrapper";
+    $scope.toggleLeaderboard = function(){
+    if ($scope.toggleBoard === "leaderboardWrapper")
+      $scope.toggleBoard += " responsive";
+    else
+      $scope.toggleBoard = "leaderboardWrapper";
+  };
+
   }
 
 }]);
