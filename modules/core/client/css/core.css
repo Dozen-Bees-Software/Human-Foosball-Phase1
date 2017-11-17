@@ -397,7 +397,7 @@ h3{
 }
 
 .tableWrapper{
-	width: 100%;
+	width: 50%;
 	overflow: auto;
 }
 
@@ -454,7 +454,17 @@ h3{
   width: 40%;
   height: 350px;
   overflow: auto;
+  margin-right: 20px;
 }
+
+/*.leadShow{
+  display: block;
+}*/
+
+.leadHide{
+  display: block;
+}
+
 
 .tableLabel{
     font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
@@ -462,7 +472,9 @@ h3{
     color: #FFFFFF;
     font-size: 2em;
     margin: 5px;
+    margin-left: 7%;
     text-align: center;
+    position: fixed;
 }
 
 .roundsTable{
@@ -495,11 +507,22 @@ h3{
   border-color: #869BAD;
 }
 
+.tournamentButton{
+  outline: none;
+  border: none;
+  font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
+  font: 'SportsFont';
+  font-size: 1.5em;
+  color: #FFFFFF;
+  background-color: #EB4C2B;
+}
+
 .leaderboardTable{
   table-layout: fixed;
   width: 100%;
-  min-width: 200px;
+  min-width: 400px;
   background-color: #869BAD;
+  margin-top: 2.5em;
 }
 
 .leaderboardTable th{
@@ -628,6 +651,10 @@ input{
   .banner{
     width:100vw;
   }
+
+  .tableLabel{
+    margin-left: 5px;
+  }
 }
 
 @media (max-width: 850px){
@@ -704,10 +731,14 @@ input{
     display: none;
   }
 
-  .leaderboardWrapper .responsive{
+  .leadShow{
     display: block;
     width: 100%;
+  }
 
+  .leadHide{
+    display: none;
+    width: 0%;
   }
 
   .tournamentWrapper{

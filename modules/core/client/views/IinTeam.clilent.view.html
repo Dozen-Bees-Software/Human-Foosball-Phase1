@@ -3,7 +3,7 @@
     <button class="show-hide-leaderboard" ng-click="toggleLeaderboard()">
       <img class="navbar-item" src="modules/core/client/img/buttons/Hamburger.svg">
     </button>
-    <div ng-class="toggleBoard" class="leaderboardWrapper">
+    <div ng-class="leadWrap" class="leaderboardWrapper">
       <h2 class="tableLabel">LEADERBOARD</h2>
       <table class="table-striped leaderboardTable">
         <tr>
@@ -30,7 +30,7 @@
     <div class="tournamentWrapper">
     <h2 align="center" class="tableLabel">{{ tournamentInfo[0]}}</h2>
       <table class="roundsTable">
-        <tr>
+        <tr ng-repeat="round in rounds">
           <td class="round_number">{{$index + 1}}</td>
           <td class="round">
             <table class="alt_color">
@@ -62,8 +62,9 @@
       </table>
     </div>
 
-    <button ng-click="splitTeams()">Generate Round {{$index + 1}}</button>
-    <button ng-click='results()'> Submit Scores</button>
+    <button class="tournamentButton" ng-click="splitTeams()">Generate Round {{$index + 1}}</button>
+    <button class="tournamentButton" ng-click='results()'> Submit Scores</button>
+
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
