@@ -2,7 +2,7 @@
 
         <h1 align="center">{{tournamentInfo[0]}}</h1>
 
-        <button ng-click="splitTeams()">Generate Match</button>
+        <button ng-click="splitTeams()" ng-hide="disabled">Generate Match</button>
 
         <h2>Team A</h2>
         <div class="tableWrapper">
@@ -52,12 +52,19 @@
           <button ng-click='openResults()'>Finish Match</button>
           <br>
           <br>
+          <p ng-hide='hide'>
+
+          </p>
           <p  ng-show='show'>
             <input type=number ng-value=0 ng-model="teamAScore">Score of Team A<br>
             <input type=number ng-value=0 ng-model="teamBScore">Score of Team B<br><br>
 
 
             <button ng-click='results()'> Submit Scores </button>
+          </br>
+          </br>
+          </br>
+          <button ng-click='newRound()'>Generate new round </button>
 
           </p>
 

@@ -32,25 +32,26 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
     $scope.splitTeams = function (){
       console.log('Made it to split teams');
       //console.log()
-      if($scope.tournamentInfo[4] === 0){
+      $scope.disabled = true;
+      console.log('generate button should disappear');
 
       if($scope.tournamentInfo[4] === 0){
 
-
-        console.log(rounds);
-
-
-          $scope.teamOne = $scope.playerList.slice(0, $scope.teamSize);
-          $scope.teamTwo = $scope.playerList.slice($scope.teamSize, 2*$scope.teamSize);
-          Players.setTeams($scope.teamOne, $scope.teamTwo);
+        $scope.teamOne = $scope.playerList.slice(0, $scope.teamSize);
+        $scope.teamTwo = $scope.playerList.slice($scope.teamSize, 2*$scope.teamSize);
+        Players.setTeams($scope.teamOne, $scope.teamTwo);
 
 
 
-          tournConfig.updateRounds();
-          console.log($scope.tournamentInfo[4]);
+        tournConfig.updateRounds();
+        console.log($scope.tournamentInfo[4]);
 
 
-        if(rounds === 0){
+
+
+
+
+        if($scope.tournamentInfo === 0){
 
           if($scope.teamOne.length === 0 && $scope.teamTwo.length === 0){
 
@@ -62,8 +63,8 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
             tournConfig.updateRounds();
             console.log($scope.tournamentInfo[4]);
 
-            rounds += 1;
-            console.log(rounds);
+            //rounds += 1;
+            //console.log(rounds);
 
 
           }
@@ -87,6 +88,11 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
       $scope.show = true;
     };
 
+    $scope.hide = false;
+    $scope.hideGenCreator = function(){
+      $scope.hide = true;
+    };
+
     $scope.results = function(){
       //console.log(Players.getTeamOne());
       //console.log(Players.getTeamTwo());
@@ -102,7 +108,7 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
         for(var i = 0; i < Players.getTeamOne().length; i++){
           console.log('In the for loop');
 
-          //$scope.teamOne[i].points += $scope.tournamentInfo[2];
+          $scope.teamOne[i].points += $scope.tournamentInfo[2];
 
           $scope.teamOne[i].wins += 1;
           $scope.teamTwo[i].losses += 1;
@@ -121,7 +127,7 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
         for(var j = 0; j< Players.getTeamTwo().length; j++){
           console.log('In the for loop');
 
-          $scope.teamTwo[j].elo = $scope.tournamentInfo[2];
+          //$scope.teamTwo[j].elo = $scope.tournamentInfo[2];
 
           $scope.teamTwo[j].wins += 1;
           $scope.teamOne[j].losses += 1;
@@ -132,6 +138,13 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
 
 
           console.log($scope.teamTwo);
+        }
+      }
+      else {
+        console.log('there was a tie');
+        for(var k = 0; k< Players.getTeamTwo().length; k++){
+          $scope.teamOne[k].gamesPlayed += 1;
+          $scope.teamTwo[k].gamesPlayed += 1;
         }
       }
       console.log($scope.teamTwo);
@@ -148,16 +161,24 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
       var tempList = Players.getPlayerList();
       for(var i = 0; i < tempList.length; i++){
 
-        var points = tempList[i].wins * $scope.tournamentInfo[2] + tempList[i].ties * $scope.tournamentInfo[3];
+        var points = tempList[i].wins * $scope.tournamentInfo[3] + tempList[i].ties * $scope.tournamentInfo[4];
         var n = (tempList[i].differential/Math.abs(tempList[i].differential))*(Math.floor(Math.log10(Math.abs(tempList[i].differential)) + 1));
         var elo = points + ((5*Math.pow(10,n) + tempList[i].differential)/(10*Math.pow(10,n)));
         tempList[i].elo = elo;
         tempList[i].points = points;
         console.log(elo);
 
-        var n = Math.floor(Math.log10());
 
       }
+    };
+
+    $scope.newTeam = function(){
+      var listOfPlayers = Players.getPlayerList();
+      
+    }
+
+    $scope.newRound = function(){
+
     };
 
   }
