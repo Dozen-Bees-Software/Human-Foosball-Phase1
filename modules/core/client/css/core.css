@@ -37,7 +37,7 @@ body{
 }
 
 .navbar{
-  margin: 0px;
+  margin: 0;
 }
 
 .banner{
@@ -45,13 +45,14 @@ body{
   height: 12em;
   width: 90vw;
   position: fixed;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 .banner-img{
   display: block;
   margin: auto;
+  padding-left: 8em;
   height: 12em;
 }
 
@@ -62,7 +63,7 @@ body{
   height: 100%;
   background-color: #EB4C2B;
   border-style: none;
-  border-radius: 0px;
+  border-radius: 0;
   margin-top: 12em;
 }
 
@@ -73,19 +74,52 @@ body{
 }
 
 .navbar-item-wrapper{
+  position: relative;
   width: 100%;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   background-color: #EB4C2B;
 }
 
 .navbar-item{
   width: 100%;
-  margin: 0px;
+  margin: 0;
   background-color: #EB4C2B;
   cursor: pointer;
 }
 
+.navbar-item-tooltip{
+  position: absolute;
+  top: 2em;
+  left: 100%;
+  width: 12em;
+  height: 2em;
+  visibility: hidden;
+  background-color: #FFFFFF;
+  color: #222A33;
+  text-align: center;
+  padding: 5px 10px;
+  z-index: 1;
+}
+
+.navbar-item-tooltip::after{
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -1em;
+  border-width: 1em;
+  border-style: solid;
+  border-color: transparent #FFFFFF transparent transparent;
+}
+
+.navbar-item-wrapper:hover .navbar-item-tooltip{
+  visibility: visible;
+}
+
+.addToLeaderboard:hover .navbar-item-tooltip{
+  visibility: visible;
+}
 /*.navbar-brand{
   marin: 0em;
 }*/
@@ -109,15 +143,15 @@ body{
 
 .content {
   background-color: #095587;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   height: inherit;
 }
 
 .container{
   background-color: #095587;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   width: inherit;
   height: inherit;
 }
@@ -182,24 +216,26 @@ a:hover .header-profile-image {
   background-color: #222A33;
   width: 15em;
   padding: 12px;
-  margin: 0px;
+  margin: 0;
   height: 100%;
+  vertical-align: top;
 }
 
 .setting_buttons{
   display: inline-block;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   height: 100%;
+  vertical-align: top;
 }
 
 .setting_value{
   font-family: 'SportsFont';
   color: #222A33;
   height: 100%;
-  margin: 0px;
+  margin: 0;
   margin-left: 12px;
-  padding: 0px;
+  padding: 0;
   padding-left: 12px;
   width: 3em;
   border: none;
@@ -208,7 +244,7 @@ a:hover .header-profile-image {
 }
 .minus{
   background-color: #222A33;
-  margin: 0px;
+  margin: 0;
   height: 100%;
   border: none;
   outline: none;
@@ -216,7 +252,7 @@ a:hover .header-profile-image {
 
 .plus{
   background-color: #222A33;
-  margin: 0px;
+  margin: 0;
   height: 100%;
   border: none;
   outline: none;
@@ -281,7 +317,8 @@ h1{
   font: 'SportsFont';
   color: #FFFFFF;
   font-size: 5em;
-  margin-top: 0px;
+  margin-top: 0;
+  z-index: 0;
 }
 
 h2{
@@ -289,9 +326,10 @@ h2{
   font: 'SportsFont';
   color: #FFFFFF;
   font-size: 2em;
-  margin-top: 0px;
+  margin-top: 0;
   text-align: center;
 	text-transform: uppercase;
+  z-index: 0;
 }
 
 h3{
@@ -299,7 +337,7 @@ h3{
   font: 'SportsFont';
   color: #FFFFFF;
   font-size: 1.5em;
-  margin-top: 0px;
+  margin-top: 0;
   text-align: center;
 }
 
@@ -413,11 +451,26 @@ h3{
 	width: 6em;
 	padding-top: 7px;
 	margin-bottom: 20px;
+  height: 2.2em;
 }
+
 
 .show-hide-leaderboard{
   display: none;
 }
+
+.addToLeaderboard{
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  margin-left: 5vw;
+  position: absolute;
+  left: 0;
+  top: 24em;
+  width: 6em;
+}
+
 
 .clear{
 	clear: both;
@@ -442,8 +495,8 @@ h3{
   background-color: #222A33;
   margin-right: 45%;
   margin-left: 20px;
-  padding-right: 0px;
-  height: 350px;
+  padding-right: 0;
+  height: calc(100vh - 21em);
   overflow: auto;
 }
 
@@ -452,7 +505,7 @@ h3{
   background-color: #222A33;
   float: right;
   width: 40%;
-  height: 350px;
+  height: calc(100vh - 21em);
   overflow: auto;
   margin-right: 20px;
 }
@@ -464,6 +517,86 @@ h3{
 .leadHide{
   display: block;
 }
+.saveTourney{
+  font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
+  font: 'SportsFont';
+  color: #FFFFFF;
+  font-size: 2em;
+  margin-top: 20px;
+  background-color: #EB4C2B;
+  border: none;
+  width: 13em;
+  padding-top: 7px;
+  align-items: center;
+}
+
+.results_leaderboardTable{
+  /*table-layout: fixed;*/
+  width: 100%;
+  min-width: 300px;
+  background-color: #869BAD;
+}
+
+.results_leaderboardTable th{
+  text-align: center;
+}
+
+.results_leaderboardTable th{
+  border-style: none none none solid;
+  border-width: 1px;
+  border-color: #222A33;
+}
+
+
+.results_leaderboardTable td{
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.results_leaderboardTable td{
+  border-style: none none none solid;
+  border-width: 1px;
+  border-color: #222A33;
+}
+
+.results_leaderBoardTable tr:nth-of-type(2n){
+  background-color: #869BAD;
+}
+
+.results_leaderBoardTable tr{
+  height: 100px;
+}
+
+.results_Wrapper{
+  width: 80%;
+  font-size: 2em;
+  margin-left: 80px;
+}
+
+.medals{
+  background-color: #869BAD;
+  width: 40px;
+  float: left;
+  margin-left: 40px;
+  padding-top: 40px;
+  text-align: center;
+}
+
+.medals img{
+  height: 40px;
+  padding: 2.5px;
+}
+
+.rowData{
+
+  width: 50px;
+}
+
+.playerData{
+
+  width: 100px;
+}
+
 
 
 .tableLabel{
@@ -472,14 +605,15 @@ h3{
     color: #FFFFFF;
     font-size: 2em;
     margin: 5px;
-    margin-left: 7%;
-    text-align: center;
+    width: auto;
     position: fixed;
+    margin-left: 5%;
 }
 
 .roundsTable{
-  margin-right: 0px;
-  padding-right: 0px;
+  margin-right: 0;
+  padding-right: 0;
+  margin-top: 2.5em;
   width: 100%;
   min-width: 400px;
   background-color: #FFFFFF;
@@ -507,14 +641,26 @@ h3{
   border-color: #869BAD;
 }
 
+.tournamentButtons{
+  margin-left: 20px;
+  margin-right: 45%;
+  margin-top: 20px;
+  text-align: center;
+}
+
 .tournamentButton{
   outline: none;
   border: none;
   font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
   font: 'SportsFont';
-  font-size: 1.5em;
+  font-size: 1.3em;
   color: #FFFFFF;
   background-color: #EB4C2B;
+  margin: 0;
+  width: 45%;
+  height: 3em;
+  padding: 5px;
+  vertical-align: top;
 }
 
 .leaderboardTable{
@@ -548,6 +694,43 @@ h3{
 
 .leaderboardTable tr:nth-of-type(2n-1){
   background-color: #869BAD;
+}
+
+.addPlayerPopup{
+  display: none;
+  background-color: #869BAD;
+  position: absolute;
+  padding: 10px;
+  width: 28em;
+  height: 50px;
+  left: calc(50vw - 14em);
+  top: calc(50vh - 25px);
+}
+
+.popupShow{
+  display: block;
+}
+
+.popupHide{
+  display: none;
+}
+
+.player-control-bracket{
+  width: 20em;
+  height: 2.2em;
+  vertical-align: top;
+}
+
+.AddPlayerButtonBracket{
+  	font-family: 'SportsFont','futura', 'Florens', sans-serif;
+  	font: 'SportsFont';
+  	color: #FFFFFF;
+  	font-size: 1em;
+  	background-color: #EB4C2B;
+  	border: none;
+  	width: 6em;
+    height: 2.2em;
+    vertical-align: top;
 }
 
 .round_number{
@@ -594,7 +777,7 @@ h3{
 }
 
 .score_input p{
-  margin: 0px;
+  margin: 0;
   padding: 2px;
 }
 
@@ -629,6 +812,10 @@ input{
   .banner{
     width:80vw;
   }
+
+  .addToLeaderboard{
+    margin-left: 10vw;
+  }
 }
 
 @media (min-width: 1440px){
@@ -639,6 +826,10 @@ input{
 
   .banner{
     width: 1152px;
+  }
+
+  .addToLeaderboard{
+    margin-left: calc((100vw - 1152px) / 2);
   }
 }
 
@@ -652,8 +843,12 @@ input{
     width:100vw;
   }
 
+  .addToLeaderboard{
+    margin-left: 0;
+  }
+
   .tableLabel{
-    margin-left: 5px;
+    margin-left: 5%;
   }
 }
 
@@ -665,10 +860,18 @@ input{
   h2{
     font-size: 1.5em;
   }
+
+  .tableLabel{
+    margin-left: 20px;
+  }
+
+  .tournamentButton{
+    font-size: 0.8em;
+  }
 }
 
 /*MOBILE*/
-@media (max-width: 550px){
+@media (max-width: 700px){
 
   /* Navbar */
   .banner{
@@ -676,7 +879,7 @@ input{
   }
 
   .navbar-container{
-    margin-top: 0px;
+    margin-top: 0;
     width: 100vw;
     height: 6em;
   }
@@ -689,20 +892,57 @@ input{
     width: 6em;
   }
 
+  .navbar-item-tooltip{
+    font-size: 0.8em;
+    width: 100%;
+    top: 100%;
+    left: 50%;
+    margin-left: -4em;
+    padding: 5px 0;
+  }
+
+  .navbar-item-wrapper .navbar-item-tooltip{
+    margin-top: 3em;
+  }
+
+  .navbar-item-tooltip::after{
+    top: auto;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -1em;
+    border-width: 1em;
+    border-style: solid;
+    border-color: transparent transparent #FFFFFF transparent;
+  }
+
+  .addToLeaderboard{
+    margin: 0;
+    left:12em;
+    top: 0;
+  }
+
   .show-hide-leaderboard{
     display: block;
     position: absolute;
     right: 0;
     top: 0;
-    padding: 0px;
+    padding: 0;
     outline: none;
     border: none;
+  }
+
+  .show-hide-leaderboard .navbar-item-tooltip{
+    left: 4em;
+  }
+
+  .show-hide-leaderboard:hover .navbar-item-tooltip{
+    visibility: visible;
   }
 
   /*Tournament Maker*/
   .fooz-body{
     margin-top: 6em;
-    margin-left: 0px;
+    margin-left: 0;
   }
 
   .setting_text{
@@ -710,15 +950,11 @@ input{
   }
 
   .setting_value{
-    padding: 0px;
+    padding: 0;
   }
 
   .player-control{
     width: 20em;
-    height: 2.2em;
-  }
-
-  .AddPlayerButton{
     height: 2.2em;
   }
 
@@ -728,7 +964,14 @@ input{
 
   /*I in Team*/
   .leaderboardWrapper{
+    height: calc(100vh - 9em);
     display: none;
+    margin: 0;
+  }
+
+  .tableLabel{
+    width: 320px;
+    margin-left: calc(50vw - 160px);
   }
 
   .leadShow{
@@ -738,14 +981,29 @@ input{
 
   .leadHide{
     display: none;
-    width: 0%;
+    width: 0;
   }
 
   .tournamentWrapper{
-    margin-right: 0px;
-    margin-left: 0px;
-    padding-right: 0px;
-    height: 350px;
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 0;
+    height: calc(100vh - 9em);
     overflow: auto;
+  }
+
+  .tournamentButtons{
+    height:3em;
+    margin: 0;
+    font-size: 1em;
+    padding: 0;
+    width: 100vw;
+    background-color: #222A33;
+  }
+
+  .tournamentButton{
+    margin: 0;
+    height: 100%;
+    width: calc(49vw);
   }
 }

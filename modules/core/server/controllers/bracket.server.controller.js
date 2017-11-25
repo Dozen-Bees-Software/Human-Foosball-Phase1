@@ -7,7 +7,7 @@ angular.module('core').controller('BracketController', ['$scope', 'Authenticatio
     $scope.authentication = Authentication;
 
     $scope.players = Players.getPlayerList();
-    $scope.rounds = 0;
+    $scope.rounds = [];
 
     //Where do we get teamsize from?
     var teamSize = Math.floor($scope.players.length);
@@ -68,7 +68,7 @@ angular.module('core').controller('BracketController', ['$scope', 'Authenticatio
       }
 
       lineup.sort(compareElo);
-      
+
       var chooseBestPlayer = true;
 
       while(lineup.size>0)

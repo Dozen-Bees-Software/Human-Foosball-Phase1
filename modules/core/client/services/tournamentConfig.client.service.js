@@ -15,7 +15,7 @@ angular.module('core').service('tournConfig', [
     };
 
     this.updateRounds = function(){
-      tournamentInfo[4] += 1;
+      tournamentInfo[4].push([]);
     };
 
 

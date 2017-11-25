@@ -2,7 +2,19 @@
   <div class="fooz-body">
     <button class="show-hide-leaderboard" ng-click="toggleLeaderboard()">
       <img class="navbar-item" src="modules/core/client/img/buttons/Hamburger.svg">
+      <span class="navbar-item-tooltip">Leaderboard
+      </span>
     </button>
+    <button class="addToLeaderboard" ng-click="showAddPlayer()">
+      <img class="navbar-item" src="modules/core/client/img/buttons/AddPlayer.svg">
+      <span class="navbar-item-tooltip">Add a player
+      </span>
+    </button>
+    <div ng-class="playerPopup" class="addPlayerPopup" ng-controller="PlayerListController">
+      <input name="name"  type="text" ng-model="newPlayer.name" class="player-control-bracket" placeholder="enter new player name..." required align = "top" autofocus>
+      <button ng-click="addPlayer()" class = "AddPlayerButtonBracket" align = "top"> ADD </button>
+    </div>
+
     <div ng-class="leadWrap" class="leaderboardWrapper">
       <h2 class="tableLabel">LEADERBOARD</h2>
       <table class="table-striped leaderboardTable">
@@ -14,6 +26,7 @@
           <th>Wins</th>
           <th>Losses</th>
           <th>Games</th>
+          <th></th>
         </tr>
         <tr ng-repeat="player in playerList">
           <td>{{$index + 1}}</td>
@@ -23,8 +36,13 @@
           <td>{{player.wins}}</td>
           <td>{{player.losses}}</td>
           <td>{{player.gamesPlayed}}</td>
+          <td>
+            <button ng-controller="PlayerListController" ng-click = "deletePlayer($index)"  name = "removePlayers" class = "removePlayers">REMOVE</button>
+          </td>
         </tr>
       </table>
+      <button ui-sref='Results'>Results
+      </button>
     </div>
 
     <div class="tournamentWrapper">
@@ -37,7 +55,7 @@
               <tr>
                 <td>
                   <table class="table_striped tiny_table">
-                    <tr ng-repeat="player in teamOne">
+                    <tr ng-repeat="player in rounds[$index][1]">
                       <td>{{player.name}}</td>
                     </tr>
                   </table>
@@ -50,7 +68,7 @@
                 </td>
                 <td>
                   <table class="table_striped tiny_table">
-                    <tr ng-repeat="player in teamTwo">
+                    <tr ng-repeat="player in rounds[$index][3]">
                       <td>{{player.name}}</td>
                     </tr>
                   </table>
@@ -61,10 +79,10 @@
         </tr>
       </table>
     </div>
-
-    <button class="tournamentButton" ng-click="splitTeams()">Generate Round {{$index + 1}}</button>
-    <button class="tournamentButton" ng-click='results()'> Submit Scores</button>
-
+      <div class="tournamentButtons">
+        <button class="tournamentButton" ng-click="splitTeams()">GENERATE NEXT ROUND</button>
+        <button class="tournamentButton subScores" ng-click='results()'> SUBMIT SCORES</button>
+    </div>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

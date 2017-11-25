@@ -1,0 +1,38 @@
+<section class = "results-body" ng-controller='ResultsController'>
+  <div class="fooz-body">
+    <h1 align = center >RESULTS</h1>
+
+        <div class = "medals">
+            <img src="modules/core/client/img/medals/1stPlace.svg">
+            <img src="modules/core/client/img/medals/2ndPlace.svg">
+            <img src="modules/core/client/img/medals/3rdPlace.svg">
+        </div>
+
+  	<div class = "results_Wrapper">
+        <table align = "center" class="results_leaderboardTable">
+          <tr>
+            <th class = "rowData">Rank</th>
+            <th class = "playerData">Player</th>
+            <th class = "rowData">Points</th>
+            <th class = "rowData" >Diff</th>
+            <th class = "rowData">Wins</th>
+            <th class = "rowData">Losses</th>
+            <th class = "rowData">Games</th>
+          </tr>
+          <tr ng-repeat="player in playerList">
+            <td align = "center" class = "rowData">{{$index + 1}}</td>
+            <td align = "center" class = "playerData">{{player.name}}</td>
+            <td align = "center" class = "rowdata">{{player.points}}</td>
+            <td align = "center" class = "rowData">{{player.differential}}</td>
+            <td align = "center" class = "rowData">{{player.wins}}</td>
+            <td align = "center" class = "rowData">{{player.losses}}</td>
+            <td align = "center" class = "rowData">{{player.gamesPlayed}}</td>
+          </tr>
+        </table>
+    	</div>
+
+  <div align = "center">
+         <button ui-sref="IinTeamView" name="goToTourney" class = "saveTourney">SAVE TOURNAMENT</button>
+  </div>
+</div>
+</section>
