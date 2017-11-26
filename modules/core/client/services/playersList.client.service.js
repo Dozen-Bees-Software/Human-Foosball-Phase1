@@ -6,6 +6,7 @@ angular.module('core').service('Players', [
     var playerList = [];
     var teamA = [];
     var teamB = [];
+    var sortedPlayers = [];
 
     this.helloWorld = function (playername){
       return (console.log(playername));
@@ -27,6 +28,10 @@ angular.module('core').service('Players', [
       playerList.push(playername);
       //console.log(playerList[0]);
 
+    };
+
+    this.setPlayerList = function(pList){
+      playerList = pList;
     };
 
     this.deletePlayers = function(index){
@@ -57,6 +62,14 @@ angular.module('core').service('Players', [
       return teamB;
     };
 
+    this.setSortedPlayerList = function(sorted){
+      sortedPlayers = sorted;
+    };
+
+    this.getSortedPlayerList = function(){
+      return sortedPlayers;
+    };
+
     this.updatePlayerStats = function(team1, team2){
       for(var i = 0; i < team1.length; i++){
         for(var j = 0; j < playerList.length; j++){
@@ -70,9 +83,6 @@ angular.module('core').service('Players', [
             playerList[j] = team2[i];
           }
         }
-
-
-
 
       }
     };

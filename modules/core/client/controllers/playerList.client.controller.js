@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('core').controller('PlayerListController', ['$scope', 'Authentication','Players',
-  function ($scope, Authentication, Players) {
+angular.module('core').controller('PlayerListController', ['$scope', 'Authentication','Players', 'tournyService',
+  function ($scope, Authentication, Players, tournyService) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
 
@@ -16,7 +16,7 @@ angular.module('core').controller('PlayerListController', ['$scope', 'Authentica
       $scope.newPlayer.elo = 0;
       $scope.newPlayer.wins = 0;
       $scope.newPlayer.losses= 0;
-      $scope.newPlayer.ties = 0;
+      $scope.newPlayer.Draws = 0;
       $scope.newPlayer.differential = 0;
       $scope.newPlayer.gamesPlayed = 0;
       //$scope.players.push($scope.newPlayer);
@@ -24,6 +24,10 @@ angular.module('core').controller('PlayerListController', ['$scope', 'Authentica
       $scope.playerCounter ++;
       console.log(Players.getPlayer($scope.playerCounter - 1));
       $scope.newPlayer = {};
+    };
+
+    $scope.storePlayers = function(){
+      tournyService.setPlayers(Players.getPlayerList());
     };
 
     $scope.deletePlayer = function(index) {

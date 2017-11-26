@@ -1,4 +1,15 @@
-<section class="fooz-body" ng-controller="HomeController">
+<section class="fooz-body" ng-controller="HomeController"ng-init="initLocalCache()">
+  <div class="prevWrapper" ng-init="checkVisible()" ng-show="previousTournyVisible">
+    <h2 align="center">PREVIOUS TOURNAMENTS</h2>
+      <div class="tableWrapper">
+          <table class="table table-striped table-hover">
+          <tr ng-repeat="tournament in tournaments">
+            <td>{{tournament.name}}</td>
+            <td><span style="color: red;" class="glyphicon glyphicon-remove" ng-click="deletePlayer($index)"></span></td>
+          </tr>
+        </table>
+      </div>
+  </div>
 
   <h1 align="center">NEW TOURNAMENT</h1>
 
@@ -9,7 +20,7 @@
         <div id="style_buttons">
 
           <label ng-click="showInfo()">
-            <input name="style" type="radio" id="style1" class="style_button" value="Tournament Style 1" required>
+            <input name="style" type="radio" id="style1" class="style_button" value="Tournament Style 1">
             <img class="button_image" src="modules/core/client/img/buttons/IinTeam.svg">
             <p class="style_info"> {{info}} </p>
           </label>
@@ -65,7 +76,7 @@
                 </div>
               </div>
 
-              <button ng-click = "ShowHide2()" ng-click="saveTourneyInfo()" name = "AddPlayers" class = "AddPlayers">ADD PLAYERS</button>
+              <button ng-click = "ShowHide2()" ng-click="saveTourney()" name = "AddPlayers" class = "AddPlayers">ADD PLAYERS</button>
               <br>
               <br>
 
@@ -93,7 +104,7 @@
                     </table>
 					<br class = "clear">
                   </div>
-                  <button align = "center" ui-sref="IinTeamView" name="goToTourney" class = "startTourney" ng-click="saveTourneyInfo()">START TOURNAMENT</button>
+                  <button align = "center" ui-sref="IinTeamView" name="goToTourney" class = "startTourney" ng-click="storePlayers()">START TOURNAMENT</button>
                 </div>
               </section>
           </div>

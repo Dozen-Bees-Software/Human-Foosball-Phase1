@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('core').controller('HomeController', ['$scope', 'Authentication',
-'tournConfig',
-  function ($scope, Authentication, tournConfig) {
+'tournyService',
+  function ($scope, Authentication, tournyService) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
 
-    $scope.tourneyInfos = [];
+    $scope.tournaments = [];
 
 
     $scope.showInfo=function(){
@@ -20,27 +20,54 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
       $scope.tourneySummary=true;
     };
 
-    $scope.rounds = [];
+    var rounds = 0;
     $scope.playersPerTeam= 0;
     $scope.numPoints= 0;
     $scope.tie= 0;
 
 
 
-    $scope.saveTourneyInfo = function(){
-      $scope.tourneyInfos.push($scope.tournamentName);
-      $scope.tourneyInfos.push($scope.playersPerTeam);
-      $scope.tourneyInfos.push($scope.rounds);
-      console.log('This is the rounds being pushed %i', $scope.rounds.length);
-      $scope.tourneyInfos.push($scope.numPoints);
-      $scope.tourneyInfos.push($scope.tie);
+
+    $scope.saveTourney = function(){
+      $scope.tourney.name = $scope.tournamentName;
+      tournyService.setCurrentTourny($scope.tourney.name);
+      $scope.tourney.PPT = $scope.playersPerTeam;
+      $scope.tourney.matches = [];
+      $scope.tourney.players = [];
+      $scope.tourney.winPoints = $scope.numPoints;
+      $scope.tourney.tiePoints = $scope.tie;
 
       console.log('tourney info was saved');
-      tournConfig.addTournamentInfo($scope.tourneyInfos);
-
+      tournyService.addTournament($scope.tourney);
     };
 
 
+
+    $scope.saveTourneyInfo = function(){
+      $scope.tourneyInfos.push($scope.tournamentName);
+      $scope.tourneyInfos.push($scope.playersPerTeam);
+
+      $scope.tourneyInfos.push($scope.numPoints);
+      $scope.tourneyInfos.push($scope.tie);
+      $scope.tourneyInfos.push(rounds);
+      console.log('This is the rounds being pushed %i', rounds);
+      console.log('tourney info was saved');
+      tournyService.addTournamentInfo($scope.tourneyInfos);
+
+
+    };
+
+    $scope.initLocalCache = function(){
+      tournyService.initTournaments();
+      $scope.tournaments = tournyService.getTournaments();
+    };
+
+    $scope.previousTournyVisible = false;
+    $scope.checkVisible = function(){
+      if($scope.tournaments[0] !== null){
+        $scope.previousTournyVisible = true;
+      }
+    };
 
     $scope.IsVisible= false;
     $scope.ShowHide = function () {
