@@ -13,7 +13,7 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
     $scope.tournamentInfo = tournConfig.getTournamentInfo();
     $scope.tournamentInfo[4] = 0;
     $scope.teamSize = $scope.tournamentInfo[1];
-    console.log('THis is rounds on brackets page %i', $scope.tournamentInfo[4]);
+    console.log('This is rounds on brackets page %i', $scope.tournamentInfo[4]);
 
     //var round = $scope.tournamentInfo[4];
 
@@ -175,7 +175,7 @@ angular.module('core').controller('BracketsController', ['$scope', 'Authenticati
     $scope.newTeam = function(){
       var listOfPlayers = Players.getPlayerList();
       
-    }
+    };
 
     $scope.newRound = function(){
 
