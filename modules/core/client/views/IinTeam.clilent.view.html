@@ -1,4 +1,4 @@
-<section ng-app='core' ng-controller="BracketsController">
+<section ng-app='core' ng-controller="BracketsController" ng-init="initialize()">
   <div class="fooz-body">
     <button class="show-hide-leaderboard" ng-click="toggleLeaderboard()">
       <img class="navbar-item" src="modules/core/client/img/buttons/Hamburger.svg">
@@ -12,7 +12,7 @@
     </button>
     <div ng-class="playerPopup" class="addPlayerPopup" ng-controller="PlayerListController">
       <input name="name"  type="text" ng-model="newPlayer.name" class="player-control-bracket" placeholder="enter new player name..." required align = "top" autofocus>
-      <button ng-click="addPlayer()" class = "AddPlayerButtonBracket" align = "top"> ADD </button>
+      <button ng-click="addPlayer(); storePlayers(); updateLeaderboard()" class = "AddPlayerButtonBracket" align = "top"> ADD </button>
     </div>
 
     <div ng-class="leadWrap" class="leaderboardWrapper">
@@ -28,7 +28,7 @@
           <th>Games</th>
           <th></th>
         </tr>
-        <tr ng-repeat="player in playerList">
+        <tr ng-repeat="player in playerList track by $index">
           <td>{{$index + 1}}</td>
           <td>{{player.name}}</td>
           <td>{{player.points}}</td>
@@ -41,34 +41,32 @@
           </td>
         </tr>
       </table>
-      <button ui-sref='Results'>Results
-      </button>
     </div>
 
-    <div class="tournamentWrapper">
-    <h2 align="center" class="tableLabel">{{ tournamentInfo[0]}}</h2>
+    <div ng-class="tournWrap" class="tournamentWrapper">
+    <h2 align="center" class="tableLabel">{{ tournament.name }}</h2>
       <table class="roundsTable">
-        <tr ng-repeat="round in rounds">
+        <tr ng-repeat="match in tournament.matches track by $index">
           <td class="round_number">{{$index + 1}}</td>
           <td class="round">
             <table class="alt_color">
               <tr>
                 <td>
                   <table class="table_striped tiny_table">
-                    <tr ng-repeat="player in rounds[$index][1]">
+                    <tr ng-repeat="player in tournament.matches[$index].teamOne track by $index">
                       <td>{{player.name}}</td>
                     </tr>
                   </table>
                 </td>
                 <td class="score_input">
                   <p>enter score</p>
-                  <input type=number ng-value=0 ng-model="teamAScore">
+                  <input type=number ng-value='0' ng-model="tournament.matches[$index].teamOnePoints">
                   <span class="colon">:</span>
-                  <input type=number ng-value=0 ng-model="teamBScore">
+                  <input type=number ng-value='0' ng-model="tournament.matches[$index].teamTwoPoints">
                 </td>
                 <td>
                   <table class="table_striped tiny_table">
-                    <tr ng-repeat="player in rounds[$index][3]">
+                    <tr ng-repeat="player in tournament.matches[$index].teamTwo track by $index">
                       <td>{{player.name}}</td>
                     </tr>
                   </table>
@@ -80,8 +78,11 @@
       </table>
     </div>
       <div class="tournamentButtons">
-        <button class="tournamentButton" ng-click="splitTeams()">GENERATE NEXT ROUND</button>
-        <button class="tournamentButton subScores" ng-click='results()'> SUBMIT SCORES</button>
+        <button ui-sref='Results'  ng-class="leadWrap" class="resultsButton">RESULTS</button>
+        <div ng-class="tournWrap">
+          <button class="tournamentButton" ng-click="splitTeams()">GENERATE NEXT ROUND</button>
+          <button class="tournamentButton" ng-click='results()'> SUBMIT SCORES</button>
+        </div>
     </div>
   </div>
 

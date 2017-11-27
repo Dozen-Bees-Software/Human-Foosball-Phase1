@@ -11,6 +11,7 @@ angular.module('core').controller('PlayerListController', ['$scope', 'Authentica
 
 
     $scope.addPlayer = function() {
+      console.log(Players.getPlayerList());
       //Players.helloWorld($scope.newPlayer);
       $scope.newPlayer.points = 0;
       $scope.newPlayer.elo = 0;

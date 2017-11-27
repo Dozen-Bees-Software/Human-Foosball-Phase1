@@ -27,9 +27,8 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
 
 
-
     $scope.saveTourney = function(){
-      $scope.tourney.name = $scope.tournamentName;
+      // $scope.tourney.name = $scope.tournamentName;
       tournyService.setCurrentTourny($scope.tourney.name);
       $scope.tourney.PPT = $scope.playersPerTeam;
       $scope.tourney.matches = [];
@@ -60,6 +59,8 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
     $scope.initLocalCache = function(){
       tournyService.initTournaments();
       $scope.tournaments = tournyService.getTournaments();
+      window.alert("initializing local cache")
+      window.alert(JSON.stringify($scope.tournaments));
     };
 
     $scope.previousTournyVisible = false;

@@ -30,23 +30,25 @@ angular.module('core').service('tournyService', [
     };
 
     this.setPlayers = function(playerList){
-      var i;
-      tournaments[tournaments.findIndex(i.name === currentTourny)].players = playerList;
+      tournaments[tournaments.findIndex(i => i.name === currentTourny)].players = playerList;
       localStorage.setItem("WFTournaments", JSON.stringify(tournaments));
     };
 
     this.setCurrentTourny = function(tournyName){
       currentTourny = tournyName;
+      sessionStorage.setItem("currentTourny", currentTourny);
     };
 
     this.getCurrentTournament = function() {
-      var i;
-      return tournaments[tournaments.findIndex(i.name === currentTourny)];
+      return tournaments[tournaments.findIndex(i => i.name === currentTourny)];
     };
 
+    this.restoreCurrentTournament = function(){
+      currentTourny = sessionStorage.getItem("currentTourny");
+    }
+
     this.updateTournaments = function(tournament){
-      var i;
-      tournaments[tournaments.findIndex(i.name === tournament.name)] = tournament;
+      tournaments[tournaments.findIndex(i => i.name === tournament.name)] = tournament;
       localStorage.setItem("WFTournaments", JSON.stringify(tournaments));
     };
 
