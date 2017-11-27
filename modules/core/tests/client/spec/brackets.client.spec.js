@@ -27,7 +27,7 @@ console.log('out here');
 describe('Users factory', function() {
     console.log('inhere');
     it('has a dummy spec to test 2 + 2', function() {
-        console.log('for fucks sake')
+        console.log('It works if it gets here');
       // An intentionally failing test. No code within expect() will never equal 4.
       expect().toEqual(4);
     });
