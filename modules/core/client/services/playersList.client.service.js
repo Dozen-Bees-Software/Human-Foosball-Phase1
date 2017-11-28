@@ -35,14 +35,99 @@ angular.module('core').service('Players', [
     };
 
     this.deletePlayers = function(index){
-      console.log(this.getPlayer(index));
+      //console.log(this.getPlayer(index));
       playerList.splice(index, 1);
       console.log(playerList.length);
 
     };
 
-    this.getPlayer = function(index){
-      return playerList[index];
+    this.getPlayerIndex = function(name){
+      var index;
+      for(var i = 0; i < playerList.length;i++){
+        if(playerList[i].name === name){
+          index = i;
+        }
+      }
+      return index;
+    };
+
+    this.playerIndexArray = function(playersPld){
+      var arr = [];
+      var pIndex;
+      for(var i = 0; i < playersPld.length; i++){
+        pIndex = this.getPlayerIndex(playersPld[i].name);
+        if(typeof pIndex != 'undefined'){
+          arr.push(this.getPlayerIndex(playersPld[i].name));
+        }
+
+      }
+      console.log('This is arrrrrr');
+      console.log(arr);
+      return arr;
+
+    };
+
+
+    this.updatePlayerStatsTeamAWin = function(playerIndexes, teamAPoints, teamBPoints, winPoints, tiePoints){
+      var teamOnePoints = teamAPoints;
+      var teamTwoPoints = teamBPoints;
+
+      ///console.log('This is player indexes');
+      //console.log(playerIndexes);
+
+      for(var i = 0; i < playerIndexes.length; i++){
+        console.log('this is the player being updated!');
+        console.log(playerList[i]);
+        if(i < playerIndexes.length/2){
+          playerList[playerIndexes[i]].wins += 1;
+          playerList[playerIndexes[i]].points = winPoints * playerList[playerIndexes[i]].wins + (tiePoints * playerList[playerIndexes[i]].Draws);
+          playerList[playerIndexes[i]].differential += (teamOnePoints - teamTwoPoints);
+          playerList[playerIndexes[i]].gamesPlayed += 1;
+
+        }
+        else{
+          playerList[playerIndexes[i]].losses += 1;
+          playerList[playerIndexes[i]].differential += (teamTwoPoints - teamOnePoints);
+          playerList[playerIndexes[i]].gamesPlayed += 1;
+
+        }
+      }
+    };
+
+    this.updatePlayerStatsTie = function(playerIndexes, winPoints, tiePoints){
+      for(var i = 0; i < playerIndexes.length; i++){
+        playerList[playerIndexes[i]].Draws += 1;
+        playerList[playerIndexes[i]].points = winPoints * playerList[playerIndexes[i]].wins + (tiePoints * playerList[playerIndexes[i]].Draws);
+        playerList[playerIndexes[i]].gamesPlayed += 1;
+      }
+    };
+
+    this.updatePlayerStatsTeamBWin = function(playerIndexes, teamAPoints, teamBPoints, winPoints, tiePoints){
+      var teamOnePoints = teamAPoints;
+      var teamTwoPoints = teamBPoints;
+
+      ///console.log('This is player indexes');
+      //console.log(playerIndexes);
+
+      for(var i = 0; i < playerIndexes.length; i++){
+        console.log('this is the player being updated!');
+        console.log(playerList[i]);
+        if(i >= playerIndexes.length/2){
+          playerList[playerIndexes[i]].wins += 1;
+          playerList[playerIndexes[i]].points = winPoints * playerList[playerIndexes[i]].wins + (tiePoints * playerList[playerIndexes[i]].Draws);
+
+          playerList[playerIndexes[i]].differential += (teamTwoPoints - teamOnePoints);
+
+          playerList[playerIndexes[i]].gamesPlayed += 1;
+
+        }
+        else{
+          playerList[playerIndexes[i]].losses += 1;
+          playerList[playerIndexes[i]].differential += (teamOnePoints - teamTwoPoints);
+          playerList[playerIndexes[i]].gamesPlayed += 1;
+
+        }
+      }
     };
 
     this.getPlayerList = function(){
@@ -69,6 +154,21 @@ angular.module('core').service('Players', [
     this.getSortedPlayerList = function(){
       return sortedPlayers;
     };
+
+    this.wipePlayerListStats = function(plist){
+      for(var i = 0; i < plist.length; i++)
+      {
+        plist[i].wins = 0;
+        plist[i].losses = 0;
+        plist[i].differential = 0;
+        plist[i].gamesPlayed = 0;
+        plist[i].Draws = 0;
+        plist[i].elo = 0;
+        plist[i].points = 0;
+      }
+    };
+
+
 
     this.updatePlayerStats = function(team1, team2){
       for(var i = 0; i < team1.length; i++){

@@ -45,7 +45,7 @@ angular.module('core').service('tournyService', [
 
     this.restoreCurrentTournament = function(){
       currentTourny = sessionStorage.getItem("currentTourny");
-    }
+    };
 
     this.updateTournaments = function(tournament){
       tournaments[tournaments.findIndex(i => i.name === tournament.name)] = tournament;

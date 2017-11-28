@@ -11,7 +11,7 @@ angular.module('core').controller('PlayerListController', ['$scope', 'Authentica
 
 
     $scope.addPlayer = function() {
-      console.log(Players.getPlayerList());
+      // console.log(Players.getPlayerList());
       //Players.helloWorld($scope.newPlayer);
       $scope.newPlayer.points = 0;
       $scope.newPlayer.elo = 0;
@@ -23,7 +23,7 @@ angular.module('core').controller('PlayerListController', ['$scope', 'Authentica
       //$scope.players.push($scope.newPlayer);
       Players.addPlayers($scope.newPlayer);
       $scope.playerCounter ++;
-      console.log(Players.getPlayer($scope.playerCounter - 1));
+      //console.log(Players.getPlayer($scope.playerCounter - 1));
       $scope.newPlayer = {};
     };
 
@@ -36,6 +36,5 @@ angular.module('core').controller('PlayerListController', ['$scope', 'Authentica
       //console.log();
       $scope.playerCounter --;
     };
-
   }
 ]);

@@ -16,7 +16,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
         {
           sessionStorage.removeItem('secondLoad');
           window.location.reload();
-        }  
+        }
         else{
           sessionStorage['secondLoad'] = true;
           document.getElementById('homePageContainer').style.visibility = 'visible';
@@ -51,7 +51,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
       $scope.tourney.winPoints = $scope.numPoints;
       $scope.tourney.tiePoints = $scope.tie;
 
-      console.log('tourney info was saved');
+      // console.log('tourney info was saved');
       tournyService.addTournament($scope.tourney);
     };
 
@@ -64,8 +64,8 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
       $scope.tourneyInfos.push($scope.numPoints);
       $scope.tourneyInfos.push($scope.tie);
       $scope.tourneyInfos.push(rounds);
-      console.log('This is the rounds being pushed %i', rounds);
-      console.log('tourney info was saved');
+      // console.log('This is the rounds being pushed %i', rounds);
+      // console.log('tourney info was saved');
       tournyService.addTournamentInfo($scope.tourneyInfos);
 
 
@@ -74,8 +74,8 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
     $scope.initLocalCache = function(){
       tournyService.initTournaments();
       $scope.tournaments = tournyService.getTournaments();
-      window.alert("initializing local cache")
-      window.alert(JSON.stringify($scope.tournaments));
+      // window.alert("initializing local cache");
+      // window.alert(JSON.stringify($scope.tournaments));
     };
 
     $scope.previousTournyVisible = false;
