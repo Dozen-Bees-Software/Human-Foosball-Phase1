@@ -1,4 +1,4 @@
-<section ng-app='core' ng-controller="BracketsController" ng-init="initialize()">
+<section ng-app='core' ng-controller="BracketsController" ng-init="initialize(); updateLeaderboard()">
   <div class="fooz-body">
     <button class="show-hide-leaderboard" ng-click="toggleLeaderboard()">
       <img class="navbar-item" src="modules/core/client/img/buttons/Hamburger.svg">
@@ -16,7 +16,9 @@
     </div>
 
     <div ng-class="leadWrap" class="leaderboardWrapper">
-      <h2 class="tableLabel">LEADERBOARD</h2>
+      <div class="labelWrapper">
+        <h2 class="tableLabel">LEADERBOARD</h2>
+      </div>
       <table class="table-striped leaderboardTable">
         <tr>
           <th>Rank</th>

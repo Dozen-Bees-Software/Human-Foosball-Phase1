@@ -550,9 +550,8 @@ h3{
   margin-right: 20px;
 }
 
-td .removePlayers{
+.leaderboardTable tr td .removePlayers{
   margin: 0;
-  margin-left: -1.5em;
   margin-bottom: 0.5em;
   float: none;
   padding: 4px;
@@ -587,30 +586,24 @@ td .removePlayers{
   background-color: #869BAD;
 }
 
-.results_leaderboardTable th{
+.results_leaderboardTable tr th{
   text-align: center;
-}
-
-.results_leaderboardTable th{
   border-style: none none none solid;
   border-width: 1px;
   border-color: #222A33;
 }
 
 
-.results_leaderboardTable td{
+.results_leaderboardTable tr td{
   padding-left: 1em;
   padding-right: 1em;
-}
-
-.results_leaderboardTable td{
   border-style: none none none solid;
   border-width: 1px;
   border-color: #222A33;
 }
 
-.results_leaderBoardTable tr:nth-of-type(2n){
-  background-color: #869BAD;
+.results_leaderBoardTable > tbody > tr:nth-of-type(even){
+  background-color: #FFFFFF;
 }
 
 .results_leaderBoardTable tr{
@@ -647,7 +640,12 @@ td .removePlayers{
   width: 100px;
 }
 
-
+.labelWrapper{
+  /*position: fixed;*/
+  height: 2.5em;
+  width: 300px;
+  background-color: #222A33;
+}
 
 .tableLabel{
     font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
@@ -656,14 +654,14 @@ td .removePlayers{
     font-size: 2em;
     margin: 5px;
     width: auto;
-    position: fixed;
+    /*position: fixed;*/
     margin-left: 5%;
 }
 
 .roundsTable{
   margin-right: 0;
   padding-right: 0;
-  margin-top: 2.5em;
+  margin-top: 0;
   width: 100%;
   min-width: 400px;
   background-color: #FFFFFF;
@@ -732,11 +730,10 @@ td .removePlayers{
 }
 
 .leaderboardTable{
-  table-layout: fixed;
   width: 100%;
   min-width: 400px;
   background-color: #869BAD;
-  margin-top: 2.5em;
+  margin-top: 0;
 }
 
 .leaderboardTable th{
@@ -750,8 +747,8 @@ td .removePlayers{
 }
 
 .leaderboardTable td{
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 
 .leaderboardTable td:nth-of-type(n+2){
@@ -874,13 +871,14 @@ input{
 @media (min-width:1366px){
 
   .wrapper{
-    width: 80vw;
+    width: 90vw;
   }
 
   .banner{
-    width:80vw;
+    width:90vw;
   }
 
+.addToLeaderboard
   .{
     margin-left: 10vw;
   }

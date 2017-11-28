@@ -36,5 +36,6 @@ angular.module('core').controller('PlayerListController', ['$scope', 'Authentica
       //console.log();
       $scope.playerCounter --;
     };
+
   }
 ]);

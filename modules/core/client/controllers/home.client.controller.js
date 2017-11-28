@@ -1,13 +1,28 @@
 'use strict';
 
 angular.module('core').controller('HomeController', ['$scope', 'Authentication',
-'tournyService',
-  function ($scope, Authentication, tournyService) {
+'tournyService', 'Players',
+  function ($scope, Authentication, tournyService, Players) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
 
     $scope.tournaments = [];
 
+    $scope.forceRefresh = function() {
+      document.getElementById('homePageContainer').style.visibility = 'hidden';
+      if( window.sessionStorage )
+      {
+        if( sessionStorage.getItem('secondLoad') )
+        {
+          sessionStorage.removeItem('secondLoad');
+          window.location.reload();
+        }  
+        else{
+          sessionStorage['secondLoad'] = true;
+          document.getElementById('homePageContainer').style.visibility = 'visible';
+        }
+      }
+    };
 
     $scope.showInfo=function(){
 
@@ -82,5 +97,19 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
       $scope.IsVisible2 = true;
 
     };
+
+    $scope.resumeTourney = function(index) {
+      tournyService.setCurrentTourny($scope.tournaments[index].name);
+      Players.setPlayerList(tournyService.getCurrentTournament().players);
+    };
+
+    $scope.deleteTournament = function(index) {
+      tournyService.deleteTournament(index);
+    }
+
+    $scope.updateTournaments = function(){
+      $scope.tournaments = tournyService.getTournaments();
+    };
+
   }
 ]);
