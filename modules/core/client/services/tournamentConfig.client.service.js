@@ -52,5 +52,10 @@ angular.module('core').service('tournyService', [
       localStorage.setItem("WFTournaments", JSON.stringify(tournaments));
     };
 
+    this.deleteTournament = function(index){
+      tournaments.splice(index,1);
+      localStorage.setItem("WFTournaments", JSON.stringify(tournaments));
+    }
+
   }
 ]);

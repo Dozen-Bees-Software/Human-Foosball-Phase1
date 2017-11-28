@@ -24,13 +24,13 @@
     </div>
   </div>
 
-  <div ng-class="prevPopup" class="prevWrapper" >
+  <div ng-class="prevPopup" class="prevWrapper">
     <h2 align="center">PREVIOUS TOURNAMENTS</h2>
       <div ng-controller="HomeController" ng-init="initLocalCache()" >
           <table class="table-striped prevTable">
           <tr ng-repeat="tournament in tournaments">
-            <td>{{tournament.name}}</td>
-            <td><button class="deleteTournament" ng-click="deleteTournament($index)">DELETE</button></td>
+            <td class="resumeTournament" ng-click="resumeTourney($index); showPrevTourn(); updateLeaderboard()" ui-sref="IinTeamView" ui-sref-opts="{reload: true}">{{tournament.name}}</td>
+            <td><button class="deleteTournament" ng-click="deleteTournament($index); updateTournaments()">DELETE</button></td>
           </tr>
         </table>
       </div>
