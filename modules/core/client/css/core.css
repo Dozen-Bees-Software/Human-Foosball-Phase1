@@ -9,36 +9,50 @@
 
 */
 
+@font-face {
+  font-family: 'SportsFont';
+  src: url('Sports World-Regular.ttf');
+}
+
+@font-facee{
+  font-family: 'Florens';
+  src: url('Florsn01.tff');
+}
+
 body{
-  background-color: #095587;
-  font-family: 'futura', 'Futura', sans-serif;
+  background-color: #3A3B3D;
+  font-family: 'futura', 'Florens', sans-serif;
   font: 'futura';
+  height: 100vh;
 }
 
 .wrapper{
-  background-color: #095587;
-  width: 80%;
+  width: 90vw;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
 }
 
+.header-wrapper{
+}
+
 .navbar{
-  margin: 0px;
+  margin: 0;
 }
 
 .banner{
   background-color: #222A33;
   height: 12em;
+  width: 90vw;
   position: fixed;
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-
+  margin: 0;
+  padding: 0;
 }
 
 .banner-img{
   display: block;
   margin: auto;
+  padding-left: 8em;
   height: 12em;
 }
 
@@ -49,7 +63,7 @@ body{
   height: 100%;
   background-color: #EB4C2B;
   border-style: none;
-  border-radius: 0px;
+  border-radius: 0;
   margin-top: 12em;
 }
 
@@ -60,19 +74,54 @@ body{
 }
 
 .navbar-item-wrapper{
+  position: relative;
   width: 100%;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   background-color: #EB4C2B;
+  border: none;
+  outline: none;
 }
 
 .navbar-item{
   width: 100%;
-  margin: 0px;
+  margin: 0;
   background-color: #EB4C2B;
   cursor: pointer;
 }
 
+.navbar-item-tooltip{
+  position: absolute;
+  top: 2em;
+  left: 100%;
+  width: 12em;
+  height: 2em;
+  visibility: hidden;
+  background-color: #FFFFFF;
+  color: #222A33;
+  text-align: center;
+  padding: 5px 10px;
+  z-index: 1;
+}
+
+.navbar-item-tooltip::after{
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -1em;
+  border-width: 1em;
+  border-style: solid;
+  border-color: transparent #FFFFFF transparent transparent;
+}
+
+.navbar-item-wrapper:hover .navbar-item-tooltip{
+  visibility: visible;
+}
+
+.addToLeaderboard:hover .navbar-item-tooltip{
+  visibility: visible;
+}
 /*.navbar-brand{
   marin: 0em;
 }*/
@@ -87,21 +136,64 @@ body{
 }*/
 
 .fooz-body{
+  margin-top: 14em;
+  margin-left: 6em;
   padding: none;
-    background-color: #095587;
+  background-color: #095587;
+  height: 100%;
 }
 
 .content {
-  padding: 0px;
   background-color: #095587;
+  margin: 0;
+  padding: 0;
+  height: inherit;
 }
 
 .container{
   background-color: #095587;
-  margin-top: 14em;
-  margin-left: 6em;
-  padding: 0px;
-  margin-bottom: 0px;
+  margin: 0;
+  padding: 0;
+  width: inherit;
+  height: inherit;
+}
+
+.prevWrapper{
+  background-color: #222A33;
+  width: 400px;
+  height: 250px;
+  position: absolute;
+  top: calc(50% - 125px);
+  left: calc(50% - 200px);
+  overflow-y: scroll;
+}
+
+.prevTable{
+	font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
+	font: 'SportsFont';
+  width: 100%;
+  background-color: #869BAD;
+  text-transform: uppercase;
+}
+.prevTable tr td{
+  padding-left: 0.5em;
+}
+
+.resumeTournament{
+  cursor: pointer;
+}
+
+.deleteTournament{
+	color: #FFFFFF;
+	font-size: 0.6em;
+	background-color: #EB4C2B;
+  outline: none;
+	border: none;
+	width: 6em;
+	float: right;
+  margin: 4px;
+  padding: 2px;
+  text-align: center;
 }
 
 .tourney_form{
@@ -109,26 +201,22 @@ body{
 }
 
 .style_info{
+  min-width: 10em;
+  max-width: 30em;
 	color: #FFFFFF;
-}
-
-.ng-scope{
-  /*padding: 0px;*/
-  /*border: 0px;*/
-  /*margin: 0px;*/
 }
 
 .undecorated-link:hover {
   text-decoration: none;
 }
 
-/*[ng\:cloak],
+[ng\:cloak],
 [ng-cloak],
 [x-ng-cloak],
 .ng-cloak,
 .x-ng-cloak {
   display: none !important;
-}*/
+}
 
 .header-profile-image {
   opacity: 0.8;
@@ -156,7 +244,7 @@ a:hover .header-profile-image {
 }
 
 .setting{
-  font-family: 'futura', sans-serif;
+  font-family: 'futura', 'Florens', sans-serif;
   font: 'futura';
   font-size: 1.5em;
   height: 3em;
@@ -170,24 +258,26 @@ a:hover .header-profile-image {
   background-color: #222A33;
   width: 15em;
   padding: 12px;
-  margin: 0px;
+  margin: 0;
   height: 100%;
+  vertical-align: top;
 }
 
 .setting_buttons{
   display: inline-block;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   height: 100%;
+  vertical-align: top;
 }
 
 .setting_value{
   font-family: 'SportsFont';
   color: #222A33;
   height: 100%;
-  margin: 0px;
+  margin: 0;
   margin-left: 12px;
-  padding: 0px;
+  padding: 0;
   padding-left: 12px;
   width: 3em;
   border: none;
@@ -196,7 +286,7 @@ a:hover .header-profile-image {
 }
 .minus{
   background-color: #222A33;
-  margin: 0px;
+  margin: 0;
   height: 100%;
   border: none;
   outline: none;
@@ -204,7 +294,7 @@ a:hover .header-profile-image {
 
 .plus{
   background-color: #222A33;
-  margin: 0px;
+  margin: 0;
   height: 100%;
   border: none;
   outline: none;
@@ -233,14 +323,14 @@ input[type=number]::-webkit-outer-spin-button {
 .TCreationForm-group{
   padding: auto;
   margin: auto;
-
 }
 
 .TCreation-control{
 	background-color: #FFFFFF;
-	width: 26em;
+	min-width: 15em;
+  width: 26em;
     height: 2.15em;
-	font-family: 'futura', 'Futura', sans-serif;
+	font-family: 'futura', 'Florens', sans-serif;
 	font: 'futura';
 	outline: none;
 	margin-right: 4px;
@@ -264,40 +354,39 @@ label > input:checked + img{
   border: 2px solid #FFFFFF;
 }
 
-@font-face {
-  font-family: 'SportsFont';
-  src: url('Sports World-Regular.ttf');
-}
 
 h1{
-  font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+  font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
   font: 'SportsFont';
   color: #FFFFFF;
   font-size: 5em;
-  margin-top: 0px;
+  margin-top: 0;
+  z-index: 0;
 }
 
 h2{
-  font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+  font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
   font: 'SportsFont';
   color: #FFFFFF;
   font-size: 2em;
-  margin-top: 0px;
+  margin-top: 0;
   text-align: center;
+	text-transform: uppercase;
+  z-index: 0;
 }
 
 h3{
-  font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+  font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
   font: 'SportsFont';
   color: #FFFFFF;
   font-size: 1.5em;
-  margin-top: 0px;
+  margin-top: 0;
   text-align: center;
 }
 
 
 .chooseSettings{
-	font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+	font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
 	font: 'SportsFont';
 	color: #FFFFFF;
 	font-size: 2em;
@@ -309,7 +398,7 @@ h3{
 }
 
 .AddPlayers{
-	font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+	font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
 	font: 'SportsFont';
 	color: #FFFFFF;
 	font-size: 2em;
@@ -321,7 +410,7 @@ h3{
 }
 
 .startTourney{
-	font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+	font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
 	font: 'SportsFont';
 	color: #FFFFFF;
 	font-size: 2em;
@@ -333,17 +422,18 @@ h3{
 }
 .player-control{
 	background-color: #FFFFFF;
-	width: 26em;
-	height: 2.15em;
-	font-family: 'futura', 'Futura', sans-serif;
+	width: 20em;
+  min-width: 15em;
+	height: 2.2em;
+	font-family: 'futura', 'Florens', sans-serif;
 	font: 'futura';
 	outline: none;
-    vertical-align: center;
+  vertical-align: top;
 	padding-top: 3px;
 }
 
 .removePlayers{
-	font-family: 'SportsFont', 'futura', 'Futura', sans-serif;
+	font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
 	font: 'SportsFont';
 	color: #FFFFFF;
 	font-size: .5em;
@@ -356,7 +446,7 @@ h3{
 }
 
 .newRound{
-	font-family: 'SportsFont', 'futura', monospace;
+	font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
 	font: 'SportsFont';
 	color: #FFFFFF;
 	font-size: 2em;
@@ -368,8 +458,8 @@ h3{
 }
 
 .finishRound{
-	
-	font-family: 'SportsFont', 'futura', monospace;
+
+	font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
 	font: 'SportsFont';
 	color: #FFFFFF;
 	font-size: 2em;
@@ -381,32 +471,50 @@ h3{
 }
 
 .players tr{
-	
-	font-family: 'SportsFont', 'futura', monospace;
+
+	font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
 	font: 'SportsFont';
 	color: #3A3B3D;
 	font-size: 2em;
 }
 
 .tableWrapper{
-
-	width: 50%;
+  margin-top: 20px;
+	width: 70%;
 	overflow: auto;
 }
 
 .AddPlayerButton{
-	
-	font-family: 'SportsFont','futura', 'monospace';
+
+	font-family: 'SportsFont','futura', 'Florens', sans-serif;
 	font: 'SportsFont';
 	color: #FFFFFF;
 	font-size: 1em;
-	margin-top: 20px;
 	background-color: #EB4C2B;
 	border: none;
 	width: 6em;
 	padding-top: 7px;
-	margin-bottom: 20px;
+  height: 2.2em;
+  vertical-align: top;
 }
+
+
+.show-hide-leaderboard{
+  display: none;
+}
+
+.addToLeaderboard{
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  margin-left: 5vw;
+  position: absolute;
+  left: 0;
+  top: 30em;
+  width: 6em;
+}
+
 
 .clear{
 	clear: both;
@@ -418,45 +526,561 @@ h3{
 	text-transform: uppercase;
 }
 
-td{
+.players td{
 
 	background: #FFFFFF;
 	border-top: none;
+  border-left: none;
+  border-right: none;
 }
+
 
 .tournamentWrapper{
   background-color: #222A33;
-  margin-right: 40%;
+  margin-right: 45%;
   margin-left: 20px;
-  height: 350px;
+  padding-right: 0;
+  height: calc(100vh - 21em);
   overflow: auto;
 }
 
+.leaderboardWrapper{
+  display: block;
+  background-color: #222A33;
+  float: right;
+  width: 40%;
+  height: calc(100vh - 21em);
+  overflow: auto;
+  margin-right: 20px;
+}
+
+td .removePlayers{
+  margin: 0;
+  margin-left: -1.5em;
+  margin-bottom: 0.5em;
+  float: none;
+  padding: 4px;
+  text-align: center;
+}
+
+
+/*.leadShow{
+  display: block;
+}*/
+
+.leadHide{
+  display: block;
+}
+.saveTourney{
+  font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
+  font: 'SportsFont';
+  color: #FFFFFF;
+  font-size: 2em;
+  margin-top: 20px;
+  background-color: #EB4C2B;
+  border: none;
+  width: 13em;
+  padding-top: 7px;
+  align-items: center;
+}
+
+.results_leaderboardTable{
+  /*table-layout: fixed;*/
+  width: 100%;
+  min-width: 300px;
+  background-color: #869BAD;
+}
+
+.results_leaderboardTable th{
+  text-align: center;
+}
+
+.results_leaderboardTable th{
+  border-style: none none none solid;
+  border-width: 1px;
+  border-color: #222A33;
+}
+
+
+.results_leaderboardTable td{
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.results_leaderboardTable td{
+  border-style: none none none solid;
+  border-width: 1px;
+  border-color: #222A33;
+}
+
+.results_leaderBoardTable tr:nth-of-type(2n){
+  background-color: #869BAD;
+}
+
+.results_leaderBoardTable tr{
+  height: 100px;
+}
+
+.results_Wrapper{
+  width: 80%;
+  font-size: 2em;
+  margin-left: 80px;
+}
+
+.medals{
+  background-color: #869BAD;
+  width: 40px;
+  float: left;
+  margin-left: 40px;
+  padding-top: 40px;
+  text-align: center;
+}
+
+.medals img{
+  height: 40px;
+  padding: 2.5px;
+}
+
+.rowData{
+
+  width: 50px;
+}
+
+.playerData{
+
+  width: 100px;
+}
+
+
+
+.tableLabel{
+    font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
+    font: 'SportsFont';
+    color: #FFFFFF;
+    font-size: 2em;
+    margin: 5px;
+    width: auto;
+    position: fixed;
+    margin-left: 5%;
+}
+
+.roundsTable{
+  margin-right: 0;
+  padding-right: 0;
+  margin-top: 2.5em;
+  width: 100%;
+  min-width: 400px;
+  background-color: #FFFFFF;
+  border: none;
+}
+
+.round{
+  padding: 0.5em;
+}
+
+.alt_color{
+  table-layout: fixed;
+  text-align: center;
+  vertical-align: center;
+  width: 100%;
+  /*margin-bottom: 1em;*/
+}
+
+.roundsTable tr:nth-child(even){
+  background-color: #869BAD;
+  border-color: #869BAD;
+}
+
+.roundsTable tr:nth-child(even) .round_number{
+  border-color: #869BAD;
+}
+
+.tournamentButtons{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.tournamentButtons div{
+  margin-right: 40%;
+}
+
+.tournamentButton{
+  outline: none;
+  border: none;
+  font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
+  font: 'SportsFont';
+  font-size: 1.3em;
+  color: #FFFFFF;
+  background-color: #EB4C2B;
+  margin: 0;
+  width: 44.5%;
+  height: 3em;
+  padding: 5px;
+  vertical-align: top;
+}
+
+.resultsButton{
+  outline: none;
+  border: none;
+  font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
+  font: 'SportsFont';
+  font-size: 1.3em;
+  color: #FFFFFF;
+  background-color: #EB4C2B;
+  float: right;
+  margin: 0;
+  height: 3em;
+  padding: 5px;
+  margin-right: 20px;
+  width: 40.5%;
+}
+
+.leaderboardTable{
+  table-layout: fixed;
+  width: 100%;
+  min-width: 400px;
+  background-color: #869BAD;
+  margin-top: 2.5em;
+}
+
+.leaderboardTable th{
+  text-align: center;
+}
+
+.leaderboardTable th:nth-of-type(n+2){
+  border-style: none none none solid;
+  border-width: 1px;
+  border-color: #222A33;
+}
+
+.leaderboardTable td{
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.leaderboardTable td:nth-of-type(n+2){
+  border-style: none none none solid;
+  border-width: 1px;
+  border-color: #222A33;
+}
+
+.leaderboardTable tr:nth-of-type(2n-1){
+  background-color: #869BAD;
+}
+
+.addPlayerPopup{
+  display: none;
+  background-color: #869BAD;
+  position: absolute;
+  padding: 10px;
+  width: 28em;
+  height: 50px;
+  left: calc(50vw - 14em);
+  top: calc(50vh - 25px);
+}
+
+.popupShow{
+  display: block;
+}
+
+.popupHide{
+  display: none;
+}
+
+.player-control-bracket{
+  width: 20em;
+  height: 2.2em;
+  vertical-align: top;
+}
+
+.AddPlayerButtonBracket{
+  	font-family: 'SportsFont','futura', 'Florens', sans-serif;
+  	font: 'SportsFont';
+  	color: #FFFFFF;
+  	font-size: 1em;
+  	background-color: #EB4C2B;
+  	border: none;
+  	width: 6em;
+    height: 2.2em;
+    vertical-align: top;
+}
+
 .round_number{
+  font-family: 'SportsFont', 'futura', 'Florens', sans-serif;
+  font: 'SportsFont';
+  font-size: 1.2em;
   background-color: #222A33;
   color: #FFFFFF;
-  float: left;
-  padding: 20px 5px;
-  margin: 2px 0px;
+  width: 20px;
+  min-height: 100%;
+  border-style: solid none none none;
+  border-width: 1px;
+  border-color: #FFFFFF;
+  text-align: center;
 }
 
-.three_column{
+.table_striped tr{
+  background-color: #FFFFFF;
+}
+
+.alt_color tr input{
+  font-size: 2em;
+  width: 1.6em;
+  height: 1.6em;
+}
+
+.roundsTable tr:nth-of-type(odd) td table tr td input{
   background-color: #869BAD;
+}
+
+.tiny_table{
+  table-layout: fixed;
   width: 100%;
-  height: 100%;
+  font-size: 1em;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #222A33;
 }
 
-.team_a{
-  float: left;
-  width: 30%;
+.score_input{
+      font-family:'futura', 'Florens', sans-serif;
+      font: 'futura';
+      font-weight: bold;
 }
 
-.team_b{
-  float: right;
-  width: 30%;
+.score_input p{
+  margin: 0;
+  padding: 2px;
 }
 
-.leaderboardWrapper{
-  float: right;
-  width: 30%;
+.score_input input{
+  text-align: center;
+}
+
+.score_input input[type=number]::-webkit-inner-spin-button,
+.score_input input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+    text-align: center;
+}
+
+.colon{
+  font-size: 1.8em;
+}
+
+input{
+  border: none;
+  outline: none;
+}
+
+@media (min-width:1366px){
+
+  .wrapper{
+    width: 80vw;
+  }
+
+  .banner{
+    width:80vw;
+  }
+
+  .{
+    margin-left: 10vw;
+  }
+}
+
+@media (min-width: 1440px){
+
+  .wrapper{
+    width: 1152px;
+  }
+
+  .banner{
+    width: 1152px;
+  }
+
+  .addToLeaderboard{
+    margin-left: calc((100vw - 1152px) / 2);
+  }
+}
+
+@media (max-width:1024px){
+
+  .wrapper{
+    width: 100vw;
+  }
+
+  .banner{
+    width:100vw;
+  }
+
+  .addToLeaderboard{
+    margin-left: 0;
+  }
+
+  .tableLabel{
+    margin-left: 5%;
+  }
+}
+
+@media (max-width: 850px){
+  h1{
+    font-size:3em;
+  }
+
+  h2{
+    font-size: 1.5em;
+  }
+
+  .tableLabel{
+    margin-left: 20px;
+  }
+
+  .tournamentButton{
+    font-size: 0.8em;
+  }
+}
+
+/*MOBILE*/
+@media (max-width: 700px){
+
+  /* Navbar */
+  .banner{
+    display: none;
+  }
+
+  .navbar-container{
+    margin-top: 0;
+    width: 100vw;
+    height: 6em;
+  }
+
+  .navbar-item-wrapper{
+    display: inline;
+  }
+
+  .navbar-item{
+    width: 6em;
+  }
+
+  .navbar-item-tooltip{
+    font-size: 0.8em;
+    width: 100%;
+    top: 100%;
+    left: 50%;
+    margin-left: -4em;
+    padding: 5px 0;
+  }
+
+  .navbar-item-wrapper .navbar-item-tooltip{
+    margin-top: 3em;
+  }
+
+  .navbar-item-tooltip::after{
+    top: auto;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -1em;
+    border-width: 1em;
+    border-style: solid;
+    border-color: transparent transparent #FFFFFF transparent;
+  }
+
+  .addToLeaderboard{
+    margin: 0;
+    left:20em;
+    top: 0;
+  }
+
+  .show-hide-leaderboard{
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+  }
+
+  .show-hide-leaderboard .navbar-item-tooltip{
+    left: 4em;
+  }
+
+  .show-hide-leaderboard:hover .navbar-item-tooltip{
+    visibility: visible;
+  }
+
+  /*Tournament Maker*/
+  .fooz-body{
+    margin-top: 6em;
+    margin-left: 0;
+  }
+
+  .setting_text{
+    width: 10em;
+  }
+
+  .setting_value{
+    padding: 0;
+  }
+
+  .PlayerName{
+    font-size: 0.8em;
+  }
+
+  /*I in Team*/
+  .leaderboardWrapper{
+    height: calc(100vh - 9em);
+    display: none;
+    margin: 0;
+  }
+
+  .tableLabel{
+    width: 320px;
+    margin-left: calc(50vw - 160px);
+  }
+
+  .leadShow{
+    display: block;
+    width: 100%;
+  }
+
+  .leadHide{
+    display: none;
+    width: 0;
+  }
+
+  .tournamentWrapper{
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 0;
+    height: calc(100vh - 9em);
+    overflow: auto;
+  }
+
+  .tournamentButtons{
+    height:3em;
+    margin: 0;
+    font-size: 1em;
+    padding: 0;
+    width: 100vw;
+    background-color: #222A33;
+  }
+
+  .tournamentButtons div{
+    margin: 0;
+    height: 100%;
+  }
+
+  .tournamentButton{
+    margin: 0;
+    height: 100%;
+    width: calc(49vw);
+  }
+
+  .resultsButton{
+    margin: 0;
+    height: 100%;
+  }
 }

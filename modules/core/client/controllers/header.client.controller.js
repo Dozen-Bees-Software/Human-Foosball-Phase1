@@ -15,6 +15,14 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
       $scope.isCollapsed = !$scope.isCollapsed;
     };
 
+    $scope.prevPopup = "popupHide";
+    $scope.showPrevTourn = function(){
+      if($scope.prevPopup === "popupHide")
+        $scope.prevPopup = "popupShow";
+      else
+        $scope.prevPopup = "popupHide";
+    };
+
     // Collapsing the menu after navigation
     $scope.$on('$stateChangeSuccess', function () {
       $scope.isCollapsed = false;
