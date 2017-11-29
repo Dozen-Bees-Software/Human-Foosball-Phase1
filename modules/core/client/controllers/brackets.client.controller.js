@@ -215,10 +215,17 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
         //console.log(match);
 
         $scope.results(match);
+
+
         //console.log('Spagett!');
         //console.log(match);
 
       }
+
+
+      $scope.calcElo();
+      $scope.tournament.players = Players.getPlayerList();
+      tournyService.updateTournaments($scope.tournament);
 
     };
 
@@ -313,8 +320,8 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
 
 
 
-      $scope.tournament.players = Players.getPlayerList();
-      tournyService.updateTournaments($scope.tournament);
+      // $scope.tournament.players = Players.getPlayerList();
+      // tournyService.updateTournaments($scope.tournament);
 
 
       //console.log(Players.getPlayerList());
@@ -336,13 +343,13 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
         // console.log(points);
 
         if(tempList[i].differential === 0 && tempList[i].gamesPlayed > 0){
-          tempList[i].differential += .00001;
+          tempList[i].differential += 0.00001;
         }
-        var n = (tempList[i].differential/Math.abs(tempList[i].differential))*(Math.floor(Math.log10(Math.abs(tempList[i].differential)) + 1));
+        var n = (Math.floor(Math.log10(Math.abs(tempList[i].differential))) + 1);
         var elo = points + ((5*Math.pow(10,n) + tempList[i].differential)/(10*Math.pow(10,n)));
         tempList[i].elo = elo;
         //Math.round(tempList[i].differential);
-        if(tempList[i].differential === .00001){
+        if(tempList[i].differential === 0.00001){
           tempList[i].differential = 0;
         }
         //tempList[i].points = points;
@@ -361,11 +368,10 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       var addTeamTwo = false;
       var matchLength = $scope.tournament.matches.length - 1;
 
-      $scope.calcElo();
-
 
       // console.log('new team stuff!');
       var listOfPlayers = angular.copy(Players.getPlayerList());
+      console.log(listOfPlayers);
       var sortedList4;
 
       $scope.bubbleSort(listOfPlayers);

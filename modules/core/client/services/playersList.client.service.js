@@ -7,6 +7,7 @@ angular.module('core').service('Players', [
     var teamA = [];
     var teamB = [];
     var sortedPlayers = [];
+    var resultsPlayers = [];
 
     this.helloWorld = function (playername){
       return (console.log(playername));
@@ -56,7 +57,7 @@ angular.module('core').service('Players', [
       var pIndex;
       for(var i = 0; i < playersPld.length; i++){
         pIndex = this.getPlayerIndex(playersPld[i].name);
-        if(typeof pIndex != 'undefined'){
+        if(typeof pIndex !== 'undefined'){
           arr.push(this.getPlayerIndex(playersPld[i].name));
         }
 
@@ -65,6 +66,14 @@ angular.module('core').service('Players', [
       console.log(arr);
       return arr;
 
+    };
+
+    this.setResultsPlayerList = function(a){
+      resultsPlayers = a;
+    };
+
+    this.getResultsPlayerList = function(){
+      return resultsPlayers;
     };
 
 

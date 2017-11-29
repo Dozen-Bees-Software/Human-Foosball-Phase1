@@ -10,15 +10,15 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
     $scope.forceRefresh = function() {
       document.getElementById('homePageContainer').style.visibility = 'hidden';
-      if( window.sessionStorage )
+      if(window.sessionStorage)
       {
-        if( sessionStorage.getItem('secondLoad') )
+        if(sessionStorage.getItem('secondLoad'))
         {
           sessionStorage.removeItem('secondLoad');
           window.location.reload();
         }
         else{
-          sessionStorage['secondLoad'] = true;
+          sessionStorage.secondLoad = true;
           document.getElementById('homePageContainer').style.visibility = 'visible';
         }
       }
@@ -105,7 +105,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
     $scope.deleteTournament = function(index) {
       tournyService.deleteTournament(index);
-    }
+    };
 
     $scope.updateTournaments = function(){
       $scope.tournaments = tournyService.getTournaments();
