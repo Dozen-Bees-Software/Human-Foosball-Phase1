@@ -606,26 +606,27 @@ h3{
   border-color: #222A33;
 }
 
-.results_leaderBoardTable > tbody > tr:nth-of-type(even){
-  background-color: #FFFFFF;
-}
-
 .results_leaderBoardTable tr{
   height: 100px;
+}
+
+.results_leaderBoardTable tr:nth-of-type(2n){
+  background-color: #869BAD;
 }
 
 .results_Wrapper{
   width: 80%;
   font-size: 2em;
-  margin-left: 80px;
+  margin-left: 40px;
+  padding:40px;
+  background-color: #222A33;
 }
 
 .medals{
-  background-color: #869BAD;
   width: 40px;
   float: left;
   margin-left: 40px;
-  padding-top: 40px;
+  padding-top: 80px;
   text-align: center;
 }
 
@@ -920,6 +921,21 @@ input{
   .tableLabel{
     margin-left: 5%;
   }
+
+  .results_leaderboardTable{
+    min-width: 200px;
+    font-size: 0.8em;
+  }
+
+    .medals{
+      padding-top: 70px;
+    }
+
+    .medals img{
+      width: 30px;
+      height: 30px;
+      padding: 3px;
+    }
 }
 
 @media (max-width: 850px){
@@ -938,6 +954,22 @@ input{
   .tournamentButton{
     font-size: 0.8em;
   }
+
+  .results_leaderboardTable{
+    min-width: 100px;
+    font-size: 0.5em;
+  }
+
+    .medals{
+      padding-top: 55px;
+    }
+
+    .medals img{
+      width: 22px;
+      height: 22px;
+      padding: 2px;
+    }
+
 }
 
 /*MOBILE*/
@@ -1080,5 +1112,32 @@ input{
   .resultsButton{
     margin: 0;
     height: 100%;
+  }
+
+  /*Results Page*/
+  .results_Wrapper{
+    width: 100vw;
+    margin:0;
+    padding: 0;
+    height: calc(100vh - 6em);
+  }
+
+  .results_leaderBoardTable{
+    font-size: 2em;
+    overflow: scroll;
+    height: calc(100vh - 8em);
+  }
+
+  .medals{
+    display: none;
+  }
+
+
+  .saveTourney{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 2em;
   }
 }
