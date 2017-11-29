@@ -1,3 +1,4 @@
+
 <section ng-app='core' ng-controller="BracketsController" ng-init="initialize(); updateLeaderboard()">
   <div class="fooz-body">
     <button class="show-hide-leaderboard" ng-click="toggleLeaderboard()">
@@ -45,6 +46,7 @@
       </table>
     </div>
 
+
     <div ng-class="tournWrap" class="tournamentWrapper">
     <h2 align="center" class="tableLabel">{{ tournament.name }}</h2>
       <table class="roundsTable">
@@ -73,17 +75,20 @@
                     </tr>
                   </table>
                 </td>
+
               </tr>
             </table>
           </td>
         </tr>
       </table>
     </div>
+
       <div class="tournamentButtons">
         <button ui-sref='Results'  ng-class="leadWrap" class="resultsButton">RESULTS</button>
         <div ng-class="tournWrap">
           <button class="tournamentButton" ng-click="splitTeams()">GENERATE NEXT ROUND</button>
           <button class="tournamentButton" ng-click='calcAllMatches()'> SUBMIT SCORES</button>
+
         </div>
     </div>
   </div>

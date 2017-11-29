@@ -58,10 +58,13 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       // console.log('Made it to split teams');
       //console.log()
 
+
       $scope.disabled = true;
       // console.log('generate button should disappear');
 
+
       if($scope.tournament.matches.length === 0){
+
 
         $scope.teamOne = $scope.playerList.slice(0, $scope.teamSize);
         $scope.teamTwo = $scope.playerList.slice($scope.teamSize, 2*$scope.teamSize);
@@ -82,6 +85,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
 
 
 
+
         $scope.tournament.matches.push($scope.match);
 
         tournyService.updateTournaments($scope.tournament);
@@ -99,6 +103,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
         // }
       //$scope.disabled = true;
       //console.log('generate button should disappear');
+
       }
       else {
         var temp = $scope.playerList;
@@ -293,6 +298,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
           // teamTwo[i].gamesPlayed += 1;
 
           //console.log($scope.teamOne);
+
           //$scope.teamOne.elo[i] += $scope.tournamentInfo[2];
 
 
@@ -300,7 +306,6 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       else if(teamTwoPoints > teamOnePoints){
         // console.log('team B won');
         Players.updatePlayerStatsTeamBWin(indexes, teamOnePoints, teamTwoPoints, $scope.tournament.winPoints, $scope.tournament.tiePoints);
-
       }
       else {
         // console.log('there was a tie');
@@ -325,6 +330,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
 
 
       //console.log(Players.getPlayerList());
+
 
 
     };
@@ -354,7 +360,6 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
         }
         //tempList[i].points = points;
         // console.log(elo);
-
 
       }
     };

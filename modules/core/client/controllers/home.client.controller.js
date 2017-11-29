@@ -28,6 +28,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
       $scope.info = 'I in Team is where every player is out for themselves and ranked individually. Teams are shuffled and balanced to provide all players the fairest game possible.';
 
+
     };
 
     $scope.tourneySummary = false;
@@ -39,8 +40,6 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
     $scope.playersPerTeam= 0;
     $scope.numPoints= 0;
     $scope.tie= 0;
-
-
 
     $scope.saveTourney = function(){
       // $scope.tourney.name = $scope.tournamentName;
@@ -56,7 +55,6 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
     };
 
 
-
     $scope.saveTourneyInfo = function(){
       $scope.tourneyInfos.push($scope.tournamentName);
       $scope.tourneyInfos.push($scope.playersPerTeam);
@@ -67,7 +65,6 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
       // console.log('This is the rounds being pushed %i', rounds);
       // console.log('tourney info was saved');
       tournyService.addTournamentInfo($scope.tourneyInfos);
-
 
     };
 
