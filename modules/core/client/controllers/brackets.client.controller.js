@@ -34,10 +34,12 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
     // console.log($scope.tournamentInfo[4]);
 
     //console.log($scope.playerList[0]);
+
     // $scope.tournamentInfo = tournyService.getTournamentInfo();
     // $scope.tournamentInfo[4] = 0;
     // $scope.teamSize = $scope.tournamentInfo[1];
     // console.log('THis is rounds on brackets page %i', $scope.tournamentInfo[4]);
+
 
     //var round = $scope.tournamentInfo[4];
 
@@ -270,6 +272,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
 
 
 
+
       ///console.log($scope.teamOne);
       //console.log($scope.teamTwo);
       // console.log('This is teama and taeamb scores');
@@ -299,10 +302,12 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
 
           //console.log($scope.teamOne);
 
+
           //$scope.teamOne.elo[i] += $scope.tournamentInfo[2];
 
 
       }
+
       else if(teamTwoPoints > teamOnePoints){
         // console.log('team B won');
         Players.updatePlayerStatsTeamBWin(indexes, teamOnePoints, teamTwoPoints, $scope.tournament.winPoints, $scope.tournament.tiePoints);
@@ -311,6 +316,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
         // console.log('there was a tie');
 
         Players.updatePlayerStatsTie(indexes, $scope.tournament.winPoints, $scope.tournament.tiePoints);
+
       }
 
 
