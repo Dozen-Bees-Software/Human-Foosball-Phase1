@@ -1,70 +1,100 @@
-<section ng-controller="BracketsController">
 
-        <h1 align="center">{{tournamentInfo[0]}}</h1>
-
-        <button ng-click="splitTeams()">Generate Match</button>
-
-        <h2>Team A</h2>
-        <div class="tableWrapper">
-                <table class="table table-striped table-hover">
-                  <tr>
-                    <th>Player Name</th>
-                    <th>Points</th>
-                    <th>Wins</th>
-                    <th>Losses</th>
-                    <th>Goal differential </th>
-                    <th>Games Played </th>
-
-                  </tr>
-                  <tr ng-repeat="player in teamOne">
-                    <td>{{player.name}}</td>
-                    <td>{{player.points}}</td>
-                    <td>{{player.wins}}</td>
-                    <td>{{player.losses}}</td>
-                    <td>{{player.differential}}</td>
-                    <td>{{player.gamesPlayed}}</td>
-                  </tr>
-                </table>
-        </div>
-        <h2>Team B</h2>
-        <div class="tableWrapper">
-            <table class="table table-striped table-hover">
-              <tr>
-                <th>Player Name</th>
-                <th>Points</th>
-                <th>Wins</th>
-                <th>Losses</th>
-                <th>Goal differential </th>
-                <th>Games Played </th>
-              </tr>
-              <tr ng-repeat="players in teamTwo">
-                <td>{{players.name}}</td>
-                <td>{{players.points}}</td>
-                <td>{{players.wins}}</td>
-                <td>{{players.losses}}</td>
-                <td>{{players.differential}}</td>
-                <td>{{players.gamesPlayed}}</td>
-              </tr>
-            </table>
+<section ng-app='core' ng-controller="BracketsController" ng-init="initialize(); updateLeaderboard()">
+  <div class="fooz-body">
+    <button class="show-hide-leaderboard" ng-click="toggleLeaderboard()">
+      <img class="navbar-item" src="modules/core/client/img/buttons/Hamburger.svg">
+      <span class="navbar-item-tooltip">Leaderboard
+      </span>
+    </button>
+    <button class="addToLeaderboard" ng-click="showAddPlayer()">
+      <img class="navbar-item" src="modules/core/client/img/buttons/AddPlayer.svg">
+      <span class="navbar-item-tooltip">Add a player
+      </span>
+    </button>
+    <div ng-class="playerPopup" class="addPlayerPopup" ng-controller="PlayerListController">
+      <input name="name"  type="text" ng-model="newPlayer.name" class="player-control-bracket" placeholder="enter new player name..." required align = "top" autofocus>
+      <button ng-click="addPlayer(); storePlayers(); updateLeaderboard()" class = "AddPlayerButtonBracket" align = "top"> ADD </button>
     </div>
 
-        <div ng-app='core' ng-controller='BracketsController'>
-          <button ng-click='openResults()'>Finish Match</button>
-          <br>
-          <br>
-          <p  ng-show='show'>
-            <input type=number ng-value=0 ng-model="teamAScore">Score of Team A<br>
-            <input type=number ng-value=0 ng-model="teamBScore">Score of Team B<br><br>
+    <div ng-class="leadWrap" class="leaderboardWrapper">
+      <div class="labelWrapper">
+        <h2 class="tableLabel">LEADERBOARD</h2>
+      </div>
+      <table class="table-striped leaderboardTable">
+        <tr>
+          <th>#</th>
+          <th>Player</th>
+          <th>Points</th>
+          <th>Diff</th>
+          <th>Wins</th>
+          <th>Losses</th>
+          <th>Games</th>
+          <th></th>
+        </tr>
+        <tr ng-repeat="player in playerList track by $index">
+          <td>{{$index + 1}}</td>
+          <td>{{player.name}}</td>
+          <td>{{player.points}}</td>
+          <td>{{player.differential}}</td>
+          <td>{{player.wins}}</td>
+          <td>{{player.losses}}</td>
+          <td>{{player.gamesPlayed}}</td>
+          <td>
+            <button ng-controller="PlayerListController" ng-click = "deletePlayer($index)"  name = "removePlayers" class = "removePlayers">REMOVE</button>
+          </td>
+        </tr>
+      </table>
+    </div>
 
 
-            <button ng-click='results()'> Submit Scores </button>
+    <div ng-class="tournWrap" class="tournamentWrapper">
+    <h2 align="center" class="tableLabel">{{ tournament.name }}</h2>
+      <table class="roundsTable">
+        <tr ng-repeat="match in tournament.matches track by $index">
+          <td class="round_number">{{$index + 1}}</td>
+          <td class="round">
+            <table class="alt_color">
+              <tr>
+                <td>
+                  <table class="table_striped tiny_table">
+                    <tr ng-repeat="player in tournament.matches[$index].teamOne track by $index">
+                      <td>{{player.name}}</td>
+                    </tr>
+                  </table>
+                </td>
+                <td class="score_input">
+                  <p>enter score</p>
+                  <input type=number ng-value='0' ng-model="tournament.matches[$index].teamOnePoints">
+                  <span class="colon">:</span>
+                  <input type=number ng-value='0' ng-model="tournament.matches[$index].teamTwoPoints">
+                </td>
+                <td>
+                  <table class="table_striped tiny_table">
+                    <tr ng-repeat="player in tournament.matches[$index].teamTwo track by $index">
+                      <td>{{player.name}}</td>
+                    </tr>
+                  </table>
+                </td>
 
-          </p>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+      <div class="tournamentButtons">
+        <button ui-sref='Results'  ng-class="leadWrap" class="resultsButton">RESULTS</button>
+        <div ng-class="tournWrap">
+          <button class="tournamentButton" ng-click="splitTeams()">GENERATE NEXT ROUND</button>
+          <button class="tournamentButton" ng-click='calcAllMatches()'> SUBMIT SCORES</button>
 
         </div>
+    </div>
+  </div>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+  <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-        <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
 </section>
