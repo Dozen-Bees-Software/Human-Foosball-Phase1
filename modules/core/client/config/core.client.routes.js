@@ -58,6 +58,11 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       templateUrl:'modules/core/client/views/brackets.clilent.html'
     })
 
+    .state('Results', {
+      url:'/results',
+      templateUrl:'modules/core/client/views/results.client.html'
+    })
+
     .state('forbidden', {
       url: '/forbidden',
       templateUrl: 'modules/core/client/views/403.client.view.html',
