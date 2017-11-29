@@ -32,8 +32,22 @@ angular.module('core').controller('ResultsController', ['$scope', 'Authenticatio
         Players.setPlayerList($scope.playerList);
       }
       $scope.teamSize = $scope.tournament.PPT;
+
+      $scope.results();
       // console.log(Players.getPlayerList());
       // window.alert($scope.tournament.matches.length);
+    };
+
+    $scope.results = function(){
+      console.log('Made it inside results');
+      var players = angular.copy($scope.playerList);
+      console.log(Players.getPlayerList());
+      $scope.bubbleSort2(players);
+      var sortedPlayas = Players.getSortedPlayerList();
+      console.log(sortedPlayas);
+      Players.setResultsPlayerList(sortedPlayas);
+
+      $scope.playerList = Players.getResultsPlayerList();
     };
 
     $scope.bubbleSort2 = function(a){
@@ -42,18 +56,11 @@ angular.module('core').controller('ResultsController', ['$scope', 'Authenticatio
       do {
         swapped2 = false;
         for (var k=0; k < a.length-1; k++) {
-          if (a[k].points > a[k+1].points) {
+          if (a[k].elo < a[k+1].elo) {
             var temp2 = a[k];
             a[k] = a[k+1];
             a[k+1] = temp2;
             swapped2 = true;
-          }
-          else if(a[k].points === a[k+1].points){
-            if(a[k].elo > a[k+1].elo){
-              var temp3 = a[k];
-              a[k+1] = temp3;
-              swapped2 = true;
-            }
           }
         }
       } while (swapped2);
@@ -61,7 +68,7 @@ angular.module('core').controller('ResultsController', ['$scope', 'Authenticatio
 
       //console.log(a);
       Players.setSortedPlayerList(a);
-      $scope.playerList = Players.getSortedPlayerList();
+      //$scope.playerList = Players.getSortedPlayerList();
     };
 
 
