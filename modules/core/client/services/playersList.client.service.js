@@ -8,6 +8,8 @@ angular.module('core').service('Players', [
     var teamB = [];
     var sortedPlayers = [];
     var resultsPlayers = [];
+    var needsToPlay = [];
+    var needsToPlayIndexes = [];
 
     this.helloWorld = function (playername){
       return (console.log(playername));
@@ -36,9 +38,13 @@ angular.module('core').service('Players', [
     };
 
     this.deletePlayers = function(index){
+      playerList.splice(index,1);
+    };
+
+    this.deletePlayersSpecific = function(index, arr){
       //console.log(this.getPlayer(index));
-      playerList.splice(index, 1);
-      console.log(playerList.length);
+      arr.splice(index, 1);
+      //console.log(playerList.length);
 
     };
 
@@ -110,6 +116,39 @@ angular.module('core').service('Players', [
         playerList[playerIndexes[i]].gamesPlayed += 1;
       }
     };
+
+    this.findPlayersWithNoGames = function(arr, rounds){
+      var thatLength = arr.length;
+
+      for(var i = 0; i < thatLength; i++){
+
+        if(arr[i].gamesPlayed === 0 || arr[i].gamesPlayed < (rounds+1)-3){
+          needsToPlay.push(arr[i]);
+          needsToPlayIndexes.push(i);
+
+        }
+      }
+      console.log('THEY NEED TO PLAY');
+      console.log(angular.copy(needsToPlay));
+
+
+      for(var j = 0; j < needsToPlayIndexes.length; j++){
+
+        this.deletePlayersSpecific(0, arr);
+      }
+
+      needsToPlayIndexes = [];
+      console.log('UPDATED LIST');
+      console.log(arr);
+
+
+    };
+
+    this.getNeedsToPlay = function(){
+      return needsToPlay;
+    };
+
+
 
     this.updatePlayerStatsTeamBWin = function(playerIndexes, teamAPoints, teamBPoints, winPoints, tiePoints){
       var teamOnePoints = teamAPoints;
