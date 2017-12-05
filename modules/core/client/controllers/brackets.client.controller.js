@@ -618,7 +618,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       do {
         swapped2 = false;
         for (var k=0; k < a.length-1; k++) {
-          if (a[k].gamesPlayed > a[k+1].gamesPlayed) {
+          if (a[k].elo > a[k+1].elo) {
             var temp2 = a[k];
             a[k] = a[k+1];
             a[k+1] = temp2;
