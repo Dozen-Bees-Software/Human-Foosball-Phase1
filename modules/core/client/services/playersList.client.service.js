@@ -10,6 +10,7 @@ angular.module('core').service('Players', [
     var resultsPlayers = [];
     var needsToPlay = [];
     var needsToPlayIndexes = [];
+    var leaderBoardList = [];
 
     this.helloWorld = function (playername){
       return (console.log(playername));
@@ -31,6 +32,10 @@ angular.module('core').service('Players', [
       playerList.push(playername);
       //console.log(playerList[0]);
 
+    };
+
+    this.setToSortPList = function(a){
+      leaderBoardList = a;
     };
 
     this.setPlayerList = function(pList){
@@ -119,10 +124,11 @@ angular.module('core').service('Players', [
 
     this.findPlayersWithNoGames = function(arr, rounds){
       var thatLength = arr.length;
+      var maxGamesPlayed = arr[thatLength-1].gamesPlayed;
 
       for(var i = 0; i < thatLength; i++){
 
-        if(arr[i].gamesPlayed === 0 || arr[i].gamesPlayed < (rounds+1)-3){
+        if(arr[i].gamesPlayed === 0 || arr[i].gamesPlayed < maxGamesPlayed  || arr[i].gamesPlayed < (rounds+1) - 2){
           needsToPlay.push(arr[i]);
           needsToPlayIndexes.push(i);
 
@@ -146,6 +152,14 @@ angular.module('core').service('Players', [
 
     this.getNeedsToPlay = function(){
       return needsToPlay;
+    };
+
+    this.setSortedLeaderBoardPlayerList = function(arr){
+      leaderBoardList = arr;
+    };
+
+    this.getSortedLeaderBoardList = function(){
+      return leaderBoardList;
     };
 
 
