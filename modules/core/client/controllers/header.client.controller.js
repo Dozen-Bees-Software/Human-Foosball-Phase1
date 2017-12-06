@@ -16,6 +16,7 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
     };
 
     $scope.prevPopup = "popupHide";
+    //Toggle previous tournaments menu options. 
     $scope.showPrevTourn = function(){
       if($scope.prevPopup === "popupHide")
         $scope.prevPopup = "popupShow";

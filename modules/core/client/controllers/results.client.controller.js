@@ -6,22 +6,7 @@ angular.module('core').controller('ResultsController', ['$scope', 'Authenticatio
     // This provides Authentication context.
     $scope.authentication = Authentication;
 
-    // $scope.initialize = function(){
-    //   tournyService.initTournaments();
-    //   tournyService.restoreCurrentTournament();
-    //   $scope.playerList = Players.getPlayerList();
-    //   $scope.tournament = tournyService.getCurrentTournament();
-    //   if($scope.playerList.length === 0){
-    //     $scope.playerList = $scope.tournament.players;
-    //     Players.setPlayerList($scope.playerList);
-    //   }
-    //   $scope.teamSize = $scope.tournament.PPT;
-    //   console.log(Players.getPlayerList());
-    //   window.alert($scope.tournament.matches.length);
-    // };
-
-    //initialize playerlist, tournamentInfo, and team arrays
-
+    //Initialization function used to initialize data on page load. Referencs TournyService and Playerlist service. These services hold the current tournaments information and players respectively.
     $scope.initialize = function(){
       tournyService.initTournaments();
       tournyService.restoreCurrentTournament();
@@ -34,22 +19,19 @@ angular.module('core').controller('ResultsController', ['$scope', 'Authenticatio
       $scope.teamSize = $scope.tournament.PPT;
 
       $scope.results();
-      // console.log(Players.getPlayerList());
-      // window.alert($scope.tournament.matches.length);
     };
 
+    //Results function is reponsible for retreiving, setting, and sorting the playerlist. This sorts the players in to winning order and displays their names. 
     $scope.results = function(){
-      console.log('Made it inside results');
       var players = angular.copy($scope.playerList);
-      console.log(Players.getPlayerList());
       $scope.bubbleSort2(players);
       var sortedPlayas = Players.getSortedPlayerList();
-      console.log(sortedPlayas);
       Players.setResultsPlayerList(sortedPlayas);
 
       $scope.playerList = Players.getResultsPlayerList();
     };
 
+    //BubbleSort2 is a copy from the algorithm used to generate rounds. It sorts players by overall score. 
     $scope.bubbleSort2 = function(a){
 
       var swapped2;

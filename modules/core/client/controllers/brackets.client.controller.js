@@ -26,39 +26,6 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       // window.alert($scope.tournament.matches.length);
     };
 
-    //console.log($scope.playerList[0]);
-
-
-    // $scope.tournamentInfo[4] = 0;
-
-    // console.log('THis is rounds on brackets page %i', $scope.tournamentInfo[4]);
-
-    //var round = $scope.tournamentInfo[4];
-
-    // $scope.teamSize = $scope.tournamentInfo[1];
-    // console.log($scope.tournamentInfo[4]);
-
-    //console.log($scope.playerList[0]);
-
-    // $scope.tournamentInfo = tournyService.getTournamentInfo();
-    // $scope.tournamentInfo[4] = 0;
-    // $scope.teamSize = $scope.tournamentInfo[1];
-    // console.log('THis is rounds on brackets page %i', $scope.tournamentInfo[4]);
-
-
-    //var round = $scope.tournamentInfo[4];
-
-    // $scope.teamSize = $scope.tournamentInfo[1];
-    // console.log($scope.tournamentInfo[4]);
-
-
-    //var round = $scope.tournamentInfo[4];
-
-    //$scope.teamOne = [];
-    //$scope.teamTwo = [];
-
-  //$scope.teamTwo = $scope.playerList.splice($scope.teamSize, (2*$scope.teamSize));
-  //console.log($scope.teamTwo);
 
     //console.log(round);
     $scope.splitTeams = function (){
