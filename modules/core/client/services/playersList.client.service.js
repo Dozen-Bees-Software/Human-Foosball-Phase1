@@ -1,5 +1,6 @@
 'use strict';
 
+//this module is reponsible for holding the current playerlist. It retrieves its current playerlist from tourneyservice over refreshes. 
 angular.module('core').service('Players', [
   function() {
 
@@ -12,14 +13,17 @@ angular.module('core').service('Players', [
     var needsToPlayIndexes = [];
     var leaderBoardList = [];
 
+    //testing function ignore.
     this.helloWorld = function (playername){
       return (console.log(playername));
     };
 
+    //Returns current playerlist.
     this.players = function() {
       return playerList;
     };
 
+    //Pushes a new player into the playerlist array. 
     this.addPlayers = function(playername){
       //console.log(playername);
       /*self.newPlayer = playername;
@@ -34,18 +38,22 @@ angular.module('core').service('Players', [
 
     };
 
+    //Sets leaderboard list for display (it prevents the original array from being sorted unnecessarily)
     this.setToSortPList = function(a){
       leaderBoardList = a;
     };
 
+    //Sets the playerlist to the playerlist passed in. 
     this.setPlayerList = function(pList){
       playerList = pList;
     };
 
+    //Permenently removes a player. 
     this.deletePlayers = function(index){
       playerList.splice(index,1);
     };
 
+    //Permenently removes a player. 
     this.deletePlayersSpecific = function(index, arr){
       //console.log(this.getPlayer(index));
       arr.splice(index, 1);
@@ -53,6 +61,7 @@ angular.module('core').service('Players', [
 
     };
 
+    //Returns the index of the player's name passed in. If no player is found returns null;
     this.getPlayerIndex = function(name){
       var index;
       for(var i = 0; i < playerList.length;i++){
@@ -62,6 +71,7 @@ angular.module('core').service('Players', [
       }
       return index;
     };
+
 
     this.removeUndefined = function(a){
       var dummy = [];
@@ -77,6 +87,8 @@ angular.module('core').service('Players', [
       a = dummy;
     };
 
+
+    //checks for a player, if the player is not found, adds the player to the playerlist. 
     this.playerIndexArray = function(playersPld){
       var arr = [];
       var pIndex;
@@ -93,15 +105,17 @@ angular.module('core').service('Players', [
 
     };
 
+    //Sets the result player list. Sorted to show rank. 
     this.setResultsPlayerList = function(a){
       resultsPlayers = a;
     };
 
+    //returns result playerlist. 
     this.getResultsPlayerList = function(){
       return resultsPlayers;
     };
 
-
+    //Updates player stats to current stats on a team A win. (The team on the left of the match)
     this.updatePlayerStatsTeamAWin = function(playerIndexes, teamAPoints, teamBPoints, winPoints, tiePoints){
       var teamOnePoints = teamAPoints;
       var teamTwoPoints = teamBPoints;
@@ -128,6 +142,7 @@ angular.module('core').service('Players', [
       }
     };
 
+    //Responsible for updating the players in a tie. 
     this.updatePlayerStatsTie = function(playerIndexes, winPoints, tiePoints){
       for(var i = 0; i < playerIndexes.length; i++){
         playerList[playerIndexes[i]].Draws += 1;
@@ -136,6 +151,7 @@ angular.module('core').service('Players', [
       }
     };
 
+    //Responsible for finding players with no games. This is used in the algorithm to ensure new players play immediately. Puts them in the needs to play array. 
     this.findPlayersWithNoGames = function(arr, rounds){
       var thatLength = arr.length;
       var maxGamesPlayed = arr[thatLength-1].gamesPlayed;
@@ -166,20 +182,23 @@ angular.module('core').service('Players', [
 
     };
 
+    //Returns the players who currently need to play. 
     this.getNeedsToPlay = function(){
       return needsToPlay;
     };
 
+    //Sets the sorted leaderboard playerlist. 
     this.setSortedLeaderBoardPlayerList = function(arr){
       leaderBoardList = arr;
     };
 
+    //Returns the sorted leaderboard playerlist. 
     this.getSortedLeaderBoardList = function(){
       return leaderBoardList;
     };
 
 
-
+    //Updates the players win team B wins. (The team to the right on the match display)
     this.updatePlayerStatsTeamBWin = function(playerIndexes, teamAPoints, teamBPoints, winPoints, tiePoints){
       var teamOnePoints = teamAPoints;
       var teamTwoPoints = teamBPoints;
@@ -208,31 +227,38 @@ angular.module('core').service('Players', [
       }
     };
 
+    //returns playerlist
     this.getPlayerList = function(){
       return playerList;
     };
 
+    //Sets the teams for the current match (used in algorithm)
     this.setTeams = function(team1, team2){
       teamA = team1;
       teamB = team2;
     };
 
+    //Returns Team A
     this.getTeamOne = function(){
       return teamA;
     };
 
+    //Returns Team B
     this.getTeamTwo = function(){
       return teamB;
     };
 
+    //Sets the sorted playerlist.
     this.setSortedPlayerList = function(sorted){
       sortedPlayers = sorted;
     };
 
+    //Returns the sorted playerlist.
     this.getSortedPlayerList = function(){
       return sortedPlayers;
     };
 
+    //Completely wipes players stats. For whatever reason values go NaN if we don't run this on new players. 
     this.wipePlayerListStats = function(plist){
       for(var i = 0; i < plist.length; i++)
       {
@@ -247,7 +273,7 @@ angular.module('core').service('Players', [
     };
 
 
-
+    //Updates all players stats in the current player list. 
     this.updatePlayerStats = function(team1, team2){
       for(var i = 0; i < team1.length; i++){
         for(var j = 0; j < playerList.length; j++){

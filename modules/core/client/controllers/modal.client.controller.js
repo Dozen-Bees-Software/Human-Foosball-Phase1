@@ -1,5 +1,5 @@
 /*'use strict';
-
+//This file is unused and shold be ignored.
 var playerModal = angular.module('core').controller('modalController', function ($scope) {
   $scope.showModal = false;
   $scope.open = function(){

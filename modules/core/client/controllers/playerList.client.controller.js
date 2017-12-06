@@ -9,7 +9,7 @@ angular.module('core').controller('PlayerListController', ['$scope', 'Authentica
     $scope.players = Players.getPlayerList();
     $scope.playerCounter = 0;
 
-
+    //Adds player to the current playerlist. References the player service. 
     $scope.addPlayer = function() {
       // console.log(Players.getPlayerList());
       //Players.helloWorld($scope.newPlayer);
@@ -27,10 +27,12 @@ angular.module('core').controller('PlayerListController', ['$scope', 'Authentica
       $scope.newPlayer = {};
     };
 
+    //Uses tourny service to store the current players. (Its easier to keep players with the tourney, so long term storage, players are located in the tourney storage).
     $scope.storePlayers = function(){
       tournyService.setPlayers(Players.getPlayerList());
     };
 
+    //Deletes players from the game permanently. 
     $scope.deletePlayer = function(index) {
       Players.deletePlayers(index);
       //console.log();
