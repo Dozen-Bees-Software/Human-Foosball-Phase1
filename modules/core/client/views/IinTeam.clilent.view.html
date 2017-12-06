@@ -31,7 +31,7 @@
           <th>Games</th>
           <th></th>
         </tr>
-        <tr ng-repeat="player in playerList track by $index">
+        <tr ng-repeat="player in sortedPlayerList track by $index">
           <td>{{$index + 1}}</td>
           <td>{{player.name}}</td>
           <td>{{player.points}}</td>

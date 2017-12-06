@@ -10,16 +10,18 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       tournyService.initTournaments();
       tournyService.restoreCurrentTournament();
       $scope.playerList = Players.getPlayerList();
-      //$scope.sortedPlayerList = angular.copy(Players.getPlayerList());
+      $scope.sortedPlayerList = angular.copy(Players.getPlayerList());
       $scope.tournament = tournyService.getCurrentTournament();
       //console.log($scope.tournament.players);
       if($scope.playerList.length === 0){
         $scope.playerList = $scope.tournament.players;
-        //$scope.sortedPlayerList = $scope.tournament.players;
+        $scope.sortedPlayerList = $scope.tournament.players;
         //console.log($scope.sortedPlayerList);
 
         Players.setPlayerList($scope.playerList);
-        //Players.setToSortPList($scope.sortedPlayerList);
+        Players.setToSortPList($scope.sortedPlayerList);
+
+        console.log('The initsss');
       }
       $scope.teamSize = $scope.tournament.PPT;
       // console.log(Players.getPlayerList());
@@ -185,6 +187,8 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
 
     $scope.calcAllMatches = function(){
 
+      var playersT = [];
+
       $scope.wipeStats();
       var matchLength = $scope.tournament.matches.length - 1;
 
@@ -210,7 +214,16 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
 
       tournyService.updateTournaments($scope.tournament);
 
+      playersT = angular.copy($scope.tournament.players);
+
+      $scope.sortedLeaderBoard(playersT);
+
     };
+
+    $scope.sortedLeaderBoard = function(a){
+      $scope.bubbleSort4(a);
+      $scope.sortedPlayerList = Players.getSortedLeaderBoardList();
+    }
 
     $scope.results = function(matches){
 
@@ -395,13 +408,17 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       $scope.teamTwo = [];
       var needToPlay = Players.getNeedsToPlay();
       var needToPlayLength = angular.copy(needToPlay.length/2);
+      var needToPlayLength2 = angular.copy(needToPlay.length);
+      var incrementer = 0;
+      var incrementer2 = 0;
 
       if(needToPlay.length !== 0){
 
-        while(needToPlay.length !== 0){
+        while(needToPlay.length !== 0 || incrementer != $scope.tournament.PPT*2){
           //console.log(angular.copy(needToPlay));
+          incrementer += 1;
           if(needToPlay.length > 1){
-            if(needToPlayLength === $scope.tournament.PPT){
+            if(needToPlayLength >= $scope.tournament.PPT){
               console.log('WE ARE HRERER FIXXXX');
               player1 = needToPlay.shift();
               player2 = needToPlay.pop();
@@ -489,57 +506,105 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
             $scope.teamOne.push(player1);
           }
 
-        }
-
-        addTeamOne = true;
-        addTeamTwo = false;
-
-        while(sortedList4.length !== 0){
-
-          player1 = sortedList4.shift();
-          player2 = sortedList4.pop();
-
-
-
-          if($scope.teamOne.length !== $scope.tournament.PPT && addTeamOne === true){
-            if($scope.teamOne.length+1 === $scope.tournament.PPT){
-              console.log('made it to our custom team one ');
-              $scope.teamTwo.push(player1);
-              $scope.teamOne.push(player2);
-            }
-            else{
-              console.log('adding both players to team one');
-              $scope.teamOne.push(player1);
-              $scope.teamOne.push(player2);
-            }
-
-            addTeamOne = false;
-          }
-
-          if($scope.teamTwo.length !== $scope.tournament.PPT && addTeamTwo === true){
-            if($scope.teamTwo.length + 1 === $scope.tournament.PPT){
-              console.log('made it to our custom team two condition');
-              //$scope.teamOne.push(player1);
-              $scope.teamTwo.push(player2);
-            }
-            else{
-              console.log('adding both players to team two');
-              $scope.teamTwo.push(player1);
-              $scope.teamTwo.push(player2);
-            }
-
-            addTeamTwo = false;
-            addTeamOne = true;
-          }
-
-          if(addTeamOne === false){
-            addTeamTwo = true;
-          }
 
         }
+
+        console.log('team one before undefined need to play');
+        console.log(angular.copy($scope.teamOne));
+
+        Players.removeUndefined($scope.teamOne);
+        if($scope.teamOne.length > $scope.tournament.PPT){
+          console.log('team one had more players');
+          while($scope.teamOne.length > $scope.tournament.PPT){
+            $scope.teamOne.pop();
+          }
+        }
+
+        console.log('team one after need to play');
+        console.log(angular.copy($scope.teamOne));
+
+        console.log('team two after need to play');
+        console.log(angular.copy($scope.teamTwo));
+
+        if(needToPlayLength2 >= $scope.tournament.PPT*2)
+        {
+          console.log('We gucci');
+        }
+        else{
+
+          addTeamOne = true;
+          addTeamTwo = false;
+          var staticTeamOneLength = angular.copy($scope.teamOne.length);
+          var staticTeamTwoLength = angular.copy($scope.teamTwo.length);
+          var dummyTeamOne = [];
+          var dummyTeamTwo = [];
+          console.log('team oneee');
+          console.log(angular.copy($scope.teamOne));
+
+          for(var k = 0; k < staticTeamOneLength; k++){
+            if(typeof $scope.teamOne[k] !== 'undefined'){
+              dummyTeamOne.push($scope.teamOne[k]);
+            }
+          }
+          console.log('dummy team oneee');
+          console.log(angular.copy(dummyTeamOne));
+
+          if(dummyTeamOne.length > 0){
+            $scope.teamOne = dummyTeamOne;
+          }
+
+          console.log('opposite of gucci');
+          while(sortedList4.length !== 0){
+
+            player1 = sortedList4.shift();
+            player2 = sortedList4.pop();
+
+            console.log($scope.teamOne.length);
+
+            if($scope.teamOne.length < $scope.tournament.PPT && addTeamOne === true){
+              if($scope.teamOne.length+1 === $scope.tournament.PPT){
+                console.log('made it to our custom team one ');
+                $scope.teamTwo.push(player1);
+                $scope.teamOne.push(player2);
+              }
+              else{
+                console.log('adding both players to team one');
+                $scope.teamOne.push(player1);
+                $scope.teamOne.push(player2);
+              }
+
+              addTeamOne = false;
+            }
+
+            if($scope.teamTwo.length < $scope.tournament.PPT && addTeamTwo === true){
+              if($scope.teamTwo.length + 1 === $scope.tournament.PPT){
+                console.log('made it to our custom team two condition');
+                //$scope.teamOne.push(player1);
+                $scope.teamTwo.push(player2);
+              }
+              else{
+                console.log('adding both players to team two');
+                $scope.teamTwo.push(player1);
+                $scope.teamTwo.push(player2);
+              }
+
+              addTeamTwo = false;
+              addTeamOne = true;
+            }
+
+            if(addTeamOne === false){
+              addTeamTwo = true;
+            }
+
+          }
+        }
+
+
 
         if($scope.teamOne.length === $scope.tournament.PPT || $scope.teamTwo.length === $scope.tournament.PPT){
-          if($scope.teamTwo.length !== $scope.tournament.PPT){
+          console.log(angular.copy($scope.teamOne));
+          if($scope.teamTwo.length < $scope.tournament.PPT){
+            console.log('team two not full');
             if($scope.teamTwo.length + 1 === $scope.tournament.PPT){
               $scope.teamTwo.push(player1);
             }
@@ -548,11 +613,16 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
               $scope.teamTwo.push(player2);
             }
           }
-          else if($scope.teamOne.length !== $scope.tournament.PPT){
+          else if($scope.teamOne.length < $scope.tournament.PPT){
+            console.log('team one not full');
+            //console.log(angular.copy($scope.teamOne.length));
             if($scope.teamOne.length + 1 === $scope.tournament.PPT){
+
               $scope.teamOne.push(player1);
             }
             else{
+              console.log('adding both to team one??');
+
               $scope.teamOne.push(player1);
               $scope.teamOne.push(player2);
             }
@@ -560,7 +630,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
         }
       }
       else {
-
+        console.log('no new players');
         while(sortedList4.length !== 0){
           player1 = sortedList4.shift();
           player2 = sortedList4.pop();
@@ -745,7 +815,12 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
     };
 
     $scope.updateLeaderboard = function(){
+      var updater = [];
       $scope.playerList = Players.getPlayerList();
+      updater = angular.copy($scope.playerList);
+
+      $scope.sortedLeaderBoard(updater);
+
       $scope.sortedPlayerList = Players.getSortedLeaderBoardList();
     };
   }

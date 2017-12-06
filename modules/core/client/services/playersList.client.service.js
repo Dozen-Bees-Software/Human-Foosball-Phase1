@@ -72,6 +72,22 @@ angular.module('core').service('Players', [
       return index;
     };
 
+
+    this.removeUndefined = function(a){
+      var dummy = [];
+      for(var k = 0; k < a.length; k++){
+        if(typeof a[k] !== 'undefined'){
+          dummy.push(a[k]);
+        }
+      }
+
+      console.log('this is dummy');
+      console.log(dummy);
+
+      a = dummy;
+    };
+
+
     //checks for a player, if the player is not found, adds the player to the playerlist. 
     this.playerIndexArray = function(playersPld){
       var arr = [];
@@ -139,10 +155,12 @@ angular.module('core').service('Players', [
     this.findPlayersWithNoGames = function(arr, rounds){
       var thatLength = arr.length;
       var maxGamesPlayed = arr[thatLength-1].gamesPlayed;
+      console.log('this is max games');
+      console.log(maxGamesPlayed);
 
       for(var i = 0; i < thatLength; i++){
 
-        if(arr[i].gamesPlayed === 0 || arr[i].gamesPlayed < maxGamesPlayed  || arr[i].gamesPlayed < (rounds+1) - 2){
+        if(arr[i].gamesPlayed === 0 || arr[i].gamesPlayed < maxGamesPlayed  || arr[i].gamesPlayed < (rounds+1) - 5){
           needsToPlay.push(arr[i]);
           needsToPlayIndexes.push(i);
 
