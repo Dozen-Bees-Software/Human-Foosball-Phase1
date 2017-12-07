@@ -9,9 +9,8 @@ angular.module('core').controller('PlayerListController', ['$scope', 'Authentica
     $scope.players = Players.getPlayerList();
     $scope.playerCounter = 0;
 
-    //Adds player to the current playerlist. References the player service. 
+    //Adds player to the current playerlist. References the player service.
     $scope.addPlayer = function() {
-      // console.log(Players.getPlayerList());
       //Players.helloWorld($scope.newPlayer);
       $scope.newPlayer.points = 0;
       $scope.newPlayer.elo = 0;
@@ -20,10 +19,8 @@ angular.module('core').controller('PlayerListController', ['$scope', 'Authentica
       $scope.newPlayer.Draws = 0;
       $scope.newPlayer.differential = 0;
       $scope.newPlayer.gamesPlayed = 0;
-      //$scope.players.push($scope.newPlayer);
       Players.addPlayers($scope.newPlayer);
       $scope.playerCounter ++;
-      //console.log(Players.getPlayer($scope.playerCounter - 1));
       $scope.newPlayer = {};
     };
 
@@ -32,10 +29,9 @@ angular.module('core').controller('PlayerListController', ['$scope', 'Authentica
       tournyService.setPlayers(Players.getPlayerList());
     };
 
-    //Deletes players from the game permanently. 
+    //Deletes players from the game permanently.
     $scope.deletePlayer = function(index) {
       Players.deletePlayers(index);
-      //console.log();
       $scope.playerCounter --;
     };
   }

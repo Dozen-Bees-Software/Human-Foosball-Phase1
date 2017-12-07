@@ -21,7 +21,7 @@ angular.module('core').controller('ResultsController', ['$scope', 'Authenticatio
       $scope.results();
     };
 
-    //Results function is reponsible for retreiving, setting, and sorting the playerlist. This sorts the players in to winning order and displays their names. 
+    //Results function is reponsible for retreiving, setting, and sorting the playerlist. This sorts the players in to winning order and displays their names.
     $scope.results = function(){
       var players = angular.copy($scope.playerList);
       $scope.bubbleSort2(players);
@@ -31,7 +31,7 @@ angular.module('core').controller('ResultsController', ['$scope', 'Authenticatio
       $scope.playerList = Players.getResultsPlayerList();
     };
 
-    //BubbleSort2 is a copy from the algorithm used to generate rounds. It sorts players by overall score. 
+    //BubbleSort2 is a copy from the algorithm used to generate rounds. It sorts players by overall score.
     $scope.bubbleSort2 = function(a){
 
       var swapped2;
@@ -47,10 +47,8 @@ angular.module('core').controller('ResultsController', ['$scope', 'Authenticatio
         }
       } while (swapped2);
 
-
-      //console.log(a);
       Players.setSortedPlayerList(a);
-      //$scope.playerList = Players.getSortedPlayerList();
+      
     };
 
 
