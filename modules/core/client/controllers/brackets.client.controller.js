@@ -63,7 +63,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
 
       //sets the two teams as team A and team B, respectively
       Players.setTeams($scope.teamOne, $scope.teamTwo);
-      tournyService.updateRounds();
+      //tournyService.updateRounds();
 
     };
 
@@ -133,7 +133,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       $scope.sortedLeaderBoard = function(a){
       $scope.bubbleSort4(a);
       $scope.sortedPlayerList = Players.getSortedLeaderBoardList();
-    }
+    };
     //when the summit button is clicked, the scores are taken in an the player stats are updated
     $scope.results = function(matches){
 
@@ -209,7 +209,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       //cases occured where if the players per team was odd, the teams would be unbalanced
       //additionally ensures that this does not happen and both teams are equal size if the players per team is odd
       if(needToPlay.length !== 0){
-        while(needToPlay.length !== 0 || incrementer != $scope.tournament.PPT*2){
+        while(needToPlay.length !== 0 || incrementer !== $scope.tournament.PPT*2){
           incrementer += 1;
           if(needToPlay.length > 1){
             if(needToPlayLength >= $scope.tournament.PPT){
@@ -297,6 +297,10 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
           while($scope.teamOne.length > $scope.tournament.PPT){
             $scope.teamOne.pop();
           }
+        }
+
+        if(needToPlayLength2 >= $scope.tournament.PPT*2){
+
         }
         else{
 
