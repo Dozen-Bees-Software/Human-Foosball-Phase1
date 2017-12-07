@@ -7,17 +7,15 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
     $scope.authentication = Authentication;
     //initialize playerlist, tournamentInfo, and team arrays
     $scope.initialize = function(){
-      tournyService.initTournaments();
-      tournyService.restoreCurrentTournament();
-      $scope.playerList = Players.getPlayerList();
-      $scope.sortedPlayerList = angular.copy(Players.getPlayerList());
-      $scope.tournament = tournyService.getCurrentTournament();
-      //console.log($scope.tournament.players);
+      tournyService.initTournaments(); //Generates the tournament
+      tournyService.restoreCurrentTournament(); //The tournament stays upon refreshing the page
+      $scope.playerList = Players.getPlayerList(); //gets the list of all players in an array
+      $scope.sortedPlayerList = angular.copy(Players.getPlayerList()); //an array with the list of players, to be reorganized later
+      $scope.tournament = tournyService.getCurrentTournament(); //gets the current tournament to access.
+
       if($scope.playerList.length === 0){
         $scope.playerList = $scope.tournament.players;
         $scope.sortedPlayerList = $scope.tournament.players;
-        //console.log($scope.sortedPlayerList);
-
         Players.setPlayerList($scope.playerList);
         Players.setToSortPList($scope.sortedPlayerList);
 
@@ -29,23 +27,15 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
     };
 
 
-    //console.log(round);
+    //sepates the player list into two teams of equal size
     $scope.splitTeams = function (){
-      // console.log('Made it to split teams');
-      //console.log()
-
 
       $scope.disabled = true;
-      // console.log('generate button should disappear');
-
-
       if($scope.tournament.matches.length === 0){
-
 
         $scope.teamOne = $scope.playerList.slice(0, $scope.teamSize);
         $scope.teamTwo = $scope.playerList.slice($scope.teamSize, 2*$scope.teamSize);
         Players.setTeams($scope.teamOne, $scope.teamTwo);
-
 
         $scope.match = {
           teamOne: '',
@@ -58,102 +48,47 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
         $scope.match.teamOnePoints = 0;
         $scope.match.teamTwo = $scope.teamTwo;
         $scope.match.teamTwoPoints = 0;
-
-
-
-
         $scope.tournament.matches.push($scope.match);
 
         tournyService.updateTournaments($scope.tournament);
-        //This code seems redundant...
-        // if($scope.tournamentInfo === 0){
-        //   if($scope.teamOne.length === 0 && $scope.teamTwo.length === 0){
-        //     $scope.teamOne = $scope.playerList.slice(0, $scope.teamSize);
-        //     $scope.teamTwo = $scope.playerList.slice($scope.teamSize, 2*$scope.teamSize);
-        //     Players.setTeams($scope.teamOne, $scope.teamTwo);
-        //     tournConfig.updateRounds();
-        //     console.log($scope.tournamentInfo[4]);
-        //     //rounds += 1;
-        //     //console.log(rounds);
-        //   }
-        // }
-      //$scope.disabled = true;
-      //console.log('generate button should disappear');
 
       }
       else {
         var temp = $scope.playerList;
         var matchLength = $scope.tournament.matches.length - 1;
 
-        // console.log('This is temp');
-        // console.log(temp);
-
-        // console.log($scope.tournament.matches[0].teamOne);
-        // console.log($scope.tournament.matches[0].teamTwo);
-        //console.log('THis is the the temp variable for the rounds 1 and up')
-        //console.log(temp);
-        //console.log(temp);
-        //console.log("(else)round number is");
-        //console.log($scope.tournamentInfo[4]);
-        //console.log(Players.getPlayerList());
-        //$scope.bubbleSort(temp);
+        //Function that creates the new Team based on the sorted playerlist
         $scope.newTeam();
-
-
-        //console.log(Players.getSortedPlayerList());
-
-        //console.log(temp);
-        //console.log("above is sorted players");
-        //while(temp.length !== 0){
-
-
-
-          // $scope.teamOne.push(temp.pop());
-          // $scope.teamOne.push(temp.shift());
-          // $scope.teamTwo.push(temp.pop());
-          // $scope.teamTwo.push(temp.shift());
-        //}
       }
 
+      //sets the two teams as team A and team B, respectively
       Players.setTeams($scope.teamOne, $scope.teamTwo);
-    //  console.log(Players.getPlayerList());
       tournyService.updateRounds();
-      // console.log('round number is');
-
-
-        //$scope.teamOne=[];
-        //$scope.teamTwo=[];
 
     };
 
-
-
-    //$scope.teamAScore = 0;
-    //$scope.teamBScore = 0;
-
+    //used to display buttons
     $scope.show = false;
     $scope.openResults = function(){
       $scope.show = true;
     };
 
+    //used to display buttons
     $scope.hide = false;
     $scope.hideGenCreator = function(){
       $scope.hide = true;
     };
 
-
-
+    //
     $scope.wipeStats = function(){
 
+      //wipes the stats of all the players to recalculate again, when scores from previous
       Players.wipePlayerListStats(Players.getPlayerList());
 
       for(var i = 0; i < $scope.tournament.matches.length; i++){
         var match = $scope.tournament.matches[i];
         var teamOne = match.teamOne;
         var teamTwo = match.teamTwo;
-        // console.log('this is wipe stats)');
-        // console.log(teamOne);
-        // console.log(teamTwo);
         for(var j =0; j < teamOne.length; j++)
         {
           teamOne[j].wins = 0;
@@ -163,7 +98,6 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
           teamOne[j].Draws = 0;
           teamOne[j].elo = 0;
           teamOne[j].points = 0;
-
           teamTwo[j].wins = 0;
           teamTwo[j].losses = 0;
           teamTwo[j].differential = 0;
@@ -174,174 +108,63 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
         }
 
       }
-      // for(var t = 0; t < $scope.tournament.matches.length; t++){
-      //   var match = $scope.tournament.matches[t];
-      //   var teamOne = match.teamOne;
-      //   var teamTwo = match.teamTwo;
-      //   console.log('Gonzo Berry');
-      //   console.log(match);
-      //   console.log(teamOne);
-      //   console.log(teamTwo);
-      // }
+
     };
 
+    // calculates the matches to be displayed
     $scope.calcAllMatches = function(){
 
       var playersT = [];
-
       $scope.wipeStats();
       var matchLength = $scope.tournament.matches.length - 1;
-
       for(var i = 0; i < matchLength+1; i++){
         var match = $scope.tournament.matches[i];
-
-        //console.log(match);
-
         $scope.results(match);
-
-
-        //console.log('Spagett!');
-        //console.log(match);
-
       }
 
-
       $scope.calcElo();
-      //$scope.tournament.players = Players.getPlayerList();
-      //$scope.bubbleSort4($scope.sortedPlayerList);
-      //console.log($scope.sortedPlayerList);
       $scope.tournament.players = Players.getPlayerList();
-
       tournyService.updateTournaments($scope.tournament);
-
       playersT = angular.copy($scope.tournament.players);
-
       $scope.sortedLeaderBoard(playersT);
 
     };
 
-    $scope.sortedLeaderBoard = function(a){
+      $scope.sortedLeaderBoard = function(a){
       $scope.bubbleSort4(a);
       $scope.sortedPlayerList = Players.getSortedLeaderBoardList();
     }
-
+    //when the summit button is clicked, the scores are taken in an the player stats are updated
     $scope.results = function(matches){
 
       var matchLength = $scope.tournament.matches.length - 1;
-
-      //$scope.calcAllMatches();
-
-
       var match = matches;
-      //console.log(match);
       var teamOne = match.teamOne;
       var teamTwo = match.teamTwo;
       var teamOnePoints = angular.copy(match.teamOnePoints);
       var teamTwoPoints = angular.copy(match.teamTwoPoints);
-
       var playersPlaying = teamOne.concat(teamTwo);
       var indexes = Players.playerIndexArray(playersPlaying);
-
-      // console.log('REEEEEEE');
-      // console.log(match);
-
-
-      //var teamOne = $scope.tournament.matches[t].match;
-      //var teamTwo = $scope.tournament.matches[t].match;
-      //console.log(teamOne);
-      //console.log(teamTwo);
-
-      //console.log('Playerlist after wipeStats');
-      //$scope.wipeStats(teamOne);
-      //$scope.wipeStats(teamTwo);
-      //console.log(teamOne);
-      //console.log(Players.getTeamOne());
-      //console.log(Players.getTeamTwo());
-
-
-
-
-
-      ///console.log($scope.teamOne);
-      //console.log($scope.teamTwo);
-      // console.log('This is teama and taeamb scores');
-      // console.log(teamOnePoints);
-      //$scope.tournament.matches[$scope.tournament.matches.length - 1].teamOnePoints = $scope.teamAScore;
-      // console.log(teamTwoPoints);
-      //$scope.tournament.matches[$scope.tournament.matches.length - 1].teamTwoPoints = $scope.teamBScore;
-
       if(teamOnePoints > teamTwoPoints){
-        // console.log('team A won');
-        //console.log(teamOne);
-
-          //teamOne[i].name;
         Players.updatePlayerStatsTeamAWin(indexes, teamOnePoints, teamTwoPoints, $scope.tournament.winPoints, $scope.tournament.tiePoints);
-        // console.log(Players.getPlayerList());
-
-          //console.log('Wins are here and should be updated');
-          //console.log(teamOne[i]);
-          // teamOne[i].wins += 1;
-          // teamOne[i].points = $scope.tournament.winPoints * teamOne[i].wins + ($scope.tournament.tiePoints * teamOne[i].Draws);
-          // //console.log(teamOne[i]);
-          // teamTwo[i].losses += 1;
-          // teamOne[i].differential += (teamOnePoints - teamTwoPoints);
-          // teamTwo[i].differential += (teamTwoPoints - teamOnePoints);
-          // teamOne[i].gamesPlayed += 1;
-          // teamTwo[i].gamesPlayed += 1;
-
-          //console.log($scope.teamOne);
-
-
-          //$scope.teamOne.elo[i] += $scope.tournamentInfo[2];
-
-
       }
-
       else if(teamTwoPoints > teamOnePoints){
-        // console.log('team B won');
         Players.updatePlayerStatsTeamBWin(indexes, teamOnePoints, teamTwoPoints, $scope.tournament.winPoints, $scope.tournament.tiePoints);
       }
       else {
-        // console.log('there was a tie');
-
         Players.updatePlayerStatsTie(indexes, $scope.tournament.winPoints, $scope.tournament.tiePoints);
 
       }
 
-
-
-
-      //console.log($scope.teamTwo);
-      //Players.updatePlayerStats(teamOne, teamTwo);
-
-
-
-
-
-
-
-      // $scope.tournament.players = Players.getPlayerList();
-      // tournyService.updateTournaments($scope.tournament);
-
-
-      //console.log(Players.getPlayerList());
-
-
-
     };
-
+    //uses each player's stats to calcuate a special number for each to determine their standings in the leaderboard
     $scope.calcElo = function(){
-      // console.log('Quick maths');
-      // console.log($scope.tournament.winPoints * 2);
+
       var tempList = Players.getPlayerList();
-      // console.log('Calculating Elo');
-      // console.log($scope.tournament.winPoints);
+
       for(var i = 0; i < tempList.length; i++){
-        // console.log('this is templist wins');
-        // console.log(tempList);
+
         var points = tempList[i].wins * parseInt($scope.tournament.winPoints) + tempList[i].Draws * parseInt($scope.tournament.tiePoints);
-        // console.log('this is points');
-        // console.log(points);
 
         if(tempList[i].differential === 0 && tempList[i].gamesPlayed > 0){
           tempList[i].differential += 0.00001;
@@ -349,12 +172,9 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
         var n = (Math.floor(Math.log10(Math.abs(tempList[i].differential))) + 1);
         var elo = points + ((5*Math.pow(10,n) + tempList[i].differential)/(10*Math.pow(10,n)));
         tempList[i].elo = elo;
-        //Math.round(tempList[i].differential);
         if(tempList[i].differential === 0.00001){
           tempList[i].differential = 0;
         }
-        //tempList[i].points = points;
-        // console.log(elo);
 
       }
     };
@@ -367,86 +187,51 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       var addTeamOne = true;
       var addTeamTwo = false;
       var matchLength = $scope.tournament.matches.length - 1;
-
-
-      // console.log('new team stuff!');
       var listOfPlayers = angular.copy(Players.getPlayerList());
-      console.log(listOfPlayers);
       var sortedList4;
-
-      $scope.bubbleSort(listOfPlayers);
-
-
-      //console.log('list of players after sort');
-      //console.log(listOfPlayers);
+      $scope.bubbleSort(listOfPlayers); // see declaration
       var sortedList1 = angular.copy(Players.getSortedPlayerList());
-      Players.findPlayersWithNoGames(sortedList1, matchLength);
-      // console.log('SOrted lsit 1');
-      // console.log(sortedList1);
-
+      Players.findPlayersWithNoGames(sortedList1, matchLength); //checks which players have not played a game
       $scope.bubbleSort2(sortedList1);
       var sortedList2 = angular.copy(Players.getSortedPlayerList());
-      console.log('sorted lsit 2');
-      console.log(angular.copy(sortedList2));
-      // console.log('SOrted lsit 2');
-      // console.log(angular.copy(sortedList2));
       sortedList4 = sortedList2;
-
-      /*if(matchLength % 3 === 0){
-        $scope.bubbleSort3(sortedList2);
-        var sortedList3 = angular.copy(Players.getSortedPlayerList());
-        // console.log('SOrted lsit 3');
-        // console.log(sortedList3);
-        sortedList4 = sortedList3;
-
-      }*/
-
-      //Players.setPlayerList(sortedList);
-
-
       $scope.teamOne = [];
       $scope.teamTwo = [];
-      var needToPlay = Players.getNeedsToPlay();
+      var needToPlay = Players.getNeedsToPlay(); //gets the players who will play in the next round
       var needToPlayLength = angular.copy(needToPlay.length/2);
       var needToPlayLength2 = angular.copy(needToPlay.length);
       var incrementer = 0;
       var incrementer2 = 0;
-
+      //checks if there are any players who still need to play
+      //runs through the list of players who need to play and puts them into separate teams
+      //takes into account when players per team is either even or odd
+      //makes sure each team has the same number of players
+      //cases occured where if the players per team was odd, the teams would be unbalanced
+      //additionally ensures that this does not happen and both teams are equal size if the players per team is odd
       if(needToPlay.length !== 0){
-
         while(needToPlay.length !== 0 || incrementer != $scope.tournament.PPT*2){
-          //console.log(angular.copy(needToPlay));
           incrementer += 1;
           if(needToPlay.length > 1){
             if(needToPlayLength >= $scope.tournament.PPT){
-              console.log('WE ARE HRERER FIXXXX');
               player1 = needToPlay.shift();
               player2 = needToPlay.pop();
-
-
               if($scope.teamOne.length !== $scope.tournament.PPT && addTeamOne === true){
                 if($scope.teamOne.length+1 === $scope.tournament.PPT){
-                  console.log('made it to our custom team one ');
                   $scope.teamOne.push(player1);
                   $scope.teamTwo.push(player2);
                 }
                 else{
-                  console.log('team one add');
                   $scope.teamOne.push(player1);
                   $scope.teamOne.push(player2);
                 }
-
                 addTeamOne = false;
               }
-
               if($scope.teamTwo.length !== $scope.tournament.PPT && addTeamTwo === true){
                 if($scope.teamTwo.length + 1 === $scope.tournament.PPT){
-                  console.log('made it to our custom team two condition');
                   $scope.teamOne.push(player1);
                   $scope.teamTwo.push(player2);
                 }
                 else{
-                  console.log('team2 add ');
                   $scope.teamTwo.push(player1);
                   $scope.teamTwo.push(player2);
                 }
@@ -468,7 +253,6 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
 
               if($scope.teamOne.length !== $scope.tournament.PPT && addTeamOne === true){
                 if($scope.teamOne.length+1 === $scope.tournament.PPT){
-                  console.log('made it to our custom team one ');
                   $scope.teamOne.push(player1);
                   $scope.teamTwo.push(player2);
                 }
@@ -482,7 +266,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
 
               if($scope.teamTwo.length !== $scope.tournament.PPT && addTeamTwo === true){
                 if($scope.teamTwo.length + 1 === $scope.tournament.PPT){
-                  //console.log('made it to our custom team two condition');
+
                   $scope.teamOne.push(player2);
                   $scope.teamTwo.push(player2);
                 }
@@ -508,27 +292,11 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
 
 
         }
-
-        console.log('team one before undefined need to play');
-        console.log(angular.copy($scope.teamOne));
-
         Players.removeUndefined($scope.teamOne);
         if($scope.teamOne.length > $scope.tournament.PPT){
-          console.log('team one had more players');
           while($scope.teamOne.length > $scope.tournament.PPT){
             $scope.teamOne.pop();
           }
-        }
-
-        console.log('team one after need to play');
-        console.log(angular.copy($scope.teamOne));
-
-        console.log('team two after need to play');
-        console.log(angular.copy($scope.teamTwo));
-
-        if(needToPlayLength2 >= $scope.tournament.PPT*2)
-        {
-          console.log('We gucci');
         }
         else{
 
@@ -538,37 +306,26 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
           var staticTeamTwoLength = angular.copy($scope.teamTwo.length);
           var dummyTeamOne = [];
           var dummyTeamTwo = [];
-          console.log('team oneee');
-          console.log(angular.copy($scope.teamOne));
-
           for(var k = 0; k < staticTeamOneLength; k++){
             if(typeof $scope.teamOne[k] !== 'undefined'){
               dummyTeamOne.push($scope.teamOne[k]);
             }
           }
-          console.log('dummy team oneee');
-          console.log(angular.copy(dummyTeamOne));
-
           if(dummyTeamOne.length > 0){
             $scope.teamOne = dummyTeamOne;
           }
 
-          console.log('opposite of gucci');
           while(sortedList4.length !== 0){
 
             player1 = sortedList4.shift();
             player2 = sortedList4.pop();
 
-            console.log($scope.teamOne.length);
-
             if($scope.teamOne.length < $scope.tournament.PPT && addTeamOne === true){
               if($scope.teamOne.length+1 === $scope.tournament.PPT){
-                console.log('made it to our custom team one ');
                 $scope.teamTwo.push(player1);
                 $scope.teamOne.push(player2);
               }
               else{
-                console.log('adding both players to team one');
                 $scope.teamOne.push(player1);
                 $scope.teamOne.push(player2);
               }
@@ -578,12 +335,10 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
 
             if($scope.teamTwo.length < $scope.tournament.PPT && addTeamTwo === true){
               if($scope.teamTwo.length + 1 === $scope.tournament.PPT){
-                console.log('made it to our custom team two condition');
-                //$scope.teamOne.push(player1);
+
                 $scope.teamTwo.push(player2);
               }
               else{
-                console.log('adding both players to team two');
                 $scope.teamTwo.push(player1);
                 $scope.teamTwo.push(player2);
               }
@@ -599,12 +354,8 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
           }
         }
 
-
-
         if($scope.teamOne.length === $scope.tournament.PPT || $scope.teamTwo.length === $scope.tournament.PPT){
-          console.log(angular.copy($scope.teamOne));
           if($scope.teamTwo.length < $scope.tournament.PPT){
-            console.log('team two not full');
             if($scope.teamTwo.length + 1 === $scope.tournament.PPT){
               $scope.teamTwo.push(player1);
             }
@@ -614,15 +365,10 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
             }
           }
           else if($scope.teamOne.length < $scope.tournament.PPT){
-            console.log('team one not full');
-            //console.log(angular.copy($scope.teamOne.length));
             if($scope.teamOne.length + 1 === $scope.tournament.PPT){
-
               $scope.teamOne.push(player1);
             }
             else{
-              console.log('adding both to team one??');
-
               $scope.teamOne.push(player1);
               $scope.teamOne.push(player2);
             }
@@ -630,16 +376,11 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
         }
       }
       else {
-        console.log('no new players');
         while(sortedList4.length !== 0){
           player1 = sortedList4.shift();
           player2 = sortedList4.pop();
-
-
-
           if($scope.teamOne.length !== $scope.tournament.PPT && addTeamOne === true){
             if($scope.teamOne.length+1 === $scope.tournament.PPT){
-              console.log('made it to our custom team one ');
               $scope.teamOne.push(player1);
               $scope.teamTwo.push(player2);
             }
@@ -647,20 +388,16 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
               $scope.teamOne.push(player1);
               $scope.teamOne.push(player2);
             }
-
             addTeamOne = false;
           }
-
           if($scope.teamTwo.length !== $scope.tournament.PPT && addTeamTwo === true){
             if($scope.teamTwo.length + 1 === $scope.tournament.PPT){
-              //console.log('made it to our custom team two condition');
               $scope.teamTwo.push(player2);
             }
             else{
               $scope.teamTwo.push(player1);
               $scope.teamTwo.push(player2);
             }
-
             addTeamTwo = false;
             addTeamOne = true;
           }
@@ -672,8 +409,6 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
         }
       }
 
-
-
       $scope.match = {
         teamOne: '',
         teamTwo: '',
@@ -684,17 +419,8 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       $scope.match.teamOnePoints = 0;
       $scope.match.teamTwo = $scope.teamTwo;
       $scope.match.teamTwoPoints = 0;
-
-
-
       $scope.tournament.matches.push($scope.match);
-
       tournyService.updateTournaments($scope.tournament);
-
-
-
-      // console.log('This is the new team one');
-      //console.log($scope.teamOne);
 
     };
     $scope.bubbleSort = function(a){
@@ -726,13 +452,10 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
         }
       } while (swapped2);
 
-
-      //console.log(a);
       Players.setSortedPlayerList(a);
     };
-
     $scope.bubbleSort2 = function(a){
-
+      //sort by elo
       var swapped2;
       do {
         swapped2 = false;
@@ -746,13 +469,11 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
         }
       } while (swapped2);
 
-
-      //console.log(a);
       Players.setSortedPlayerList(a);
     };
 
     $scope.bubbleSort3 = function(a){
-
+      //sorts by the score differential
       var swapped2;
       do {
         swapped2 = false;
@@ -766,13 +487,11 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
         }
       } while (swapped2);
 
-
-      //console.log(a);
       Players.setSortedPlayerList(a);
     };
 
     $scope.bubbleSort4 = function(a){
-
+      //sorts by elo
       var swapped2;
       do {
         swapped2 = false;
@@ -785,14 +504,10 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
           }
         }
       } while (swapped2);
-
-
-      //console.log(a);
       Players.setSortedLeaderBoardPlayerList(a);
-      //$scope.playerList = Players.getSortedPlayerList();
     };
 
-
+    //used to display certain fields on click
     $scope.leadWrap = "leadHide";
     $scope.tournWrap = "leadShow";
     $scope.toggleLeaderboard = function()
@@ -814,6 +529,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
         $scope.playerPopup = "popupShow";
     };
 
+    //sorts througn the player list and sorts by best performing real time
     $scope.updateLeaderboard = function(){
       var updater = [];
       $scope.playerList = Players.getPlayerList();
