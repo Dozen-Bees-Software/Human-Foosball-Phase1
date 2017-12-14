@@ -30,6 +30,10 @@ angular.module('core').service('Players', [
 
     };
 
+    this.sortedAddPlayers = function(playername){
+      leaderBoardList.push(playername);
+    }
+
     //Sets leaderboard list for display (it prevents the original array from being sorted unnecessarily)
     this.setToSortPList = function(a){
       leaderBoardList = a;
@@ -44,6 +48,12 @@ angular.module('core').service('Players', [
     this.deletePlayers = function(index){
       playerList.splice(index,1);
     };
+
+    this.sortedDeletePlayers = function(index){
+      leaderBoardList.splice(index,1);
+    };
+
+
 
     //Permenently removes a player.
     this.deletePlayersSpecific = function(index, arr){
@@ -136,11 +146,16 @@ angular.module('core').service('Players', [
     //Responsible for finding players with no games. This is used in the algorithm to ensure new players play immediately. Puts them in the needs to play array.
     this.findPlayersWithNoGames = function(arr, rounds){
       var thatLength = arr.length;
+      
       var maxGamesPlayed = arr[thatLength-1].gamesPlayed;
+
+      //arr[i].gamesPlayed < (rounds+1) - 5
+
+
 
       for(var i = 0; i < thatLength; i++){
 
-        if(arr[i].gamesPlayed === 0 || arr[i].gamesPlayed < maxGamesPlayed  || arr[i].gamesPlayed < (rounds+1) - 5){
+        if(arr[i].gamesPlayed === 0 || arr[i].gamesPlayed < maxGamesPlayed){
           needsToPlay.push(arr[i]);
           needsToPlayIndexes.push(i);
 

@@ -5,6 +5,7 @@ angular.module('core').service('tournyService', [
 
     var tournaments = [];
     var currentTourny = '';
+    var submitWasClicked;
 
     //Init tournaments is responsible for creating local storage if it does not exist, or pulling the data from it if it does.
     this.initTournaments = function(){
@@ -19,6 +20,7 @@ angular.module('core').service('tournyService', [
     this.getTournaments = function(){
       return tournaments;
     };
+
 
     //Pushes a tournament into the tournament array for later storage.
     this.addTournament = function(tournament) {
@@ -59,6 +61,16 @@ angular.module('core').service('tournyService', [
       tournaments.splice(index,1);
       localStorage.setItem("WFTournaments", JSON.stringify(tournaments));
     };
+
+    this.setClick = function(val){
+      submitWasClicked = val;
+    };
+
+    this.getClick = function(){
+      return submitWasClicked;
+    };
+
+
 
   }
 ]);
