@@ -182,6 +182,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
 
   //Function that creates the new Team based on the sorted playerlist
     $scope.newTeam = function(){
+      console.log('broke here');
       var player1;
       var player2;
       var addTeamOne = true;
@@ -190,6 +191,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       var listOfPlayers = angular.copy(Players.getPlayerList());
       var sortedList4;
       $scope.bubbleSort(listOfPlayers); // see declaration
+      //console.log('broke here 3');
       var sortedList1 = angular.copy(Players.getSortedPlayerList());
       Players.findPlayersWithNoGames(sortedList1, matchLength); //checks which players have not played a game
       $scope.bubbleSort2(sortedList1);
@@ -209,9 +211,13 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       //cases occured where if the players per team was odd, the teams would be unbalanced
       //additionally ensures that this does not happen and both teams are equal size if the players per team is odd
       if(needToPlay.length !== 0){
-        while(needToPlay.length !== 0 || incrementer !== $scope.tournament.PPT*2){
+        console.log('broke here 2');
+        while(needToPlay.length !== 0 || incrementer < $scope.tournament.PPT*2){
           incrementer += 1;
           if(needToPlay.length > 1){
+            console.log('broke here 3');
+            console.log(incrementer);
+            console.log(angular.copy(needToPlay));
             if(needToPlayLength >= $scope.tournament.PPT){
               player1 = needToPlay.shift();
               player2 = needToPlay.pop();
@@ -249,6 +255,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
 
               player1 = needToPlay.shift();
               player2 = needToPlay.pop();
+
 
 
               if($scope.teamOne.length !== $scope.tournament.PPT && addTeamOne === true){
@@ -297,6 +304,10 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
           while($scope.teamOne.length > $scope.tournament.PPT){
             $scope.teamOne.pop();
           }
+        }
+
+        if(needToPlayLength2 >= $scope.tournament.PPT*2){
+
         }
         else{
 

@@ -136,11 +136,18 @@ angular.module('core').service('Players', [
     //Responsible for finding players with no games. This is used in the algorithm to ensure new players play immediately. Puts them in the needs to play array.
     this.findPlayersWithNoGames = function(arr, rounds){
       var thatLength = arr.length;
+      console.log('reee');
+      console.log(arr[thatLength-1]);
       var maxGamesPlayed = arr[thatLength-1].gamesPlayed;
+
+      //arr[i].gamesPlayed < (rounds+1) - 5
+      console.log('this is mgp');
+      console.log(maxGamesPlayed);
+
 
       for(var i = 0; i < thatLength; i++){
 
-        if(arr[i].gamesPlayed === 0 || arr[i].gamesPlayed < maxGamesPlayed  || arr[i].gamesPlayed < (rounds+1) - 5){
+        if(arr[i].gamesPlayed === 0 || arr[i].gamesPlayed < maxGamesPlayed){
           needsToPlay.push(arr[i]);
           needsToPlayIndexes.push(i);
 
