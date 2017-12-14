@@ -144,7 +144,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       $scope.sortedLeaderBoard = function(a){
       $scope.bubbleSort4(a);
       $scope.sortedPlayerList = Players.getSortedLeaderBoardList();
-    }
+    };
     //when the summit button is clicked, the scores are taken in an the player stats are updated
     $scope.results = function(matches){
 
