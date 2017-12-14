@@ -13,7 +13,7 @@
     </button>
     <div ng-class="playerPopup" class="addPlayerPopup" ng-controller="PlayerListController">
       <input name="name"  type="text" ng-model="newPlayer.name" class="player-control-bracket" placeholder="enter new player name..." required align = "top" autofocus>
-      <button ng-click="addPlayer(); storePlayers(); updateLeaderboard()" class = "AddPlayerButtonBracket" align = "top"> ADD </button>
+      <button ng-click="sortedAddPlayer(); storePlayers()" class = "AddPlayerButtonBracket" align = "top"> ADD </button>
     </div>
 
     <div ng-class="leadWrap" class="leaderboardWrapper">
@@ -31,7 +31,7 @@
           <th>Games</th>
           <th></th>
         </tr>
-        <tr ng-repeat="player in playerList track by $index">
+        <tr ng-repeat="player in sortedPlayerList track by $index">
           <td>{{$index + 1}}</td>
           <td>{{player.name}}</td>
           <td>{{player.points}}</td>
@@ -40,7 +40,7 @@
           <td>{{player.losses}}</td>
           <td>{{player.gamesPlayed}}</td>
           <td>
-            <button ng-controller="PlayerListController" ng-click = "deletePlayer($index)"  name = "removePlayers" class = "removePlayers">REMOVE</button>
+            <button ng-controller="PlayerListController" ng-click = "sortedDeletePlayer($index,clicked)"  name = "removePlayers" class = "removePlayers">REMOVE</button>
           </td>
         </tr>
       </table>
