@@ -10,14 +10,14 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       tournyService.initTournaments(); //Generates the tournament
       tournyService.restoreCurrentTournament(); //The tournament stays upon refreshing the page
       $scope.playerList = Players.getPlayerList(); //gets the list of all players in an array
-      $scope.sortedPlayerList = angular.copy(Players.getPlayerList()); //an array with the list of players, to be reorganized later
+      //$scope.sortedPlayerList = angular.copy(Players.getPlayerList()); //an array with the list of players, to be reorganized later
       $scope.tournament = tournyService.getCurrentTournament(); //gets the current tournament to access.
 
       if($scope.playerList.length === 0){
         $scope.playerList = $scope.tournament.players;
         $scope.sortedPlayerList = $scope.tournament.players;
         Players.setPlayerList($scope.playerList);
-        Players.setToSortPList($scope.sortedPlayerList);
+        //Players.setToSortPList($scope.sortedPlayerList);
 
         console.log('The initsss');
       }
@@ -54,7 +54,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
 
       }
       else {
-        var temp = $scope.playerList;
+        //var temp = $scope.playerList;
         var matchLength = $scope.tournament.matches.length - 1;
 
         //Function that creates the new Team based on the sorted playerlist
@@ -126,7 +126,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       $scope.tournament.players = Players.getPlayerList();
       tournyService.updateTournaments($scope.tournament);
       playersT = angular.copy($scope.tournament.players);
-      $scope.sortedLeaderBoard(playersT);
+      //$scope.sortedLeaderBoard(playersT);
 
     };
 
@@ -209,7 +209,7 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
       //cases occured where if the players per team was odd, the teams would be unbalanced
       //additionally ensures that this does not happen and both teams are equal size if the players per team is odd
       if(needToPlay.length !== 0){
-        while(needToPlay.length !== 0 || incrementer != $scope.tournament.PPT*2){
+        while(needToPlay.length !== 0 || incrementer !== $scope.tournament.PPT*2){
           incrementer += 1;
           if(needToPlay.length > 1){
             if(needToPlayLength >= $scope.tournament.PPT){
@@ -533,11 +533,11 @@ angular.module('core').controller('BracketsController', ['$scope', '$window', 'A
     $scope.updateLeaderboard = function(){
       var updater = [];
       $scope.playerList = Players.getPlayerList();
-      updater = angular.copy($scope.playerList);
+      //updater = angular.copy($scope.playerList);
 
-      $scope.sortedLeaderBoard(updater);
+      //$scope.sortedLeaderBoard(updater);
 
-      $scope.sortedPlayerList = Players.getSortedLeaderBoardList();
+      //$scope.sortedPlayerList = Players.getSortedLeaderBoardList();
     };
   }
 
